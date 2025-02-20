@@ -2,6 +2,7 @@
   "name": "ecommerce_website",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@auth0/auth0-react": "^2.2.4",
     "@stripe/stripe-js": "^5.5.0",
@@ -9,7 +10,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.9",
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
     "body-parser": "^1.20.3",
     "chart.js": "^4.4.7",
     "cookie-parser": "^1.4.7",
