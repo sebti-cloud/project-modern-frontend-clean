@@ -20,7 +20,7 @@ const Payment = () => {
   useEffect(() => {
     const fetchOrderDetails = async () => {
       if (!orderId) {
-        console.error("orderId n'est pas d&eacute;fini.");
+        console.error("orderId n'est pas défini.");
         return;
       }
 
@@ -30,7 +30,7 @@ const Payment = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        console.log('D&eacute;tails de la commande r&eacute;cup&eacute;r&eacute;s:', data);
+        console.log('Détails de la commande récupérés:', data);
 
         setTotal(data.total_price || 0);
         setUserEmail(data.user_email || '');
@@ -38,13 +38,13 @@ const Payment = () => {
         setUserName(data.user_name || '');
 
         if (!data.user_email) {
-          console.error("Email non d&eacute;fini.");
+          console.error("Email non défini.");
         }
         if (!data.tracking_number) {
-          console.error("Num&eacute;ro de suivi non d&eacute;fini.");
+          console.error("Numéro de suivi non défini.");
         }
       } catch (error) {
-        console.error('Erreur lors de la r&eacute;cup&eacute;ration des d&eacute;tails de la commande:', error);
+        console.error('Erreur lors de la récupération des détails de la commande:', error);
       }
     };
 
@@ -57,7 +57,7 @@ const Payment = () => {
       const clientId = 'Ado4_0ttcdGRc2_5YbVvN5dQARN1HCrEf394FAQkfamS9oLit2rJm9OXgf6oXagid3qYs_yD7mMHhaxk';
 
       if (!clientId) {
-        console.error("Le client-id PayPal n'est pas d&eacute;fini. Veuillez v&eacute;rifier votre configuration.");
+        console.error("Le client-id PayPal n'est pas défini. Veuillez vérifier votre configuration.");
         return;
       }
 
@@ -80,7 +80,7 @@ const Payment = () => {
       const response = await fetch(`http://localhost:3001/api/update-payment-status/${pendingOrderId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ payment_status: 'pay&eacute;', transaction_id: transactionId }),
+        body: JSON.stringify({ payment_status: 'payé', transaction_id: transactionId }),
       });
 
       if (!response.ok) {
@@ -89,10 +89,10 @@ const Payment = () => {
       }
 
       const data = await response.json();
-      console.log('R&eacute;ponse de la mise &agrave; jour:', data);
-      console.log('Transaction ID et statut de paiement mis &agrave; jour avec succ&egrave;s:', data.pendingOrder);
+      console.log('Réponse de la mise à jour:', data);
+      console.log('Transaction ID et statut de paiement mis à jour avec succès:', data.pendingOrder);
     } catch (error) {
-      console.error('Erreur lors de la mise &agrave; jour du Transaction ID et du statut de paiement :', error);
+      console.error('Erreur lors de la mise à jour du Transaction ID et du statut de paiement :', error);
     }
   };
 
@@ -114,7 +114,7 @@ const Payment = () => {
       }
 
       const data = await response.json();
-      console.log('Commande confirm&eacute;e avec succ&egrave;s:', data);
+      console.log('Commande confirmée avec succès:', data);
     } catch (error) {
       console.error('Erreur lors de la confirmation de la commande :', error);
     }
@@ -132,19 +132,19 @@ const Payment = () => {
               },
             }],
           }).catch((err) => {
-            console.error('Erreur lors de la cr&eacute;ation de la commande :', err);
-            alert('Erreur lors de la cr&eacute;ation de la commande');
+            console.error('Erreur lors de la création de la commande :', err);
+            alert('Erreur lors de la création de la commande');
           });
         },
         onApprove: function(data, actions) {
           return actions.order.capture().then(async function(details) {
-            alert(`Transaction termin&eacute;e par ${details.payer.name.given_name}. Votre reçu de paiement a été envoyé à ${userEmail}.`);
+            alert(`Transaction terminée par ${details.payer.name.given_name}. Votre reçu de paiement a été envoyé à ${userEmail}.`);
             console.log('Transaction ID reçu de PayPal:', details.id);
             setTransactionId(details.id);
             setTransactionModalIsOpen(true);
           }).catch((err) => {
-            console.error('Erreur lors de l&#39;approbation de la commande :', err);
-            alert('Erreur lors de l&#39;approbation de la commande');
+            console.error('Erreur lors de l&apos;approbation de la commande :', err);
+            alert('Erreur lors de l&apos;approbation de la commande');
           });
         },
         onError: function(err) {
@@ -178,12 +178,12 @@ const Payment = () => {
 
   const copyTransactionIdToClipboard = () => {
     navigator.clipboard.writeText(transactionId);
-    alert('Transaction ID copi&eacute; dans le presse-papiers');
+    alert('Transaction ID copié dans le presse-papiers');
   };
 
   const copyTrackingNumberToClipboard = () => {
     navigator.clipboard.writeText(trackingNumber);
-    alert('Num&eacute;ro de suivi copi&eacute; dans le presse-papiers');
+    alert('Numéro de suivi copié dans le presse-papiers');
   };
 
   if (total === null) {
@@ -191,7 +191,7 @@ const Payment = () => {
     return <div>Chargement...</div>;
   }
 
-  const usdTotal = (total / 10).toFixed(2); // D&eacute;finir usdTotal ici
+  const usdTotal = (total / 10).toFixed(2); // Définir usdTotal ici
 
   return (
     <>
@@ -201,8 +201,8 @@ const Payment = () => {
             <div className="payment-left">
               <div className="payment-header">
                 <div className="payment-header-icon"><i className="ri-flashlight-fill"></i></div>
-                <div className="payment-header-title">R&eacute;sum&eacute; de la commande</div>
-                <p className="payment-header-description">Voici un r&eacute;capitulatif de votre commande.</p>
+                <div className="payment-header-title">Résumé de la commande</div>
+                <p className="payment-header-description">Voici un récapitulatif de votre commande.</p>
               </div>
               <div className="payment-content">
                 <div className="payment-body">
@@ -216,14 +216,14 @@ const Payment = () => {
                   </div>
                   <div className="payment-summary">
                     <div className="payment-summary-item">
-                      <div className="payment-summary-name">Frais suppl&eacute;mentaires</div>
+                      <div className="payment-summary-name">Frais supplémentaires</div>
                       <div className="payment-summary-price">$1</div>
                     </div>
                     <div className="payment-summary-item">
-                      <div className="payment-summary-name">R&eacute;duction 20%</div>
+                      <div className="payment-summary-name">Réduction 20%</div>
                       <div className="payment-summary-price">1$</div>
                       <div className="payment-summary-item">
-                      <div className="payment-summary-name">R&eacute;duction 20%</div>
+                      <div className="payment-summary-name">Réduction 20%</div>
                       <div className="payment-summary-price">-$2</div>
                     </div>
                     <div className="payment-summary-divider"></div>
@@ -237,7 +237,7 @@ const Payment = () => {
             </div>
             <div className="payment-right">
               <form className="payment-form">
-                <h1 className="payment-title">D&eacute;tails de Paiement</h1>
+                <h1 className="payment-title">Détails de Paiement</h1>
                 <div id="paypal-button-container" className='paypal-button-button'></div>
               </form>
             </div>
@@ -261,24 +261,24 @@ const Payment = () => {
             type="text"
             value={transactionId}
             onChange={(e) => setTransactionId(e.target.value)}
-            placeholder="Entrez l'ID de transaction"
+            placeholder="Entrez l&apos;ID de transaction"
             required
           />
           <button type="submit">Soumettre</button>
         </form>
-        <p>Votre commande sera confirm&eacute;e apr&egrave;s la soumission de cet ID de transaction.</p>
+        <p>Votre commande sera confirmée après la soumission de cet ID de transaction.</p>
       </Modal>
 
       <Modal isOpen={confirmationModalIsOpen} onRequestClose={() => setConfirmationModalIsOpen(false)} contentLabel="Tracking Number Modal" className="modal" overlayClassName="overlay">
         <h2>Merci pour votre commande, {userName} !</h2>
-        <p>Votre num&eacute;ro de suivi est :</p>
+        <p>Votre numéro de suivi est :</p>
         <div className="tracking-number-container">
           <h3>{trackingNumber}</h3>
           <button onClick={copyTrackingNumberToClipboard} className="copy-button">
             <FaCopy /> Copier
           </button>
         </div>
-        <p>Veuillez noter ce num&eacute;ro pour suivre l'&eacute;tat de votre commande.</p>
+        <p>Veuillez noter ce numéro pour suivre l&apos;état de votre commande.</p>
         <Link to="/track-order">
           <button onClick={() => setConfirmationModalIsOpen(false)}>Suivre ma commande</button>
         </Link>
