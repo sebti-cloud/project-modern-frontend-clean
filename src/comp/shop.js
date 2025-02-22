@@ -65,7 +65,7 @@ const Shop = ({ addtocart, searchResults }) => {
     }
   };
 
-  const fetchProducts = async (category = '') => {
+  const fetchProducts = async () => {
     try {
       let url = 'http://localhost:3001/api/products';
       const response = await fetch(url);

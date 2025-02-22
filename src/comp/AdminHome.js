@@ -100,7 +100,7 @@ const AdminHome = () => {
           <Link to="/admin-settings">
             <FaCogs size={40} />
             <h2>Param&egrave;tres</h2>
-            <p>G&eacute;rez les param&egrave;tres de l'administration et les utilisateurs.</p>
+            <p>G&eacute;rez les param&egrave;tres de l&apos;administration et les utilisateurs.</p>
           </Link>
         </div>
         <div className="admin-card">

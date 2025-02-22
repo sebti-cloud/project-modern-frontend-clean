@@ -4,12 +4,11 @@ import './sales.css';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
-const Sales = ({ addtocart }) => {
+const Sales = () => {
     const [promotions, setPromotions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0);
-    const [products, setProducts] = useState([]); // Définir setProducts
-    const [filter, setFilter] = useState('all'); // Définir setFilter
+
 
     useEffect(() => {
         fetchProducts();
