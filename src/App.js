@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Nav from './comp/nav';
+import Nav from './comp/nav.js';
 import Rout from './comp/rout';
 import Footer from './comp/footer';
 import Homeproduct from './comp/home_product';
