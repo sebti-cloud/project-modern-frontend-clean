@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Nav from './comp/nav.js';
-import Rout from './comp/rout';
+import Rout from './comp/rout.js';
 import Footer from './comp/footer.js';
 import Homeproduct from './comp/home_product';
 import AdminDashboard from './comp/AdminDashboard.js';
