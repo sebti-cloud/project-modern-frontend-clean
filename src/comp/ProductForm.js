@@ -4,7 +4,6 @@ import './ProductForm.css';
 
 const ProductForm = ({ saveProduct, editProduct }) => {
   const { productId } = useParams();
-  const [product, setProduct] = useState(null);
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [quantity, setQuantity] = useState(0);

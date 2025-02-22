@@ -12,7 +12,6 @@ import Sales from './comp/Sales.js';
 import Delivery from './comp/Delivery.js';
 import TrackOrder from './comp/TrackOrder.js';
 import TopProducts from './comp/TopProducts.js';
-import OldProduct from './comp/OldProduct.js';
 import AddAdmin from './comp/AddAdmin.js';
 import Products from './comp/Products.js';
 import Orders from './comp/Orders.js';
@@ -46,8 +45,6 @@ const App = () => {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [salesProducts, setSalesProducts] = useState([]);
-  const [topProducts, setTopProducts] = useState([]);
-  const [oldProducts, setOldProducts] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(!!Cookies.get('token'));
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(!!Cookies.get('adminToken'));
 

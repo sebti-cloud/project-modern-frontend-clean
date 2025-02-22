@@ -4,10 +4,8 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
 const Sales = ({ addtocart }) => {
-    const [products, setProducts] = useState([]);
     const [promotions, setPromotions] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [filter, setFilter] = useState('all');
     const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0);
 
     useEffect(() => {
@@ -63,10 +61,7 @@ const Sales = ({ addtocart }) => {
         }
     };
 
-    const addToCart = (product) => {
-        addtocart(product);
-        setCartCount(cartCount + 1);
-    };
+
 
     return (
         <div className="sales">

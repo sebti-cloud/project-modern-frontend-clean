@@ -12,7 +12,6 @@ const TrackOrder = () => {
   const [error, setError] = useState(null);
   const { trackingNumber: trackingNumberParam } = useParams();
   const navigate = useNavigate();
-  const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0); // Initialiser à partir de localStorage
 
   useEffect(() => {
     if (trackingNumberParam) {

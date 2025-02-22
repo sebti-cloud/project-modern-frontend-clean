@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 const TopProducts = ({ addtocart }) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [filter, setFilter] = useState('all');
     const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0); // Initialiser à partir de localStorage
 
     useEffect(() => {

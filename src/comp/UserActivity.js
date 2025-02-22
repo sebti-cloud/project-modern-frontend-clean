@@ -92,23 +92,7 @@ const UserActivity = () => {
   
   
 
-  const fetchProductCategories = async (purchases) => {
-    try {
-      const productIds = purchases.map(purchase => purchase.product);
-      const response = await fetch(`http://localhost:3001/api/products/categories`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productIds })
-      });
-      if (!response.ok) {
-        throw new Error('Erreur lors de la récupération des catégories de produits');
-      }
-      const data = await response.json();
-      generateChartData(data);
-    } catch (error) {
-      console.error('Erreur lors de la récupération des catégories de produits:', error);
-    }
-  };
+
 
   const generateChartData = (products) => {
     const categoryCount = {};
@@ -147,9 +131,7 @@ const UserActivity = () => {
     setModalIsOpen(false);
   };
 
-  const getProductDetails = (productId) => {
-    return products.find(product => product.id === productId);
-  };
+
   return (
     <div className="admin-dashboard">
       <nav>

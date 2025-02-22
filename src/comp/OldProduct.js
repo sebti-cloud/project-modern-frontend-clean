@@ -5,7 +5,6 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 const OldProduct = ({ addtocart }) => {
     const [oldProducts, setOldProducts] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [filter, setFilter] = useState('all');
     const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0); // Initialiser à partir de localStorage
 
     useEffect(() => {

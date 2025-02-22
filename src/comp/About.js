@@ -4,10 +4,10 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
 const About = () => {
-    const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0); // Initialiser à partir de localStorage
+    const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0);
 
     useEffect(() => {
-        localStorage.setItem('cartCount', cartCount); // Sauvegarder l'état du panier dans localStorage
+        localStorage.setItem('cartCount', cartCount);
     }, [cartCount]);
 
     return (

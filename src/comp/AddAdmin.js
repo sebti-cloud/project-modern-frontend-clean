@@ -6,7 +6,6 @@ const AddAdmin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate();
 
   const handleAddAdmin = async (e) => {
     e.preventDefault();
