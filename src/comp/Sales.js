@@ -21,7 +21,6 @@ const Sales = () => {
         try {
             const response = await fetch('http://localhost:3001/api/products');
             const data = await response.json();
-            const salesProducts = data.filter((x) => x.types && x.types.includes('sale'));
             setLoading(false);
         } catch (error) {
             console.error('Error fetching products:', error);
@@ -50,7 +49,6 @@ const Sales = () => {
             }
             const response = await fetch(url);
             const data = await response.json();
-            const filteredProducts = data.filter((x) => x.types && x.types.includes('sale'));
             setLoading(false);
         } catch (error) {
             console.error('Error fetching filtered products:', error);
