@@ -8,7 +8,7 @@ const TopProducts = ({ addtocart }) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0); // Initialiser à partir de localStorage
-    const [filter, setFilter] = useState('all'); // Définir setFilter
+    const [setFilter] = useState('all'); // Définir setFilter
 
     useEffect(() => {
         fetchProducts();

@@ -8,7 +8,8 @@ const Sales = () => {
     const [promotions, setPromotions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0);
-
+    const [products, setProducts] = useState([]); // Ajouté
+    const [filter, setFilter] = useState('all'); // Ajouté
 
     useEffect(() => {
         fetchProducts();
@@ -121,10 +122,6 @@ const Sales = () => {
             )}
         </div>
     );
-};
-
-Sales.propTypes = {
-  addtocart: PropTypes.func.isRequired,
 };
 
 export default Sales;

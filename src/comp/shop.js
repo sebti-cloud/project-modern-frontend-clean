@@ -9,6 +9,8 @@ import Slider from 'react-slick';
 const Shop = ({ addtocart, searchResults }) => {
   const [showDetail, setShowDetail] = useState(false);
   const [detail, setDetail] = useState({});
+  const [showLikedMessage, setShowLikedMessage] = useState(false);
+  const [likedMessage, setLikedMessage] = useState('');
   const [shop, setShop] = useState([]);
   const [categories, setCategories] = useState([]);
   const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0);
