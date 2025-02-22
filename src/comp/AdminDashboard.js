@@ -29,19 +29,19 @@ const AdminDashboard = () => {
 export default AdminDashboard;
 */import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Products from './Products';
-import Orders from './Orders';
-import LikedProducts from './LikedProducts';
-import Categories from './Categories';
-import AdminContacts from './AdminContacts';
-import AdminList from './AdminList';
-import AdminUsers from './AdminUsers';
-import ProductList from './ProductList'; // Importer ProductList
-import Suppliers from './Suppliers'; // Importer Suppliers
-import StockHistory from './StockHistory'; // Importer StockHistory
-import SalesReport from './reports/SalesReport'; // Importer SalesReport
-import AdminHome from './AdminHome'; // Importer AdminHome
-import AdminSettings from './AdminSettings'; // Importer AdminSettings
+import Products from './Products.js';
+import Orders from './Orders.js';
+import LikedProducts from './LikedProducts.js';
+import Categories from './Categories.js';
+import AdminContacts from './AdminContacts.js';
+import AdminList from './AdminList.js';
+import AdminUsers from './AdminUsers.js';
+import ProductList from './ProductList.js'; // Importer ProductList
+import Suppliers from './Suppliers.js'; // Importer Suppliers
+import StockHistory from './StockHistory.js'; // Importer StockHistory
+import SalesReport from './reports/SalesReport.js'; // Importer SalesReport
+import AdminHome from './AdminHome.js'; // Importer AdminHome
+import AdminSettings from './AdminSettings.js'; // Importer AdminSettings
 import './admin.css';
 
 const AdminDashboard = () => {

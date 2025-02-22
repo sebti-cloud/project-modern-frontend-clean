@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import UploadForm from './UploadForm';
+import UploadForm from './UploadForm.js';
 import axios from 'axios';
 
 const SliderManager = () => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import UploadProfilePhoto from './UploadProfilePhoto';
+import UploadProfilePhoto from './UploadProfilePhoto.js';
 import Cookies from 'js-cookie';
 import './UserProfile.css';
 import { AiOutlineShoppingCart } from 'react-icons/ai';

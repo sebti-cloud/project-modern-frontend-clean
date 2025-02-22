@@ -1,5 +1,5 @@
 import React from 'react';
-import Delivery from './comp/Delivery'; // Assurez-vous que le chemin est correct
+import Delivery from './comp/Delivery.js'; // Assurez-vous que le chemin est correct
 
 const ParentComponent = () => {
   const trackOrder = async (trackingNumber) => {

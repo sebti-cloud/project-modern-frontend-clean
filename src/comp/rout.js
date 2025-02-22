@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom"; // Vérifiez cette importation
-import Home from './home';
-import Shop from './shop'; 
-import Cart from "./cart";
-import Contact from "./contact"; 
+import Home from './home.js';
+import Shop from './shop.js'; 
+import Cart from "./cart.js";
+import Contact from "./contact.js"; 
 
 const Rout = ({ shop, Filter, allcatfilter, addtocart, cart, setCart, fetchProducts, searchproduct }) => {
   return (
