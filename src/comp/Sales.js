@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import './sales.css';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
@@ -8,8 +7,6 @@ const Sales = () => {
     const [promotions, setPromotions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0);
-    const [products, setProducts] = useState([]); // Ajouté
-    const [filter, setFilter] = useState('all'); // Ajouté
 
     useEffect(() => {
         fetchProducts();
@@ -25,7 +22,6 @@ const Sales = () => {
             const response = await fetch('http://localhost:3001/api/products');
             const data = await response.json();
             const salesProducts = data.filter((x) => x.types && x.types.includes('sale'));
-            setProducts(salesProducts);
             setLoading(false);
         } catch (error) {
             console.error('Error fetching products:', error);
@@ -46,7 +42,6 @@ const Sales = () => {
     };
 
     const filterProducts = async (category) => {
-        setFilter(category);
         setLoading(true);
         try {
             let url = `http://localhost:3001/api/products`;
@@ -56,7 +51,6 @@ const Sales = () => {
             const response = await fetch(url);
             const data = await response.json();
             const filteredProducts = data.filter((x) => x.types && x.types.includes('sale'));
-            setProducts(filteredProducts);
             setLoading(false);
         } catch (error) {
             console.error('Error fetching filtered products:', error);
