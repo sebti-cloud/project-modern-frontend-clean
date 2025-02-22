@@ -9,8 +9,7 @@ ReactDOM.render(
     <App />
   </React.StrictMode>,
   document.getElementById('root')
-);*/
-import React from 'react';
+);*/import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/app.css';
 import 'slick-carousel/slick/slick.css';
@@ -23,4 +22,5 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
 
