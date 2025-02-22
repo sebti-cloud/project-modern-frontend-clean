@@ -6,21 +6,17 @@ import { Link } from 'react-router-dom';
 const Sales = () => {
     const [promotions, setPromotions] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0);
+    const [cartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0);
 
     useEffect(() => {
         fetchProducts();
         fetchPromotions();
     }, []);
 
-    useEffect(() => {
-        localStorage.setItem('cartCount', cartCount);
-    }, [cartCount]);
-
     const fetchProducts = async () => {
         try {
             const response = await fetch('http://localhost:3001/api/products');
-            const data = await response.json();
+            await response.json(); // Lecture des données sans affectation de variable
             setLoading(false);
         } catch (error) {
             console.error('Error fetching products:', error);
@@ -48,7 +44,7 @@ const Sales = () => {
                 url += `?category=${category}`;
             }
             const response = await fetch(url);
-            const data = await response.json();
+            await response.json(); // Lecture des données sans affectation de variable
             setLoading(false);
         } catch (error) {
             console.error('Error fetching filtered products:', error);
