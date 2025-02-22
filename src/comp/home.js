@@ -3,8 +3,8 @@ import './home.css';
 import { Link } from 'react-router-dom';
 import { AiFillEye, AiFillHeart, AiOutlineShoppingCart, AiOutlineClose } from 'react-icons/ai';
 import Slider from 'react-slick';
-import Banner from './Banner';
-import SliderComponent from './Slider'; // Renommé en SliderComponent pour éviter les conflits de noms
+import Banner from './Banner.js';
+import SliderComponent from './Slider.js'; // Renommé en SliderComponent pour éviter les conflits de noms
 import axios from 'axios';
 
 const Home = ({ addtocart, searchResults }) => {
