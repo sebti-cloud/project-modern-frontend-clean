@@ -13,7 +13,7 @@ const UserActivity = () => {
   const [logins, setLogins] = useState([]);
   const [purchases, setPurchases] = useState([]);
   const [likedProducts, setLikedProducts] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [setProducts] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [chartData, setChartData] = useState([]);
 
