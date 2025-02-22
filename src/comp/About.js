@@ -4,7 +4,7 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
 const About = () => {
-    const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0);
+    const [cartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0);
 
     useEffect(() => {
         localStorage.setItem('cartCount', cartCount);

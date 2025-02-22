@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import PropTypes from 'prop-types';
 import './AdminLogin.css';
 
 const AdminLogin = ({ setIsAdminAuthenticated }) => {
@@ -41,6 +42,10 @@ const AdminLogin = ({ setIsAdminAuthenticated }) => {
       <button type="submit">Login</button>
     </form>
   );
+};
+
+AdminLogin.propTypes = {
+  setIsAdminAuthenticated: PropTypes.func.isRequired,
 };
 
 export default AdminLogin;
