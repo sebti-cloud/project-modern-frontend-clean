@@ -19,6 +19,8 @@ const Home = ({ addtocart, searchResults }) => {
 
   const [banners, setBanners] = useState([]); // Assurer que `banners` est initialisé comme un tableau
   const [slides, setSlides] = useState([]); // Assurer que `slides` est initialisé comme un tableau
+  // Ajoutez les définitions suivantes
+  const [autoplayIndex, setAutoplayIndex] = useState(null);
 
   const [visibleProducts, setVisibleProducts] = useState(10); // État pour suivre le nombre de produits affichés
 

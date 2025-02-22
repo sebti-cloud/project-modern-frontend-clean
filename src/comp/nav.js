@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import './nav.css';
 
-const Nav = ({ search, setSearch, searchproduct, setSearchResults, isAuthenticated, handleLogout }) => {
+const Nav = ({ search, setSearch, setSearchResults, isAuthenticated, handleLogout }) => {
   const [user, setUser] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false); // État pour gérer l'ouverture du menu
   const navigate = useNavigate();
@@ -71,7 +71,7 @@ const Nav = ({ search, setSearch, searchproduct, setSearchResults, isAuthenticat
         <div className="navbar-icons">
           {isAuthenticated ? (
             <>
-              <div className="navbar-icon" onClick={logout}><AiOutlineLogout title="D&eacute;connexion" /></div>
+              <div className="navbar-icon" onClick={logout}><AiOutlineLogout title="Déconnexion" /></div>
               <Link to="/profile" className="navbar-icon">
                 <img src={`http://localhost:3001${user?.photo}`} alt="Profile" className="profile-photo-nav" />
               </Link>
@@ -94,7 +94,7 @@ const Nav = ({ search, setSearch, searchproduct, setSearchResults, isAuthenticat
           <Link to="/shop" className="navbar-link"><AiOutlineShop className="nav-icon" /> Boutique</Link>
         </li>
         <li className="navbar-item">
-          <Link to="/about" className="navbar-link"><AiOutlineInfoCircle className="nav-icon" /> &Agrave; propos</Link>
+          <Link to="/about" className="navbar-link"><AiOutlineInfoCircle className="nav-icon" /> À propos</Link>
         </li>
         <li className="navbar-item">
           <Link to="/contact" className="navbar-link"><AiOutlineMail className="nav-icon" /> Contact</Link>
@@ -112,7 +112,6 @@ const Nav = ({ search, setSearch, searchproduct, setSearchResults, isAuthenticat
 Nav.propTypes = {
   search: PropTypes.string.isRequired,
   setSearch: PropTypes.func.isRequired,
-  searchproduct: PropTypes.func.isRequired,
   setSearchResults: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   handleLogout: PropTypes.func.isRequired,

@@ -4,7 +4,7 @@ import './contact.css';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
-const ContactForm = ({ cartCount, setCartCount }) => {
+const ContactForm = ({ cartCount }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
