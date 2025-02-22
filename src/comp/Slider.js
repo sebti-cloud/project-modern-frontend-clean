@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Slider.css';
 
 const Slider = ({ slides }) => {
@@ -11,6 +12,14 @@ const Slider = ({ slides }) => {
       ))}
     </div>
   );
+};
+
+Slider.propTypes = {
+  slides: PropTypes.arrayOf(
+    PropTypes.shape({
+      image_url: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Slider;

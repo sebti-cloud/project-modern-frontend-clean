@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './sales.css';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
@@ -7,6 +8,8 @@ const Sales = ({ addtocart }) => {
     const [promotions, setPromotions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0);
+    const [products, setProducts] = useState([]); // Définir setProducts
+    const [filter, setFilter] = useState('all'); // Définir setFilter
 
     useEffect(() => {
         fetchProducts();
@@ -60,8 +63,6 @@ const Sales = ({ addtocart }) => {
             setLoading(false);
         }
     };
-
-
 
     return (
         <div className="sales">
@@ -121,6 +122,10 @@ const Sales = ({ addtocart }) => {
             )}
         </div>
     );
+};
+
+Sales.propTypes = {
+  addtocart: PropTypes.func.isRequired,
 };
 
 export default Sales;

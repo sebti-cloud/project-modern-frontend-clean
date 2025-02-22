@@ -94,6 +94,7 @@ const Payment = () => {
       console.error('Erreur lors de la mise à jour du Transaction ID et du statut de paiement :', error);
     }
   };
+
   const handleOnlineCheckout = async (pendingOrderId, transactionId) => {
     console.log('Appel de handleOnlineCheckout avec Pending Order ID:', pendingOrderId, 'et Transaction ID:', transactionId);
     try {
@@ -191,9 +192,10 @@ const Payment = () => {
   }
 
   const usdTotal = (total / 10).toFixed(2); // Définir usdTotal ici
+
   return (
     <>
-          <section className="payment-section">
+      <section className="payment-section">
         <div className="container">
           <div className="payment-wrapper">
             <div className="payment-left">
@@ -219,6 +221,9 @@ const Payment = () => {
                     </div>
                     <div className="payment-summary-item">
                       <div className="payment-summary-name">Réduction 20%</div>
+                      <div className="payment-summary-price">1$</div>
+                      <div className="payment-summary-item">
+                      <div className="payment-summary-name">Réduction 20%</div>
                       <div className="payment-summary-price">-$2</div>
                     </div>
                     <div className="payment-summary-divider"></div>
@@ -237,6 +242,7 @@ const Payment = () => {
               </form>
             </div>
           </div>
+        </div>
         </div>
       </section>
 
@@ -282,4 +288,3 @@ const Payment = () => {
 };
 
 export default Payment;
-

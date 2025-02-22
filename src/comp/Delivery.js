@@ -21,11 +21,11 @@ const Delivery = () => {
         <ul>
           <li>
             <h4>Livraison Standard</h4>
-            <p>Livraison sous 5 à 7 jours ouvrables.</p>
+            <p>Livraison sous 5 &#224; 7 jours ouvrables.</p>
           </li>
           <li>
             <h4>Livraison Express</h4>
-            <p>Livraison sous 2 à 3 jours ouvrables.</p>
+            <p>Livraison sous 2 &#224; 3 jours ouvrables.</p>
           </li>
           <li>
             <h4>Livraison le Jour Suivant</h4>
@@ -51,7 +51,7 @@ const Delivery = () => {
         </ul>
       </div>
       <div className="contact">
-        <h3>Besoin d'Aide ?</h3>
+        <h3>Besoin d&#39;Aide ?</h3>
         <p>Si vous avez des questions sur la livraison, veuillez contacter notre équipe de support à <a href="mailto:TechyoSupport@gmail.com">TechyoSupport@gmail.com</a> ou appelez-nous au <a href="tel:0523746094">0523746094</a>.</p>
       </div>
 

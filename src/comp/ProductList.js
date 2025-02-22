@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import './ProductForm.css';
 
@@ -25,7 +26,6 @@ const ProductForm = ({ saveProduct }) => {
     try {
       const response = await fetch(`http://localhost:3001/api/products/${id}`);
       const data = await response.json();
-      setProduct(data);
       setName(data.name);
       setPrice(data.price);
       setQuantity(data.quantity);
@@ -77,7 +77,7 @@ const ProductForm = ({ saveProduct }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+           <div>
         <label>Nom du produit:</label>
         <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
       </div>
@@ -119,6 +119,10 @@ const ProductForm = ({ saveProduct }) => {
       <button type="submit">Enregistrer</button>
     </form>
   );
+};
+
+ProductForm.propTypes = {
+  saveProduct: PropTypes.func.isRequired,
 };
 
 export default ProductForm;

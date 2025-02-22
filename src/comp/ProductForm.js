@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import './ProductForm.css';
 
@@ -31,7 +32,6 @@ const ProductForm = ({ saveProduct, editProduct }) => {
       }
       const data = await response.json();
       console.log('Fetched product data:', data); // Log les données récupérées
-      setProduct(data);
       setName(data.name);
       setPrice(data.price);
       setQuantity(data.quantity);
@@ -68,6 +68,7 @@ const ProductForm = ({ saveProduct, editProduct }) => {
     const value = e.target.value;
     setTypes(value.split(',').map(type => type.trim()));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -91,8 +92,6 @@ const ProductForm = ({ saveProduct, editProduct }) => {
       saveProduct(formData);
     }
   };
-  
-
 
   return (
     <div>
@@ -145,6 +144,11 @@ const ProductForm = ({ saveProduct, editProduct }) => {
       </form>
     </div>
   );
+};
+
+ProductForm.propTypes = {
+  saveProduct: PropTypes.func.isRequired,
+  editProduct: PropTypes.func,
 };
 
 export default ProductForm;

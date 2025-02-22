@@ -138,6 +138,7 @@ const App = () => {
     setIsAuthenticated(false);
     setIsAdminAuthenticated(false);
   };
+
   const saveProduct = async (formData) => {
     try {
       const response = await fetch('http://localhost:3001/api/products', {
@@ -212,7 +213,7 @@ const App = () => {
           <Route path="/admin/sales-report" element={isAdminAuthenticated ? <SalesReport /> : <Navigate to="/admin/login" />} />
           <Route path="/admin/ProductForm" element={<ProductForm saveProduct={saveProduct} />} />
           <Route path="/admin/ProductForm/:productId" element={<ProductForm saveProduct={saveProduct} editProduct={editProduct} />} />
-          <Route path="/admin/stock-history" element={isAdminAuthenticated ? <StockHistory /> : <Navigate to="/admin/login" />} />
+          <Route           path="/admin/stock-history" element={isAdminAuthenticated ? <StockHistory /> : <Navigate to="/admin/login" />} />
           <Route path="/admin/slider-manager" element={isAdminAuthenticated ? <SliderManager /> : <Navigate to="/admin/login" />} /> {/* Nouvelle route */}
 
           <Route path="/about" element={<About />} />

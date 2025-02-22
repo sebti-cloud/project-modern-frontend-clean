@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaCartPlus, FaClipboardList, FaTruckLoading, FaMapMarkerAlt } from 'react-icons/fa';
 import './TrackOrder.css';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
-const TrackOrder = () => {
+const TrackOrder = ({ cartCount }) => {
   const [activeStep, setActiveStep] = useState(1);
   const [trackingInfo, setTrackingInfo] = useState(null);
   const [trackingNumber, setTrackingNumber] = useState('');
@@ -166,6 +167,10 @@ const TrackOrder = () => {
       )}
     </div>
   );
+};
+
+TrackOrder.propTypes = {
+  cartCount: PropTypes.number.isRequired,
 };
 
 export default TrackOrder;

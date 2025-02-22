@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './topProducts.css'; // Assurez-vous que le CSS est lié correctement
 import { AiFillStar, AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
@@ -7,6 +8,7 @@ const TopProducts = ({ addtocart }) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0); // Initialiser à partir de localStorage
+    const [filter, setFilter] = useState('all'); // Définir setFilter
 
     useEffect(() => {
         fetchProducts();
@@ -101,6 +103,10 @@ const TopProducts = ({ addtocart }) => {
             )}
         </div>
     );
+};
+
+TopProducts.propTypes = {
+  addtocart: PropTypes.func.isRequired,
 };
 
 export default TopProducts;

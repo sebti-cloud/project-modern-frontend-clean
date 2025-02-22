@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { PieChart } from 'react-minimal-pie-chart';
+import PropTypes from 'prop-types';
 import './admin.css';
 import { useParams } from 'react-router-dom';
 
@@ -73,6 +74,7 @@ const UserActivity = () => {
       console.error('Erreur lors de la récupération des produits aimés:', error);
     }
   };
+
   const fetchProducts = async () => {
     try {
       const response = await fetch('http://localhost:3001/api/products');
@@ -85,14 +87,12 @@ const UserActivity = () => {
       }));
   
       setProducts(normalizedData);
+      generateChartData(normalizedData); // Générer les données du graphique
     } catch (error) {
       console.error('Erreur lors de la récupération des produits:', error);
     }
   };
   
-  
-
-
 
   const generateChartData = (products) => {
     const categoryCount = {};
@@ -252,7 +252,7 @@ const UserActivity = () => {
             <p>Aucune donnée disponible pour afficher le graphique.</p>
           )}
           <div className="legend">
-            {chartData.map((entry, index) => (
+          {chartData.map((entry, index) => (
               <div key={index} style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
                 <div style={{ width: '20px', height: '20px', backgroundColor: entry.color, marginRight: '10px' }}></div>
                 <span>{entry.title}: {entry.percentage}%</span>
@@ -263,13 +263,13 @@ const UserActivity = () => {
       </div>
     </div>
   );
-  
-  
-  
+};
+
+UserActivity.propTypes = {
+  userId: PropTypes.string.isRequired,
 };
 
 export default UserActivity;
-
 
 /*import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';

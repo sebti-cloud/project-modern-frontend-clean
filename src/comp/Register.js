@@ -73,8 +73,7 @@ const Register = () => {
   );
 };
 
-export default Register;*/
-import React, { useState } from 'react';
+export default Register;*/import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Importez useNavigate pour la redirection
 import Cookies from 'js-cookie'; // Importez js-cookie pour gérer les cookies
 import './register.css'; // Importer le fichier CSS
@@ -124,7 +123,7 @@ const Register = () => {
     <div className="register-page">
       <div className="register-container">
         <div className="register-form-container">
-          <h2>S'inscrire</h2>
+          <h2>S&#39;inscrire</h2>
           {errorMessage && (
             <div style={{ backgroundColor: 'red', color: 'white', padding: '10px', borderRadius: '5px', marginBottom: '10px' }}>
               {errorMessage}
@@ -149,14 +148,14 @@ const Register = () => {
               <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
             </div>
             <div className="input-group phone">
-              <label>Téléphone</label>
+              <label>T&#233;l&#233;phone</label>
               <input type="text" name="phone" placeholder="Phone" onChange={handleChange} />
             </div>
             <div className="input-group address">
               <label>Adresse</label>
               <textarea name="address" placeholder="Address" onChange={handleChange} ></textarea>
             </div>
-            <button type="submit" className="register-button">S'inscrire</button>
+            <button type="submit" className="register-button">S&#39;inscrire</button>
           </form>
         </div>
       </div>

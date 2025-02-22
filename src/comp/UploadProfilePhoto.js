@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const UploadProfilePhoto = ({ uploadPhoto }) => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -21,6 +22,10 @@ const UploadProfilePhoto = ({ uploadPhoto }) => {
       <button onClick={handleUpload}>Upload Photo</button>
     </div>
   );
+};
+
+UploadProfilePhoto.propTypes = {
+  uploadPhoto: PropTypes.func.isRequired,
 };
 
 export default UploadProfilePhoto;

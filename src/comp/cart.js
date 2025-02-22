@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './cart.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineClose } from 'react-icons/ai';
@@ -162,95 +163,106 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
     alert('Numéro de suivi copié dans le presse-papiers');
   };
 
-    return (
-      <>
-        <div className='cart'>
-          <h3>Mon Panier</h3>
-          {cart.length === 0 && (
-            <div className='empty_cart'>
-              <h2>Votre panier est vide</h2>
-              <Link to='/shop'><button className="btn-primary">Achetez maintenant</button></Link>
-            </div>
-          )}
-          <div className='container'>
-            {cart.map((curElm) => (
-              <React.Fragment key={curElm.id}>
-                <div className='box'>
-                  <div className='image'>
-                    <img src={renderProductImage(curElm.images)} alt='' />
-                  </div>
-                  <div className='detail'>
-                    <div className='info'>
-                      <h4>{curElm.cat}</h4>
-                      <h3>{curElm.name}</h3>
-                      <p>Prix: {curElm.price} MAD</p>
-                      <p>Total: {curElm.price * curElm.qty} MAD</p>
-                    </div>
-                    <div className='quantity'>
-                      <button onClick={() => incqty(curElm)}>+</button>
-                      <input type='number' value={curElm.qty} readOnly />
-                      <button onClick={() => decqty(curElm)}>-</button>
-                    </div>
-                    <div className='icon'>
-                      <li onClick={() => removeproduct(curElm)}><AiOutlineClose /></li>
-                    </div>
-                  </div>
-                </div>
-              </React.Fragment>
-            ))}
-          </div>
-          {cart.length > 0 && (
-            <div className='bottom'>
-              <div className='Total'>
-                <h4>Sous-total : {total} MAD</h4>
-              </div>
-              <button className="btn-primary" onClick={() => setCheckout(true)}>Passer à la caisse</button>
-            </div>
-          )}
-        </div>
-        {checkout && (
-          <div className='checkout'>
-            <h3>Passer à la caisse</h3>
-            <form onSubmit={handleCheckout}>
-              <div className='container'>
-                <input type='text' name='name' placeholder='Nom' value={userInfo.name} onChange={handleChange} required />
-                <input type='text' name='surname' placeholder='Prénom' value={userInfo.surname} onChange={handleChange} required />
-                <input type='text' name='phone' placeholder='Téléphone' value={userInfo.phone} onChange={handleChange} required />
-                <input type='email' name='email' placeholder='E-mail' value={userInfo.email} onChange={handleChange} required />
-                <input type='text' name='address' placeholder='Adresse' value={userInfo.address} onChange={handleChange} required />
-                <select name='paymentMethod' value={userInfo.paymentMethod} onChange={handleChange} required>
-                  <option value=''>Sélectionnez le mode de paiement</option>
-                  <option value='cash on delivery'>Paiement à la livraison</option>
-                  <option value='online payment'>Paiement en ligne</option>
-                </select>
-                <button type='submit' className="btn-primary">Soumettre</button>
-              </div>
-            </form>
+  return (
+    <>
+      <div className='cart'>
+        <h3>Mon Panier</h3>
+        {cart.length === 0 && (
+          <div className='empty_cart'>
+            <h2>Votre panier est vide</h2>
+            <Link to='/shop'><button className="btn-primary">Achetez maintenant</button></Link>
           </div>
         )}
-        <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} contentLabel="Modal de Suivi de Commande" className="modal" overlayClassName="overlay">
-          <h2>Merci pour votre commande, {userInfo.name} !</h2>
-          <p>Voici votre numéro de suivi :</p>
-          <div className="tracking-number-container">
-            <h3>{trackingNumber}</h3>
-            <button onClick={copyToClipboard} className="copy-button">
-              <FaCopy /> Copier
-            </button>
+        <div className='container'>
+          {cart.map((curElm) => (
+            <React.Fragment key={curElm.id}>
+              <div className='box'>
+                <div className='image'>
+                  <img src={renderProductImage(curElm.images)} alt='' />
+                </div>
+                <div className='detail'>
+                  <div className='info'>
+                    <h4>{curElm.cat}</h4>
+                    <h3>{curElm.name}</h3>
+                    <p>Prix: {curElm.price} MAD</p>
+                    <p>Total: {curElm.price * curElm.qty} MAD</p>
+                  </div>
+                  <div className='quantity'>
+                    <button onClick={() => incqty(curElm)}>+</button>
+                    <input type='number' value={curElm.qty} readOnly />
+                    <button onClick={() => decqty(curElm)}>-</button>
+                  </div>
+                  <div className='icon'>
+                    <li onClick={() => removeproduct(curElm)}><AiOutlineClose /></li>
+                  </div>
+                </div>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+        {cart.length > 0 && (
+          <div className='bottom'>
+            <div className='Total'>
+              <h4>Sous-total : {total} MAD</h4>
+            </div>
+            <button className="btn-primary" onClick={() => setCheckout(true)}>Passer à la caisse</button>
           </div>
-          <p>Veuillez noter ce numéro pour suivre l'état de votre commande.</p>
-          <Link to="/track-order">
-            <button onClick={() => setModalIsOpen(false)} className="btn-primary">Suivre ma commande</button>
-          </Link>
-        </Modal>
-      </>
-    );
-  };
-  
-  export default Cart;
-  
+        )}
+      </div>
+      {checkout && (
+        <div className='checkout'>
+          <h3>Passer à la caisse</h3>
+          <form onSubmit={handleCheckout}>
+            <div className='container'>
+              <input type='text' name='name' placeholder='Nom' value={userInfo.name} onChange={handleChange} required />
+              <input type='text' name='surname' placeholder='Prénom' value={userInfo.surname} onChange={handleChange} required />
+              <input type='text' name='phone' placeholder='Téléphone' value={userInfo.phone} onChange={handleChange} required />
+              <input type='email' name='email' placeholder='E-mail' value={userInfo.email} onChange={handleChange} required />
+              <input type='text' name='address' placeholder='Adresse' value={userInfo.address} onChange={handleChange} required />
+              <select name='paymentMethod' value={userInfo.paymentMethod} onChange={handleChange} required>
+                <option value=''>Sélectionnez le mode de paiement</option>
+                <option value='cash on delivery'>Paiement à la livraison</option>
+                <option value='online payment'>Paiement en ligne</option>
+              </select>
+              <button type='submit' className="btn-primary">Soumettre</button>
+            </div>
+          </form>
+        </div>
+      )}
+      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} contentLabel="Modal de Suivi de Commande" className="modal" overlayClassName="overlay">
+        <h2>Merci pour votre commande, {userInfo.name} !</h2>
+        <p>Voici votre numéro de suivi :</p>
+        <div className="tracking-number-container">
+          <h3>{trackingNumber}</h3>
+          <button onClick={copyToClipboard} className="copy-button">
+            <FaCopy /> Copier
+          </button>
+        </div>
+        <p>Veuillez noter ce numéro pour suivre l'état de votre commande.</p>
+        <Link to="/track-order">
+          <button onClick={() => setModalIsOpen(false)} className="btn-primary">Suivre ma commande</button>
+        </Link>
+      </Modal>
+    </>
+  );
+};
 
+Cart.propTypes = {
+  cart: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    qty: PropTypes.number.isRequired,
+    images: PropTypes.arrayOf(PropTypes.string),
+    cat: PropTypes.string
+  })).isRequired,
+  setCart: PropTypes.func.isRequired,
+  cartCount: PropTypes.number.isRequired,
+  setCartCount: PropTypes.func.isRequired,
+  clearCart: PropTypes.func.isRequired,
+};
 
-
+export default Cart;
 
 
 

@@ -178,6 +178,7 @@ const Home = ({ addtocart, searchResults }) => {
   const handleMouseLeave = () => {
     setAutoplayIndex(null);
   };
+
   return (
     <>
       {showDetail && (
@@ -195,7 +196,6 @@ const Home = ({ addtocart, searchResults }) => {
           </div>
         </div>
       )}
-
       <div className='home'>
         <div id='about-us' className='top_banner'>
           <div className='contant'>
@@ -230,7 +230,6 @@ const Home = ({ addtocart, searchResults }) => {
             <SliderComponent key={index} {...slide} />
           ))}
         </div>
-
         <div id='trending-product' className='trending'>
           <div className='container'>
             <div className='left_box'>
@@ -292,7 +291,7 @@ const Home = ({ addtocart, searchResults }) => {
                   </div>
                   <div className='detail'>
                     <h3>{curElm.name}</h3>
-                    <p>{curElm.price} Mad</p>
+                    <p>{curElm.price} MAD</p>
                     <div className='icon'>
                       <button onClick={() => detailpage(curElm)}>
                         <AiFillEye />
@@ -316,7 +315,6 @@ const Home = ({ addtocart, searchResults }) => {
 };
 
 export default Home;
-
 
 /*import React, { useState, useEffect } from 'react';
 import './home.css';

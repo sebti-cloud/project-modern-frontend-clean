@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import UploadProfilePhoto from './UploadProfilePhoto.js';
 import Cookies from 'js-cookie';
 import './UserProfile.css';
@@ -122,6 +123,10 @@ const UserProfile = ({ cartCount }) => {
             )}
         </div>
     );
+};
+
+UserProfile.propTypes = {
+  cartCount: PropTypes.number.isRequired,
 };
 
 export default UserProfile;
