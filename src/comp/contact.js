@@ -34,10 +34,10 @@ const ContactForm = ({ cartCount, setCartCount }) => {
                 body: JSON.stringify(formData)
             });
             if (response.ok) {
-                alert('Message envoyé avec succès!');
+                alert('Message envoy&eacute; avec succ&egrave;s!');
                 setFormData({ name: '', email: '', subject: '', message: '', phone: '' });
             } else {
-                alert('Échec de l\'envoi du message.');
+                alert('&Eacute;chec de l&apos;envoi du message.');
             }
         } catch (error) {
             console.error('Error sending message:', error);
@@ -68,7 +68,7 @@ const ContactForm = ({ cartCount, setCartCount }) => {
                         </div>
                     </div>
                     <div className="box">
-                        <div className="lable"><h4>Numéro de téléphone</h4></div>
+                        <div className="lable"><h4>Num&eacute;ro de t&eacute;l&eacute;phone</h4></div>
                         <div className="input">
                             <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required />
                         </div>

@@ -105,7 +105,7 @@ const Sales = ({ addtocart }) => {
                             margin: '20px auto'
                         }}>
                             <strong>Aucune promotion pour le moment.</strong>
-                            <p>Restez attentifs pour chasser les opportunités à tout moment.</p>
+                            <p>Restez attentifs pour chasser les opportunit&eacute;s &agrave; tout moment.</p>
                             <div style={{ fontSize: '50px', color: '#c82333', marginTop: '10px' }}>📢</div>
                         </div>
                     )}

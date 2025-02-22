@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { AiOutlineMenu, AiOutlineSearch, AiOutlineUser, AiOutlineLogout, AiOutlineHome, AiOutlineShop, AiOutlineInfoCircle, AiOutlineMail } from "react-icons/ai";
 import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
@@ -70,7 +71,7 @@ const Nav = ({ search, setSearch, searchproduct, setSearchResults, isAuthenticat
         <div className="navbar-icons">
           {isAuthenticated ? (
             <>
-              <div className="navbar-icon" onClick={logout}><AiOutlineLogout title="Déconnexion" /></div>
+              <div className="navbar-icon" onClick={logout}><AiOutlineLogout title="D&eacute;connexion" /></div>
               <Link to="/profile" className="navbar-icon">
                 <img src={`http://localhost:3001${user?.photo}`} alt="Profile" className="profile-photo-nav" />
               </Link>
@@ -93,7 +94,7 @@ const Nav = ({ search, setSearch, searchproduct, setSearchResults, isAuthenticat
           <Link to="/shop" className="navbar-link"><AiOutlineShop className="nav-icon" /> Boutique</Link>
         </li>
         <li className="navbar-item">
-          <Link to="/about" className="navbar-link"><AiOutlineInfoCircle className="nav-icon" /> À propos</Link>
+          <Link to="/about" className="navbar-link"><AiOutlineInfoCircle className="nav-icon" /> &Agrave; propos</Link>
         </li>
         <li className="navbar-item">
           <Link to="/contact" className="navbar-link"><AiOutlineMail className="nav-icon" /> Contact</Link>
@@ -106,6 +107,15 @@ const Nav = ({ search, setSearch, searchproduct, setSearchResults, isAuthenticat
       </ul>
     </nav>
   );
+};
+
+Nav.propTypes = {
+  search: PropTypes.string.isRequired,
+  setSearch: PropTypes.func.isRequired,
+  searchproduct: PropTypes.func.isRequired,
+  setSearchResults: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  handleLogout: PropTypes.func.isRequired,
 };
 
 export default Nav;

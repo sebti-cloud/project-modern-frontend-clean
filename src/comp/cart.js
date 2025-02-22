@@ -88,7 +88,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
 
           if (!purchaseResponse.ok) {
             const errorData = await purchaseResponse.json();
-            console.error('Erreur lors de l\'enregistrement de l\'achat:', errorData);
+            console.error('Erreur lors de l&apos;enregistrement de l&apos;achat:', errorData);
             alert('Failed to record purchase: ' + errorData.message);
             return;
           }
@@ -160,9 +160,8 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(trackingNumber);
-    alert('Numéro de suivi copié dans le presse-papiers');
+    alert('Num&eacute;ro de suivi copi&eacute; dans le presse-papiers');
   };
-
   return (
     <>
       <div className='cart'>
@@ -220,7 +219,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
               <input type='email' name='email' placeholder='E-mail' value={userInfo.email} onChange={handleChange} required />
               <input type='text' name='address' placeholder='Adresse' value={userInfo.address} onChange={handleChange} required />
               <select name='paymentMethod' value={userInfo.paymentMethod} onChange={handleChange} required>
-                <option value=''>Sélectionnez le mode de paiement</option>
+                <option value=''>S&eacute;lectionnez le mode de paiement</option>
                 <option value='cash on delivery'>Paiement à la livraison</option>
                 <option value='online payment'>Paiement en ligne</option>
               </select>
@@ -231,14 +230,14 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
       )}
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} contentLabel="Modal de Suivi de Commande" className="modal" overlayClassName="overlay">
         <h2>Merci pour votre commande, {userInfo.name} !</h2>
-        <p>Voici votre numéro de suivi :</p>
+        <p>Voici votre num&eacute;ro de suivi :</p>
         <div className="tracking-number-container">
           <h3>{trackingNumber}</h3>
           <button onClick={copyToClipboard} className="copy-button">
             <FaCopy /> Copier
           </button>
         </div>
-        <p>Veuillez noter ce numéro pour suivre l'état de votre commande.</p>
+        <p>Veuillez noter ce num&eacute;ro pour suivre l&apos;&eacute;tat de votre commande.</p>
         <Link to="/track-order">
           <button onClick={() => setModalIsOpen(false)} className="btn-primary">Suivre ma commande</button>
         </Link>
@@ -263,15 +262,6 @@ Cart.propTypes = {
 };
 
 export default Cart;
-
-
-
-
-
-
-
-
-
 
 
 /*import React, { useState, useEffect } from 'react';

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './shop.css';
 import { AiFillEye, AiFillHeart, AiOutlineShoppingCart, AiOutlineClose } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
@@ -10,8 +11,6 @@ const Shop = ({ addtocart, searchResults }) => {
   const [detail, setDetail] = useState({});
   const [shop, setShop] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [likedMessage, setLikedMessage] = useState('');
-  const [showLikedMessage, setShowLikedMessage] = useState(false);
   const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0);
   const [userId, setUserId] = useState(null);
   const [autoplayIndex, setAutoplayIndex] = useState(null);
@@ -154,9 +153,7 @@ const Shop = ({ addtocart, searchResults }) => {
 
       if (response.ok) {
         fetchProducts(currentCategory);
-        setLikedMessage('Produit aimé!');
-        setShowLikedMessage(true);
-        setTimeout(() => setShowLikedMessage(false), 3000);
+        alert('Produit aim&eacute;!');
       } else {
         console.error('Failed to like product.');
       }
@@ -304,6 +301,11 @@ const Shop = ({ addtocart, searchResults }) => {
       </div>
     </>
   );
+};
+
+Shop.propTypes = {
+  addtocart: PropTypes.func.isRequired,
+  searchResults: PropTypes.array.isRequired,
 };
 
 export default Shop;

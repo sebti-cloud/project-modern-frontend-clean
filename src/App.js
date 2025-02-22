@@ -47,7 +47,7 @@ const App = () => {
   const [salesProducts, setSalesProducts] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(!!Cookies.get('token'));
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(!!Cookies.get('adminToken'));
-  const [topProducts, setTopProducts] = useState([]);
+  const [topProducts] = useState([]);
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
