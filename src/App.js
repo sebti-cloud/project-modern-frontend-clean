@@ -10,34 +10,34 @@ import Account from './comp/Account.js';
 import Payment from './comp/Payment.js';
 import Sales from './comp/Sales.js';
 import Delivery from './comp/Delivery.js';
-import TrackOrder from './comp/TrackOrder';
-import TopProducts from './comp/TopProducts';
+import TrackOrder from './comp/TrackOrder.js';
+import TopProducts from './comp/TopProducts.js';
 import OldProduct from './comp/OldProduct';
-import AddAdmin from './comp/AddAdmin';
-import Products from './comp/Products';
-import Orders from './comp/Orders';
-import LikedProducts from './comp/LikedProducts';
-import Categories from './comp/Categories';
-import AdminContacts from './comp/AdminContacts';
-import AdminList from './comp/AdminList';
-import AdminSettings from './comp/AdminSettings';
-import AdminUsers from './comp/AdminUsers';
-import Cart from './comp/cart';
-import Register from './comp/Register';
-import Login from './comp/Login';
-import UserProfile from './comp/UserProfile';
-import UserOrders from './comp/UserOrders';
-import UserLikedProducts from './comp/UserLikedProducts';
+import AddAdmin from './comp/AddAdmin.js';
+import Products from './comp/Products.js';
+import Orders from './comp/Orders.js';
+import LikedProducts from './comp/LikedProducts.js';
+import Categories from './comp/Categories.js';
+import AdminContacts from './comp/AdminContacts.js';
+import AdminList from './comp/AdminList.js';
+import AdminSettings from './comp/AdminSettings.js';
+import AdminUsers from './comp/AdminUsers.js';
+import Cart from './comp/cart.js';
+import Register from './comp/Register.js';
+import Login from './comp/Login.js';
+import UserProfile from './comp/UserProfile.js';
+import UserOrders from './comp/UserOrders.js';
+import UserLikedProducts from './comp/UserLikedProducts.js';
 import UploadProfilePhoto from './comp/UploadProfilePhoto';
-import UserActivity from './comp/UserActivity';
-import ProductForm from './comp/ProductForm';
-import ProductList from './comp/ProductList';
-import Suppliers from './comp/Suppliers';
-import SalesReport from './comp/reports/SalesReport';
-import StockHistory from './comp/StockHistory';  // Ajout de l'importation de StockHistory
-import Promotions from './comp/Promotions';
-import AdminLogin from './comp/AdminLogin';
-import SliderManager from './comp/SliderManager'; // Nouvelle importation
+import UserActivity from './comp/UserActivity.js';
+import ProductForm from './comp/ProductForm.js';
+import ProductList from './comp/ProductList.js';
+import Suppliers from './comp/Suppliers.js';
+import SalesReport from './comp/reports/SalesReport.js';
+import StockHistory from './comp/StockHistory.js';  // Ajout de l'importation de StockHistory
+import Promotions from './comp/Promotions.js';
+import AdminLogin from './comp/AdminLogin.js';
+import SliderManager from './comp/SliderManager.js'; // Nouvelle importation
 import Cookies from 'js-cookie';
 
 const App = () => {
