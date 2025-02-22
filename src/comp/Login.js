@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import PropTypes from 'prop-types';
 import './login.css';
 
 const Login = ({ setIsAuthenticated }) => {
@@ -72,12 +73,16 @@ const Login = ({ setIsAuthenticated }) => {
             <button type="button" className="google-login-button" onClick={handleGoogleLogin}>Se connecter avec Google</button>
           </form>
           <p className="signup-link">
-            Pas de compte ? <a href="/register">S'inscrire</a>
+            Pas de compte ? <a href="/register">S&apos;inscrire</a>
           </p>
         </div>
       </div>
     </div>
   );
+};
+
+Login.propTypes = {
+  setIsAuthenticated: PropTypes.func.isRequired,
 };
 
 export default Login;

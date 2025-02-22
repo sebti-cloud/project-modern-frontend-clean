@@ -38,15 +38,15 @@ const Delivery = () => {
         <ul>
           <li>
             <h4>Quels sont les frais de livraison ?</h4>
-            <p>Les frais de livraison varient en fonction de l'option de livraison choisie et de la localisation.</p>
+            <p>Les frais de livraison varient en fonction de l&#39;option de livraison choisie et de la localisation.</p>
           </li>
           <li>
             <h4>Puis-je changer mon adresse de livraison ?</h4>
-            <p>Oui, vous pouvez changer votre adresse de livraison avant l'expédition de la commande.</p>
+            <p>Oui, vous pouvez changer votre adresse de livraison avant l&#39;expédition de la commande.</p>
           </li>
           <li>
             <h4>Que faire si ma commande est retardée ?</h4>
-            <p>Si votre commande est retardée, veuillez contacter notre équipe de support pour obtenir de l'aide.</p>
+            <p>Si votre commande est retardée, veuillez contacter notre équipe de support pour obtenir de l&#39;aide.</p>
           </li>
         </ul>
       </div>
