@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBox, FaShoppingCart,FaHeart, FaCog, FaClipboardList, FaUser, FaTags, FaChartBar, FaEnvelope, FaUsersCog, FaCogs, FaWarehouse } from 'react-icons/fa'; // Ajout de FaWarehouse
+import { FaBox,FaHeart, FaCog, FaClipboardList, FaUser, FaTags, FaEnvelope, FaWarehouse } from 'react-icons/fa'; // Ajout de FaWarehouse
 import './admin.css';
 
 const StockHistory = () => {

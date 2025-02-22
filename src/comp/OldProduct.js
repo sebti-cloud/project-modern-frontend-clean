@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './oldProduct.css'; // Assurez-vous que le CSS est lié correctement
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
 
 const OldProduct = ({ addtocart }) => {
     const [oldProducts, setOldProducts] = useState([]);

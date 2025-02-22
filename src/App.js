@@ -28,7 +28,6 @@ import Login from './comp/Login.js';
 import UserProfile from './comp/UserProfile.js';
 import UserOrders from './comp/UserOrders.js';
 import UserLikedProducts from './comp/UserLikedProducts.js';
-import UploadProfilePhoto from './comp/UploadProfilePhoto.js';
 import UserActivity from './comp/UserActivity.js';
 import ProductForm from './comp/ProductForm.js';
 import ProductList from './comp/ProductList.js';
