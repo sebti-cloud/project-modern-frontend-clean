@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import API_URL from './config.js';
+import API_URL from '../config.js';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';

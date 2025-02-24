@@ -1,5 +1,5 @@
 import React from "react";
-import API_URL from './config.js';
+import API_URL from '../config.js';
 import PropTypes from 'prop-types';
 import { Routes, Route } from "react-router-dom"; // Vérifiez cette importation
 import Home from './home.js';

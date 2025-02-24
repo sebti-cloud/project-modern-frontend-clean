@@ -74,7 +74,7 @@ const Register = () => {
 };
 
 export default Register;*/import React, { useState } from 'react';
-import API_URL from './config.js';
+import API_URL from '../config.js';
 import { useNavigate } from 'react-router-dom'; // Importez useNavigate pour la redirection
 import Cookies from 'js-cookie'; // Importez js-cookie pour gérer les cookies
 import './register.css'; // Importer le fichier CSS
