@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import API_URL from './config';
 import PropTypes from 'prop-types';
 import { AiOutlineMenu, AiOutlineSearch, AiOutlineUser, AiOutlineLogout, AiOutlineHome, AiOutlineShop, AiOutlineInfoCircle, AiOutlineMail } from "react-icons/ai";
 import { Link, useNavigate } from 'react-router-dom';

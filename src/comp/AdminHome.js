@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaBox, FaShoppingCart, FaUser, FaTags, FaChartBar, FaEnvelope, FaUsersCog, FaCogs, FaWarehouse, FaBullhorn } from 'react-icons/fa';
 import Cookies from 'js-cookie';
 import './AdminHome.css';
+import API_URL from './config'; // Importer la configuration API
 
 const AdminHome = () => {
   const [admin, setAdmin] = useState(null);
@@ -17,7 +18,7 @@ const AdminHome = () => {
       }
 
       try {
-        const response = await fetch('${process.env.REACT_APP_API_URL}/api/admin/info', {
+        const response = await fetch(`${API_URL}/api/admin/info`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -44,35 +45,35 @@ const AdminHome = () => {
 
   return (
     <div className="admin-home">
-      <h1>Hi, {admin?.username || 'Admin'} ({admin?.role || 'R&ocirc;le inconnu'})</h1>
-      <button onClick={handleLogout} className="logout-button">Se d&eacute;connecter</button>
+      <h1>Hi, {admin?.username || 'Admin'} ({admin?.role || 'Rôle inconnu'})</h1>
+      <button onClick={handleLogout} className="logout-button">Se déconnecter</button>
       <div className="admin-sections">
         <div className="admin-card">
           <Link to="/admin/products">
             <FaBox size={40} />
             <h2>Produits</h2>
-            <p>G&eacute;rez tous les produits de votre boutique.</p>
+            <p>Gérez tous les produits de votre boutique.</p>
           </Link>
         </div>
         <div className="admin-card">
           <Link to="/admin/orders">
             <FaShoppingCart size={40} />
             <h2>Commandes</h2>
-            <p>Suivez et g&eacute;rez les commandes des clients.</p>
+            <p>Suivez et gérez les commandes des clients.</p>
           </Link>
         </div>
         <div className="admin-card">
           <Link to="/admin/admin-users">
             <FaUser size={40} />
             <h2>Utilisateurs</h2>
-            <p>G&eacute;rez les comptes des utilisateurs et des administrateurs.</p>
+            <p>Gérez les comptes des utilisateurs et des administrateurs.</p>
           </Link>
         </div>
         <div className="admin-card">
           <Link to="/admin/categories">
             <FaTags size={40} />
-            <h2>Cat&eacute;gories</h2>
-            <p>Organisez les produits en diff&eacute;rentes cat&eacute;gories.</p>
+            <h2>Catégories</h2>
+            <p>Organisez les produits en différentes catégories.</p>
           </Link>
         </div>
         <div className="admin-card">
@@ -86,35 +87,35 @@ const AdminHome = () => {
           <Link to="/admin/contacts">
             <FaEnvelope size={40} />
             <h2>Messages</h2>
-            <p>G&eacute;rez les messages des clients et des utilisateurs.</p>
+            <p>Gérez les messages des clients et des utilisateurs.</p>
           </Link>
         </div>
         <div className="admin-card">
           <Link to="/admin/admins">
             <FaUsersCog size={40} />
             <h2>Administrateurs</h2>
-            <p>G&eacute;rez les comptes administratifs.</p>
+            <p>Gérez les comptes administratifs.</p>
           </Link>
         </div>
         <div className="admin-card">
           <Link to="/admin-settings">
             <FaCogs size={40} />
-            <h2>Param&egrave;tres</h2>
-            <p>G&eacute;rez les param&egrave;tres de l&apos;administration et les utilisateurs.</p>
+            <h2>Paramètres</h2>
+            <p>Gérez les paramètres de l'administration et les utilisateurs.</p>
           </Link>
         </div>
         <div className="admin-card">
           <Link to="/admin/stock-history">
             <FaWarehouse size={40} />
             <h2>Historique des Stocks</h2>
-            <p>Visualisez et g&eacute;rez les mouvements de stock.</p>
+            <p>Visualisez et gérez les mouvements de stock.</p>
           </Link>
         </div>
         <div className="admin-card">
           <Link to="/admin/promotions">
             <FaBullhorn size={40} />
             <h2>Promotions</h2>
-            <p>G&eacute;rez les promotions et r&eacute;ductions.</p>
+            <p>Gérez les promotions et réductions.</p>
           </Link>
         </div>
       </div>

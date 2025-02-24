@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import API_URL from './config'; // Importer la configuration API
+
 import PropTypes from 'prop-types';
 import UploadProfilePhoto from './UploadProfilePhoto.js';
 import Cookies from 'js-cookie';
@@ -19,7 +21,7 @@ const UserProfile = ({ cartCount }) => {
                 return;
             }
             try {
-                const response = await fetch('${process.env.REACT_APP_API_URL}/api/user', {
+                const response = await fetch(`${API_URL}/api/user`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -49,7 +51,7 @@ const UserProfile = ({ cartCount }) => {
             return;
         }
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/user/upload', {
+            const response = await fetch(`${API_URL}/api/user/upload`, {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -94,11 +96,11 @@ const UserProfile = ({ cartCount }) => {
             <h1 className="profile-title">{user ? user.name : 'Profile'}</h1>
             {user && user.photo ? (
                 <>
-                    <img className="profile-photo" src={`${process.env.REACT_APP_API_URL}${user.photo}`} alt="Profile" onClick={openModal} />
+                    <img className="profile-photo" src={`${API_URL}${user.photo}`} alt="Profile" onClick={openModal} />
                     {isModalOpen && (
                         <div className="modal" onClick={closeModal}>
                             <div className="modal-content" onClick={handleModalClick}>
-                                <img src={`${process.env.REACT_APP_API_URL}${user.photo}`} alt="Profile" className="profile-photo-modal" />
+                                <img src={`${API_URL}${user.photo}`} alt="Profile" className="profile-photo-modal" />
                             </div>
                         </div>
                     )}

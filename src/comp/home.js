@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import API_URL from './config';
 import PropTypes from 'prop-types';
 import './home.css';
 import { Link } from 'react-router-dom';
@@ -42,7 +43,7 @@ const Home = ({ addtocart, searchResults }) => {
 
   const applyPromotions = async (products) => {
     try {
-      const response = await axios.get('${process.env.REACT_APP_API_URL}/api/promotions');
+      const response = await axios.get('http://localhost:3001/api/promotions');
       const promotions = await response.data;
 
       return products.map(product => {
@@ -65,7 +66,7 @@ const Home = ({ addtocart, searchResults }) => {
 
   const fetchBanners = async () => {
     try {
-      const response = await axios.get('${process.env.REACT_APP_API_URL}/api/banners');
+      const response = await axios.get('http://localhost:3001/api/banners');
       setBanners(response.data);
     } catch (error) {
       console.error('Error fetching banners:', error);
@@ -74,7 +75,7 @@ const Home = ({ addtocart, searchResults }) => {
 
   const fetchSlides = async () => {
     try {
-      const response = await axios.get('${process.env.REACT_APP_API_URL}/api/sliders');
+      const response = await axios.get('http://localhost:3001/api/sliders');
       setSlides(response.data);
     } catch (error) {
       console.error('Error fetching slides:', error);
@@ -83,7 +84,7 @@ const Home = ({ addtocart, searchResults }) => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('${process.env.REACT_APP_API_URL}/api/products');
+      const response = await axios.get('http://localhost:3001/api/products');
       const data = response.data;
 
       const normalizedData = data.map(product => ({
@@ -115,7 +116,7 @@ const Home = ({ addtocart, searchResults }) => {
     if (Array.isArray(images) && images.length > 0) {
       return images.map((image, index) => (
         <div key={index} className='img_box'>
-          <img src={`${process.env.REACT_APP_API_URL}${image.trim()}`} alt='Product' />
+          <img src={`http://localhost:3001${image.trim()}`} alt='Product' />
         </div>
       ));
     } else {
@@ -218,7 +219,7 @@ const Home = ({ addtocart, searchResults }) => {
         {/* Ajout des bannières */}
         <div className="banners">
           {Array.isArray(banners) && banners.map((banner, index) => (
-            <Banner key={index} image={`${process.env.REACT_APP_API_URL}${banner.image_url}`} link={banner.link} />
+            <Banner key={index} image={`http://localhost:3001${banner.image_url}`} link={banner.link} />
           ))}
         </div>
 
@@ -361,7 +362,7 @@ const Home = ({ addtocart, searchResults }) => {
 
   const applyPromotions = async (products) => {
     try {
-      const response = await axios.get('${process.env.REACT_APP_API_URL}/api/promotions');
+      const response = await axios.get('http://localhost:3001/api/promotions');
       const promotions = await response.data;
 
       return products.map(product => {
@@ -384,7 +385,7 @@ const Home = ({ addtocart, searchResults }) => {
 
   const fetchBanners = async () => {
     try {
-      const response = await axios.get('${process.env.REACT_APP_API_URL}/api/banners');
+      const response = await axios.get('http://localhost:3001/api/banners');
       setBanners(response.data);
     } catch (error) {
       console.error('Error fetching banners:', error);
@@ -393,7 +394,7 @@ const Home = ({ addtocart, searchResults }) => {
 
   const fetchSlides = async () => {
     try {
-      const response = await axios.get('${process.env.REACT_APP_API_URL}/api/sliders');
+      const response = await axios.get('http://localhost:3001/api/sliders');
       setSlides(response.data);
     } catch (error) {
       console.error('Error fetching slides:', error);
@@ -402,7 +403,7 @@ const Home = ({ addtocart, searchResults }) => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('${process.env.REACT_APP_API_URL}/api/products');
+      const response = await axios.get('http://localhost:3001/api/products');
       const data = response.data;
 
       const normalizedData = data.map(product => ({
@@ -430,7 +431,7 @@ const Home = ({ addtocart, searchResults }) => {
     if (Array.isArray(images) && images.length > 0) {
       return images.map((image, index) => (
         <div key={index} className='img_box'>
-          <img src={`${process.env.REACT_APP_API_URL}${image.trim()}`} alt='Product' />
+          <img src={`http://localhost:3001${image.trim()}`} alt='Product' />
         </div>
       ));
     } else {

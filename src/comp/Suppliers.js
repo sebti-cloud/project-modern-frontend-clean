@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import API_URL from './config';
 import { Link } from 'react-router-dom';
 import { FaBox, FaClipboardList, FaHeart, FaTags, FaEnvelope, FaUserShield,FaWarehouse, FaUser, FaCog } from 'react-icons/fa'; // Importer des icônes depuis react-icons
 import './admin.css';

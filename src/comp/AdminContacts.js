@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBox, FaClipboardList, FaHeart, FaTags, FaUserShield, FaCog, FaUser, FaWarehouse } from 'react-icons/fa'; // Importer des icônes depuis react-icons
 import './admin.css';
+import API_URL from './config'; // Importer la configuration API
 
 const AdminContacts = () => {
   const [contacts, setContacts] = useState([]);
@@ -24,7 +25,7 @@ const AdminContacts = () => {
 
   const fetchContacts = async () => {
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/contacts');
+      const response = await fetch(`${API_URL}/api/contacts`);
       if (!response.ok) {
         throw new Error('Failed to fetch contacts');
       }
@@ -37,7 +38,7 @@ const AdminContacts = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/contacts/${id}`, {
+      const response = await fetch(`${API_URL}/api/contacts/${id}`, {
         method: 'DELETE',
       });
       if (response.ok) {
@@ -54,7 +55,7 @@ const AdminContacts = () => {
 
   const handleValidate = async (id) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/contacts/${id}/validate`, {
+      const response = await fetch(`${API_URL}/api/contacts/${id}/validate`, {
         method: 'PUT',
       });
       if (response.ok) {

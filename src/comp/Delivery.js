@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './delivery.css';
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from 'react-router-dom';
+import API_URL from './config'; // Importer la configuration API
 
 const Delivery = () => {
   const cartCount = 0; // Assurez-vous de définir cartCount
@@ -21,11 +22,11 @@ const Delivery = () => {
         <ul>
           <li>
             <h4>Livraison Standard</h4>
-            <p>Livraison sous 5 &#224; 7 jours ouvrables.</p>
+            <p>Livraison sous 5 à 7 jours ouvrables.</p>
           </li>
           <li>
             <h4>Livraison Express</h4>
-            <p>Livraison sous 2 &#224; 3 jours ouvrables.</p>
+            <p>Livraison sous 2 à 3 jours ouvrables.</p>
           </li>
           <li>
             <h4>Livraison le Jour Suivant</h4>
@@ -38,20 +39,20 @@ const Delivery = () => {
         <ul>
           <li>
             <h4>Quels sont les frais de livraison ?</h4>
-            <p>Les frais de livraison varient en fonction de l&#39;option de livraison choisie et de la localisation.</p>
+            <p>Les frais de livraison varient en fonction de l'option de livraison choisie et de la localisation.</p>
           </li>
           <li>
             <h4>Puis-je changer mon adresse de livraison ?</h4>
-            <p>Oui, vous pouvez changer votre adresse de livraison avant l&#39;expédition de la commande.</p>
+            <p>Oui, vous pouvez changer votre adresse de livraison avant l'expédition de la commande.</p>
           </li>
           <li>
             <h4>Que faire si ma commande est retardée ?</h4>
-            <p>Si votre commande est retardée, veuillez contacter notre équipe de support pour obtenir de l&#39;aide.</p>
+            <p>Si votre commande est retardée, veuillez contacter notre équipe de support pour obtenir de l'aide.</p>
           </li>
         </ul>
       </div>
       <div className="contact">
-        <h3>Besoin d&#39;Aide ?</h3>
+        <h3>Besoin d'Aide ?</h3>
         <p>Si vous avez des questions sur la livraison, veuillez contacter notre équipe de support à <a href="mailto:TechyoSupport@gmail.com">TechyoSupport@gmail.com</a> ou appelez-nous au <a href="tel:0523746094">0523746094</a>.</p>
       </div>
 

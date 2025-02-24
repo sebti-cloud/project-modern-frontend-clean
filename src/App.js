@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import API_URL from './config'; // Importer la configuration API
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Nav from './comp/nav.js';
 import Rout from './comp/rout.js';
@@ -56,7 +57,7 @@ const App = () => {
 
   const fetchProducts = async (category = '') => {
     try {
-      let url = '${process.env.REACT_APP_API_URL}/api/products';
+      let url = `${API_URL}/api/products`;
       if (category) {
         url += `?category=${category}`;
       }
@@ -73,7 +74,7 @@ const App = () => {
 
   const fetchSalesProducts = async (category = 'all') => {
     try {
-      let url = '${process.env.REACT_APP_API_URL}/api/salesProducts';
+      let url = `${API_URL}/api/salesProducts`;
       if (category !== 'all') {
         url += `?category=${category}`;
       }
@@ -103,7 +104,7 @@ const App = () => {
 
   const searchproduct = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search?query=${search}`);
+      const response = await fetch(`${API_URL}/api/search?query=${search}`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -141,7 +142,7 @@ const App = () => {
 
   const saveProduct = async (formData) => {
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/products', {
+      const response = await fetch(`${API_URL}/api/products`, {
         method: 'POST',
         body: formData,
       });
@@ -156,7 +157,7 @@ const App = () => {
 
   const editProduct = async (product) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${product.id}/type`, {
+      const response = await fetch(`${API_URL}/api/products/${product.id}/type`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -174,7 +175,7 @@ const App = () => {
 
   const deleteProduct = async (productId) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${productId}`, {
+      const response = await fetch(`${API_URL}/api/products/${productId}`, {
         method: 'DELETE'
       });
       if (!response.ok) {
@@ -213,7 +214,7 @@ const App = () => {
           <Route path="/admin/sales-report" element={isAdminAuthenticated ? <SalesReport /> : <Navigate to="/admin/login" />} />
           <Route path="/admin/ProductForm" element={<ProductForm saveProduct={saveProduct} />} />
           <Route path="/admin/ProductForm/:productId" element={<ProductForm saveProduct={saveProduct} editProduct={editProduct} />} />
-          <Route           path="/admin/stock-history" element={isAdminAuthenticated ? <StockHistory /> : <Navigate to="/admin/login" />} />
+          <Route path="/admin/stock-history" element={isAdminAuthenticated ? <StockHistory /> : <Navigate to="/admin/login" />} />
           <Route path="/admin/slider-manager" element={isAdminAuthenticated ? <SliderManager /> : <Navigate to="/admin/login" />} /> {/* Nouvelle route */}
 
           <Route path="/about" element={<About />} />

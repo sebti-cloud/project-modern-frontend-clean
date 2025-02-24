@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
 import './AdminLogin.css';
+import API_URL from './config'; // Importer la configuration API
 
 const AdminLogin = ({ setIsAdminAuthenticated }) => {
   const [username, setUsername] = useState('');
@@ -13,7 +14,7 @@ const AdminLogin = ({ setIsAdminAuthenticated }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/admin/login', {
+      const response = await fetch(`${API_URL}/api/admin/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

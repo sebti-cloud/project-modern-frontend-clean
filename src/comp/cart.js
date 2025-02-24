@@ -6,6 +6,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import Modal from 'react-modal';
 import { FaCopy } from 'react-icons/fa';
 import Cookies from 'js-cookie';
+import API_URL from './config'; // Importer la configuration API
 
 Modal.setAppElement('#root');
 
@@ -25,7 +26,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
 
     const token = Cookies.get('token');
     if (token) {
-      fetch('${process.env.REACT_APP_API_URL}/api/user', {
+      fetch(`${API_URL}/api/user`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -63,7 +64,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
     console.log('User Info:', userInfo);
     console.log('Cart:', cart); // Log du contenu du panier
 
-    const response = await fetch('${process.env.REACT_APP_API_URL}/api/checkout', {
+    const response = await fetch(`${API_URL}/api/checkout`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ cart, userInfo })
@@ -78,7 +79,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
         for (const item of cart) {
           console.log('Recording purchase:', { userId: userInfo.id, product: item.name }); // Log de l'achat
 
-          const purchaseResponse = await fetch('${process.env.REACT_APP_API_URL}/api/purchases', {
+          const purchaseResponse = await fetch(`${API_URL}/api/purchases`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -116,7 +117,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
     const exist = cart.find((x) => x.id === product.id);
     if (exist) {
       const updatedQty = exist.qty + 1;
-      await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, {
+      await fetch(`${API_URL}/api/cart/${product.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ qty: updatedQty })
@@ -130,7 +131,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
     const exist = cart.find((x) => x.id === product.id);
     if (exist && exist.qty > 1) {
       const updatedQty = exist.qty - 1;
-      await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, {
+      await fetch(`${API_URL}/api/cart/${product.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ qty: updatedQty })
@@ -143,7 +144,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
   };
 
   const removeproduct = async (product) => {
-    await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, { method: 'DELETE' });
+    await fetch(`${API_URL}/api/cart/${product.id}`, { method: 'DELETE' });
     setCart(cart.filter((curElm) => curElm.id !== product.id));
     setCartCount(cartCount - product.qty); // Décrémenter le compteur de panier
   };
@@ -153,7 +154,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
   const renderProductImage = (images) => {
     const placeholderImage = "/uploads/placeholder.jpg";
     if (Array.isArray(images) && images.length > 0) {
-      return `${process.env.REACT_APP_API_URL}${images[0].trim()}`; // Afficher la première image
+      return `${API_URL}${images[0].trim()}`; // Afficher la première image
     }
     return placeholderImage;
   };
@@ -219,7 +220,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
               <input type='email' name='email' placeholder='E-mail' value={userInfo.email} onChange={handleChange} required />
               <input type='text' name='address' placeholder='Adresse' value={userInfo.address} onChange={handleChange} required />
               <select name='paymentMethod' value={userInfo.paymentMethod} onChange={handleChange} required>
-                <option value=''>S&eacute;lectionnez le mode de paiement</option>
+                <option value=''>Sélectionnez le mode de paiement</option>
                 <option value='cash on delivery'>Paiement à la livraison</option>
                 <option value='online payment'>Paiement en ligne</option>
               </select>
@@ -230,14 +231,14 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
       )}
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} contentLabel="Modal de Suivi de Commande" className="modal" overlayClassName="overlay">
         <h2>Merci pour votre commande, {userInfo.name} !</h2>
-        <p>Voici votre num&eacute;ro de suivi :</p>
+        <p>Voici votre numéro de suivi :</p>
         <div className="tracking-number-container">
           <h3>{trackingNumber}</h3>
           <button onClick={copyToClipboard} className="copy-button">
             <FaCopy /> Copier
           </button>
         </div>
-        <p>Veuillez noter ce num&eacute;ro pour suivre l&apos;&eacute;tat de votre commande.</p>
+        <p>Veuillez noter ce numéro pour suivre l'état de votre commande.</p>
         <Link to="/track-order">
           <button onClick={() => setModalIsOpen(false)} className="btn-primary">Suivre ma commande</button>
         </Link>
@@ -246,15 +247,9 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
   );
 };
 
+
 Cart.propTypes = {
-  cart: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    qty: PropTypes.number.isRequired,
-    images: PropTypes.arrayOf(PropTypes.string),
-    cat: PropTypes.string
-  })).isRequired,
+  cart: PropTypes.array.isRequired,
   setCart: PropTypes.func.isRequired,
   cartCount: PropTypes.number.isRequired,
   setCartCount: PropTypes.func.isRequired,

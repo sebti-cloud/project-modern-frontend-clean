@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBox, FaClipboardList, FaHeart, FaTags, FaEnvelope, FaUserShield, FaUser, FaWarehouse } from 'react-icons/fa'; // Importer des icônes depuis react-icons
 import './admin.css';
+import API_URL from './config'; // Importer la configuration API
 
 const AdminSettings = () => {
   const [email, setEmail] = useState('');
@@ -12,7 +13,7 @@ const AdminSettings = () => {
     // Fetch the current email from the server when the component mounts
     const fetchCurrentEmail = async () => {
       try {
-        const response = await fetch('${process.env.REACT_APP_API_URL}/api/admin-settings/email');
+        const response = await fetch(`${API_URL}/api/admin-settings/email`);
         if (response.ok) {
           const data = await response.json();
           setCurrentEmail(data.email);
@@ -30,7 +31,7 @@ const AdminSettings = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/admin-settings', {
+      const response = await fetch(`${API_URL}/api/admin-settings`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

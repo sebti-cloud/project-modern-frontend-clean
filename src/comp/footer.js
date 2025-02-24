@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './footer.css';
 import { FaHeadphonesAlt, FaPiggyBank, FaShippingFast, FaWallet, FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
+import API_URL from './config'; // Importer la configuration API
 
 const Footer = ({ isAuthenticated }) => {
   const navigate = useNavigate();
@@ -20,8 +21,8 @@ const Footer = ({ isAuthenticated }) => {
     <div className='footer'>
       <div className='container'>
         <div className='header'>
-          <img src="${process.env.REACT_APP_API_URL}/uploads/logo_for_RAHTY.png" alt="Logo" />
-          <p>Bienvenue chez <span>RAHTY</span>, où la qualité et la satisfaction du client sont notre priorité. Explorez notre gamme variée de produits et découvrez des offres exceptionnelles chaque jour. N&#39;hésitez pas à nous contacter pour toute question ou besoin d&#39;assistance. Merci de nous faire confiance !</p>
+          <img src={`${API_URL}/uploads/logo_for_RAHTY.png`} alt="Logo" />
+          <p>Bienvenue chez <span>RAHTY</span>, où la qualité et la satisfaction du client sont notre priorité. Explorez notre gamme variée de produits et découvrez des offres exceptionnelles chaque jour. N'hésitez pas à nous contacter pour toute question ou besoin d'assistance. Merci de nous faire confiance !</p>
         </div>
         <div className='left-box'>
           <div className='box'>
@@ -30,7 +31,7 @@ const Footer = ({ isAuthenticated }) => {
             </div>
             <div className='detail'>
               <h3>Économies Incomparables</h3>
-              <p>Profitez d&#39;offres incroyables et économisez sur vos achats dès aujourd&#39;hui.</p>
+              <p>Profitez d'offres incroyables et économisez sur vos achats dès aujourd'hui.</p>
             </div>
           </div>
 
@@ -60,13 +61,12 @@ const Footer = ({ isAuthenticated }) => {
             </div>
             <div className='detail'>
               <h3>Remboursement Garanti</h3>
-              <p>Bénéficiez d&#39;une garantie de remboursement si vous n&#39;êtes pas satisfait de votre achat.</p>
+              <p>Bénéficiez d'une garantie de remboursement si vous n'êtes pas satisfait de votre achat.</p>
             </div>
           </div>
         </div>
 
         <div className='right_box'>
-
           <div className='bottom'>
             <div className='box'>
               <h3>Votre Compte</h3>
@@ -79,7 +79,7 @@ const Footer = ({ isAuthenticated }) => {
             </div>
 
             <div className='box'>
-              <h3>Products</h3>
+              <h3>Produits</h3>
               <ul>
                 <li><Link to="/delivery">Livraison</Link></li>
                 <li><Link to="/track-order">Suivi de Commande</Link></li>

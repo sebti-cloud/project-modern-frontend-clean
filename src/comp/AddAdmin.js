@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Cookies from 'js-cookie';
+import API_URL from './config'; // Importer la configuration API
 
 const AddAdmin = () => {
   const [username, setUsername] = useState('');
@@ -10,7 +11,7 @@ const AddAdmin = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/admin/add-admin', {
+      const response = await fetch(`${API_URL}/api/admin/add-admin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

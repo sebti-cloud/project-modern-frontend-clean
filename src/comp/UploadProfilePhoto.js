@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import API_URL from './config';
+
 import PropTypes from 'prop-types';
 
 const UploadProfilePhoto = ({ uploadPhoto }) => {

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import API_URL from './config';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import { FaCopy } from 'react-icons/fa';

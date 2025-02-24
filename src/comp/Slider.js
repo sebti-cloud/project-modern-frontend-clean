@@ -1,4 +1,5 @@
 import React from 'react';
+import API_URL from './config';
 import PropTypes from 'prop-types';
 import './Slider.css';
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import API_URL from './config'; // Importer la configuration API
 
 const Banner = ({ image, link }) => {
   return (

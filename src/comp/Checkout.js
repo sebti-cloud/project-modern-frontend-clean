@@ -35,8 +35,8 @@ const Checkout = ({ cartItems, userInformation }) => {
 };
 
 export default Checkout;
-*/
-import React, { useState } from 'react';
+*/import React, { useState } from 'react';
+import API_URL from './config'; // Importer la configuration API
 
 const OrderConfirmation = ({ trackingNumber }) => (
   <div>
@@ -52,7 +52,7 @@ const Checkout = ({ cartItems, userInformation }) => {
 
   const handleCheckout = async () => {
     try {
-      const response = await fetch('/api/checkout', {
+      const response = await fetch(`${API_URL}/api/checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ cart: cartItems, userInfo: { ...userInformation, address } }),

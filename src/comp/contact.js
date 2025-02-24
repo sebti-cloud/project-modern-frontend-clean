@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './contact.css';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import API_URL from './config'; // Importer la configuration API
 
 const ContactForm = ({ cartCount }) => {
     const [formData, setFormData] = useState({
@@ -28,16 +29,16 @@ const ContactForm = ({ cartCount }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/contact', {
+            const response = await fetch(`${API_URL}/api/contact`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
             if (response.ok) {
-                alert('Message envoy&eacute; avec succ&egrave;s!');
+                alert('Message envoyé avec succès!');
                 setFormData({ name: '', email: '', subject: '', message: '', phone: '' });
             } else {
-                alert('&Eacute;chec de l&apos;envoi du message.');
+                alert('Échec de l\'envoi du message.');
             }
         } catch (error) {
             console.error('Error sending message:', error);
@@ -68,7 +69,7 @@ const ContactForm = ({ cartCount }) => {
                         </div>
                     </div>
                     <div className="box">
-                        <div className="lable"><h4>Num&eacute;ro de t&eacute;l&eacute;phone</h4></div>
+                        <div className="lable"><h4>Numéro de téléphone</h4></div>
                         <div className="input">
                             <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required />
                         </div>
