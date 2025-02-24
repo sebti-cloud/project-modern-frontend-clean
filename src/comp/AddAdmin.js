@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Cookies from 'js-cookie';
-import API_URL from './config'; // Importer la configuration API
+import API_URL from './config.js'; // Importer la configuration API
 
 const AddAdmin = () => {
   const [username, setUsername] = useState('');

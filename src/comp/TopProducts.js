@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from './config';
+import API_URL from './config.js';
 import PropTypes from 'prop-types';
 import './topProducts.css'; // Assurez-vous que le CSS est lié correctement
 import { AiFillStar, AiOutlineShoppingCart } from 'react-icons/ai';

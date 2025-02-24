@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBox, FaClipboardList, FaHeart, FaTags, FaUserShield, FaCog, FaUser, FaWarehouse } from 'react-icons/fa'; // Importer des icônes depuis react-icons
 import './admin.css';
-import API_URL from './config'; // Importer la configuration API
+import API_URL from './config.js'; // Importer la configuration API
 
 const AdminContacts = () => {
   const [contacts, setContacts] = useState([]);

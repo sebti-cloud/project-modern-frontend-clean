@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './about.css';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import API_URL from './config'; // Importer la configuration API
+import API_URL from './config.js'; // Importer la configuration API
 
 const About = () => {
     const [cartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0);

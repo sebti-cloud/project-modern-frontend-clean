@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import API_URL from './config';
+import API_URL from './config.js';
 
 import PropTypes from 'prop-types';
 

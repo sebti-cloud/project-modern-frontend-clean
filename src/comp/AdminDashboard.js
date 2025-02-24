@@ -43,7 +43,7 @@ import SalesReport from './reports/SalesReport.js'; // Importer SalesReport
 import AdminHome from './AdminHome.js'; // Importer AdminHome
 import AdminSettings from './AdminSettings.js'; // Importer AdminSettings
 import './admin.css';
-import API_URL from './config'; // Importer la configuration API
+import API_URL from './config.js'; // Importer la configuration API
 
 const AdminDashboard = () => {
   return (

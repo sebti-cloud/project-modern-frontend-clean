@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
 import './AdminLogin.css';
-import API_URL from './config'; // Importer la configuration API
+import API_URL from './config.js'; // Importer la configuration API
 
 const AdminLogin = ({ setIsAdminAuthenticated }) => {
   const [username, setUsername] = useState('');

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from './config';
+import API_URL from './config.js';
 import PropTypes from 'prop-types';
 import './home.css';
 import { Link } from 'react-router-dom';

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './delivery.css';
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import API_URL from './config'; // Importer la configuration API
+import API_URL from './config.js'; // Importer la configuration API
 
 const Delivery = () => {
   const cartCount = 0; // Assurez-vous de définir cartCount
