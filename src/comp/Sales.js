@@ -15,7 +15,7 @@ const Sales = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/products');
+            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
             await response.json(); // Lecture des données sans affectation de variable
             setLoading(false);
         } catch (error) {
@@ -26,7 +26,7 @@ const Sales = () => {
 
     const fetchPromotions = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/promotions');
+            const response = await fetch('${process.env.REACT_APP_API_URL}/api/promotions');
             const data = await response.json();
             setPromotions(data);
             setLoading(false);
@@ -39,7 +39,7 @@ const Sales = () => {
     const filterProducts = async (category) => {
         setLoading(true);
         try {
-            let url = `http://localhost:3001/api/products`;
+            let url = `${process.env.REACT_APP_API_URL}/api/products`;
             if (category !== 'all') {
                 url += `?category=${category}`;
             }

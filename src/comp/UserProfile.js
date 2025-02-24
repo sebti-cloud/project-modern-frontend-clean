@@ -19,7 +19,7 @@ const UserProfile = ({ cartCount }) => {
                 return;
             }
             try {
-                const response = await fetch('http://localhost:3001/api/user', {
+                const response = await fetch('${process.env.REACT_APP_API_URL}/api/user', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -49,7 +49,7 @@ const UserProfile = ({ cartCount }) => {
             return;
         }
         try {
-            const response = await fetch('http://localhost:3001/api/user/upload', {
+            const response = await fetch('${process.env.REACT_APP_API_URL}/api/user/upload', {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -94,11 +94,11 @@ const UserProfile = ({ cartCount }) => {
             <h1 className="profile-title">{user ? user.name : 'Profile'}</h1>
             {user && user.photo ? (
                 <>
-                    <img className="profile-photo" src={`http://localhost:3001${user.photo}`} alt="Profile" onClick={openModal} />
+                    <img className="profile-photo" src={`${process.env.REACT_APP_API_URL}${user.photo}`} alt="Profile" onClick={openModal} />
                     {isModalOpen && (
                         <div className="modal" onClick={closeModal}>
                             <div className="modal-content" onClick={handleModalClick}>
-                                <img src={`http://localhost:3001${user.photo}`} alt="Profile" className="profile-photo-modal" />
+                                <img src={`${process.env.REACT_APP_API_URL}${user.photo}`} alt="Profile" className="profile-photo-modal" />
                             </div>
                         </div>
                     )}

@@ -21,7 +21,7 @@ const UserActivity = ({ match }) => {
 
   const fetchLogins = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/user-activities/logins/${userId}`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/logins/${userId}`);
       const data = await response.json();
       setLogins(data);
     } catch (error) {
@@ -31,7 +31,7 @@ const UserActivity = ({ match }) => {
 
   const fetchPurchases = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/user-activities/purchases/${userId}`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/purchases/${userId}`);
       const data = await response.json();
       setPurchases(data);
     } catch (error) {
@@ -41,7 +41,7 @@ const UserActivity = ({ match }) => {
 
   const fetchLikedProducts = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/user-activities/liked-products/${userId}`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/liked-products/${userId}`);
       const data = await response.json();
       setLikedProducts(data);
     } catch (error) {

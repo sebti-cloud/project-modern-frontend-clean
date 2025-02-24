@@ -45,7 +45,7 @@ const Cart = ({ cart, setCart }) => {
 
   const handleCheckout = async (e) => {
     e.preventDefault();
-    const response = await fetch('http://localhost:3001/api/checkout', {
+    const response = await fetch('${process.env.REACT_APP_API_URL}/api/checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ cart, userInfo })
@@ -73,7 +73,7 @@ const Cart = ({ cart, setCart }) => {
     const exist = cart.find((x) => x.id === product.id);
     if (exist) {
       const updatedQty = exist.qty + 1;
-      await fetch(`http://localhost:3001/api/cart/${product.id}`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ qty: updatedQty })
@@ -86,7 +86,7 @@ const Cart = ({ cart, setCart }) => {
     const exist = cart.find((x) => x.id === product.id);
     if (exist && exist.qty > 1) {
       const updatedQty = exist.qty - 1;
-      await fetch(`http://localhost:3001/api/cart/${product.id}`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ qty: updatedQty })
@@ -98,7 +98,7 @@ const Cart = ({ cart, setCart }) => {
   };
 
   const removeproduct = async (product) => {
-    await fetch(`http://localhost:3001/api/cart/${product.id}`, { method: 'DELETE' });
+    await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, { method: 'DELETE' });
     setCart(cart.filter((curElm) => curElm.id !== product.id));
   };
 
@@ -106,7 +106,7 @@ const Cart = ({ cart, setCart }) => {
 
   const placeholderImage = "/uploads/placeholder.jpg";
   const renderProductImage = (imagePath) => {
-    return imagePath && imagePath.trim() !== "" ? `http://localhost:3001${imagePath}` : placeholderImage;
+    return imagePath && imagePath.trim() !== "" ? `${process.env.REACT_APP_API_URL}${imagePath}` : placeholderImage;
   };
 
   const copyToClipboard = () => {
@@ -249,8 +249,8 @@ const Cart = ({ cart, setCart }) => {
     e.preventDefault();
 
     const checkoutEndpoint = userInfo.paymentMethod === 'online payment' 
-      ? 'http://localhost:3001/api/online-checkout' 
-      : 'http://localhost:3001/api/checkout';
+      ? '${process.env.REACT_APP_API_URL}/api/online-checkout' 
+      : '${process.env.REACT_APP_API_URL}/api/checkout';
 
     const response = await fetch(checkoutEndpoint, {
       method: 'POST',
@@ -280,7 +280,7 @@ const Cart = ({ cart, setCart }) => {
     const exist = cart.find((x) => x.id === product.id);
     if (exist) {
       const updatedQty = exist.qty + 1;
-      await fetch(`http://localhost:3001/api/cart/${product.id}`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ qty: updatedQty })
@@ -293,7 +293,7 @@ const Cart = ({ cart, setCart }) => {
     const exist = cart.find((x) => x.id === product.id);
     if (exist && exist.qty > 1) {
       const updatedQty = exist.qty - 1;
-      await fetch(`http://localhost:3001/api/cart/${product.id}`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ qty: updatedQty })
@@ -305,7 +305,7 @@ const Cart = ({ cart, setCart }) => {
   };
 
   const removeproduct = async (product) => {
-    await fetch(`http://localhost:3001/api/cart/${product.id}`, { method: 'DELETE' });
+    await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, { method: 'DELETE' });
     setCart(cart.filter((curElm) => curElm.id !== product.id));
   };
 
@@ -313,7 +313,7 @@ const Cart = ({ cart, setCart }) => {
 
   const placeholderImage = "/uploads/placeholder.jpg";
   const renderProductImage = (imagePath) => {
-    return imagePath && imagePath.trim() !== "" ? `http://localhost:3001${imagePath}` : placeholderImage;
+    return imagePath && imagePath.trim() !== "" ? `${process.env.REACT_APP_API_URL}${imagePath}` : placeholderImage;
   };
 
   const copyToClipboard = () => {

@@ -27,7 +27,7 @@ const UserActivity = () => {
 
   const fetchUsername = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/users/${userId}`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/${userId}`);
       if (!response.ok) {
         throw new Error('Erreur lors de la r&eacute;cup&eacute;ration du nom d&apos;utilisateur');
       }
@@ -40,7 +40,7 @@ const UserActivity = () => {
 
   const fetchLogins = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/user-activities/logins/${userId}`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/logins/${userId}`);
       const data = await response.json();
       console.log('Logins:', data);
       setLogins(data);
@@ -51,7 +51,7 @@ const UserActivity = () => {
 
   const fetchPurchases = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/user-activities/purchases/${userId}`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/purchases/${userId}`);
       const data = await response.json();
       console.log('Purchases:', data);
       setPurchases(Array.isArray(data) ? data : []);
@@ -62,7 +62,7 @@ const UserActivity = () => {
 
   const fetchLikedProducts = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/user-activities/liked-products/${userId}`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/liked-products/${userId}`);
       const data = await response.json();
       if (!Array.isArray(data)) {
         throw new Error('Invalid data format');
@@ -76,7 +76,7 @@ const UserActivity = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/products');
+      const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
       const data = await response.json();
 
       // Normaliser les données des produits pour s'assurer que les images sont des tableaux
@@ -178,7 +178,7 @@ const UserActivity = () => {
                 <tr key={index}>
                   <td>
                     {purchase.product_images && purchase.product_images.length > 0 ? (
-                      <img src={`http://localhost:3001${purchase.product_images[0]}`} alt={purchase.product_name} width="50" />
+                      <img src={`${process.env.REACT_APP_API_URL}${purchase.product_images[0]}`} alt={purchase.product_name} width="50" />
                     ) : (
                       'No Image'
                     )}
@@ -208,7 +208,7 @@ const UserActivity = () => {
                 <tr key={index}>
                   <td>
                     {product.images && product.images.length > 0 ? (
-                      <img src={`http://localhost:3001${product.images[0]}`} alt={product.name} width="50" />
+                      <img src={`${process.env.REACT_APP_API_URL}${product.images[0]}`} alt={product.name} width="50" />
                     ) : (
                       'No Image'
                     )}

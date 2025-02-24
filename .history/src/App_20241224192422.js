@@ -34,7 +34,7 @@ const App = () => {
       setShop(Homeproduct);
     } else {
       try {
-        const response = await fetch(`http://localhost:3001/api/search?query=${encodeURIComponent(search)}`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search?query=${encodeURIComponent(search)}`);
         if (response.ok) {
           const searchResults = await response.json();
           console.log("Résultats de recherche :", searchResults);

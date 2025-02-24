@@ -24,7 +24,7 @@ const App = () => {
 
   const fetchProducts = async (category = '') => {
     try {
-      let url = 'http://localhost:3001/api/products';
+      let url = '${process.env.REACT_APP_API_URL}/api/products';
       if (category) {
         url += `?category=${category}`;
       }
@@ -38,7 +38,7 @@ const App = () => {
 
   const fetchSalesProducts = async (category = 'all') => {
     try {
-      let url = 'http://localhost:3001/api/salesProducts';
+      let url = '${process.env.REACT_APP_API_URL}/api/salesProducts';
       if (category !== 'all') {
         url += `?category=${category}`;
       }
@@ -52,7 +52,7 @@ const App = () => {
 
   const fetchTopProducts = async (category = 'all') => {
     try {
-      let url = 'http://localhost:3001/api/topProducts';
+      let url = '${process.env.REACT_APP_API_URL}/api/topProducts';
       if (category !== 'all') {
         url += `?category=${category}`;
       }
@@ -66,7 +66,7 @@ const App = () => {
 
   const fetchOldProducts = async (category = 'all') => {
     try {
-      let url = 'http://localhost:3001/api/oldProducts';
+      let url = '${process.env.REACT_APP_API_URL}/api/oldProducts';
       if (category !== 'all') {
         url += `?category=${category}`;
       }

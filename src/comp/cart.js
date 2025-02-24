@@ -25,7 +25,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
 
     const token = Cookies.get('token');
     if (token) {
-      fetch('http://localhost:3001/api/user', {
+      fetch('${process.env.REACT_APP_API_URL}/api/user', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -63,7 +63,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
     console.log('User Info:', userInfo);
     console.log('Cart:', cart); // Log du contenu du panier
 
-    const response = await fetch('http://localhost:3001/api/checkout', {
+    const response = await fetch('${process.env.REACT_APP_API_URL}/api/checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ cart, userInfo })
@@ -78,7 +78,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
         for (const item of cart) {
           console.log('Recording purchase:', { userId: userInfo.id, product: item.name }); // Log de l'achat
 
-          const purchaseResponse = await fetch('http://localhost:3001/api/purchases', {
+          const purchaseResponse = await fetch('${process.env.REACT_APP_API_URL}/api/purchases', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -116,7 +116,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
     const exist = cart.find((x) => x.id === product.id);
     if (exist) {
       const updatedQty = exist.qty + 1;
-      await fetch(`http://localhost:3001/api/cart/${product.id}`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ qty: updatedQty })
@@ -130,7 +130,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
     const exist = cart.find((x) => x.id === product.id);
     if (exist && exist.qty > 1) {
       const updatedQty = exist.qty - 1;
-      await fetch(`http://localhost:3001/api/cart/${product.id}`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ qty: updatedQty })
@@ -143,7 +143,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
   };
 
   const removeproduct = async (product) => {
-    await fetch(`http://localhost:3001/api/cart/${product.id}`, { method: 'DELETE' });
+    await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, { method: 'DELETE' });
     setCart(cart.filter((curElm) => curElm.id !== product.id));
     setCartCount(cartCount - product.qty); // Décrémenter le compteur de panier
   };
@@ -153,7 +153,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
   const renderProductImage = (images) => {
     const placeholderImage = "/uploads/placeholder.jpg";
     if (Array.isArray(images) && images.length > 0) {
-      return `http://localhost:3001${images[0].trim()}`; // Afficher la première image
+      return `${process.env.REACT_APP_API_URL}${images[0].trim()}`; // Afficher la première image
     }
     return placeholderImage;
   };
@@ -290,7 +290,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
 
     const token = Cookies.get('token');
     if (token) {
-      fetch('http://localhost:3001/api/user', {
+      fetch('${process.env.REACT_APP_API_URL}/api/user', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -327,7 +327,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
     console.log('User Info:', userInfo);
     console.log('Cart:', cart); // Log du contenu du panier
 
-    const response = await fetch('http://localhost:3001/api/checkout', {
+    const response = await fetch('${process.env.REACT_APP_API_URL}/api/checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ cart, userInfo })
@@ -342,7 +342,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
         for (const item of cart) {
           console.log('Recording purchase:', { userId: userInfo.id, product: item.name }); // Log de l'achat
 
-          const purchaseResponse = await fetch('http://localhost:3001/api/purchases', {
+          const purchaseResponse = await fetch('${process.env.REACT_APP_API_URL}/api/purchases', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -380,7 +380,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
     const exist = cart.find((x) => x.id === product.id);
     if (exist) {
       const updatedQty = exist.qty + 1;
-      await fetch(`http://localhost:3001/api/cart/${product.id}`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ qty: updatedQty })
@@ -394,7 +394,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
     const exist = cart.find((x) => x.id === product.id);
     if (exist && exist.qty > 1) {
       const updatedQty = exist.qty - 1;
-      await fetch(`http://localhost:3001/api/cart/${product.id}`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ qty: updatedQty })
@@ -407,7 +407,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
   };
 
   const removeproduct = async (product) => {
-    await fetch(`http://localhost:3001/api/cart/${product.id}`, { method: 'DELETE' });
+    await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, { method: 'DELETE' });
     setCart(cart.filter((curElm) => curElm.id !== product.id));
     setCartCount(cartCount - product.qty); // Décrémenter le compteur de panier
   };
@@ -416,7 +416,7 @@ const Cart = ({ cart, setCart, cartCount, setCartCount, clearCart }) => {
 
   const renderProductImage = (imagePath) => {
     const placeholderImage = "/uploads/placeholder.jpg";
-    return imagePath && imagePath.trim() !== "" ? `http://localhost:3001${imagePath}` : placeholderImage;
+    return imagePath && imagePath.trim() !== "" ? `${process.env.REACT_APP_API_URL}${imagePath}` : placeholderImage;
   };
 
   const copyToClipboard = () => {

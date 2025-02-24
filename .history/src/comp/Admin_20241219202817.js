@@ -15,7 +15,7 @@ const Admin = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/products');
+            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
             const data = await response.json();
             setProducts(Array.isArray(data) ? data : []);
         } catch (error) {
@@ -25,7 +25,7 @@ const Admin = () => {
 
     const fetchOrders = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/orders');
+            const response = await fetch('${process.env.REACT_APP_API_URL}/api/orders');
             const data = await response.json();
             // Parse products from JSON string to array
             const ordersWithParsedProducts = data.map(order => ({
@@ -59,7 +59,7 @@ const Admin = () => {
         formData.append('image', selectedFile);
 
         try {
-            const response = await fetch('http://localhost:3001/api/products', {
+            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products', {
                 method: 'POST',
                 body: formData,
             });
@@ -91,7 +91,7 @@ const Admin = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:3001/api/products/${editProduct.id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${editProduct.id}`, {
                 method: 'PUT',
                 body: formData,
             });
@@ -110,7 +110,7 @@ const Admin = () => {
 
     const handleDeleteProduct = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3001/api/products/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${id}`, {
                 method: 'DELETE',
             });
             if (response.ok) {
@@ -157,7 +157,7 @@ const Admin = () => {
                                 <td>{product.name}</td>
                                 <td>{product.type}</td>
                                 <td>${product.price}</td>
-                                <td><img src={`http://localhost:3001${product.image}`} alt={product.name} width="50" /></td>
+                                <td><img src={`${process.env.REACT_APP_API_URL}${product.image}`} alt={product.name} width="50" /></td>
                                 <td>
                                     <button onClick={() => handleEditProduct(product)}>Edit</button>
                                     <button onClick={() => handleDeleteProduct(product.id)}>Delete</button>
@@ -191,7 +191,7 @@ const Admin = () => {
                                         const productDetails = getProductDetails(product.id);
                                         return productDetails ? (
                                             <div key={product.id}>
-                                                <img src={`http://localhost:3001${productDetails.image}`} alt={productDetails.name} width="50" />
+                                                <img src={`${process.env.REACT_APP_API_URL}${productDetails.image}`} alt={productDetails.name} width="50" />
                                                 {productDetails.name} x {product.qty}
                                             </div>
                                         ) : null;

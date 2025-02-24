@@ -20,7 +20,7 @@ const Footer = ({ isAuthenticated }) => {
     <div className='footer'>
       <div className='container'>
         <div className='header'>
-          <img src="http://localhost:3001/uploads/logo_for_RAHTY.png" alt="Logo" />
+          <img src="${process.env.REACT_APP_API_URL}/uploads/logo_for_RAHTY.png" alt="Logo" />
           <p>Bienvenue chez <span>RAHTY</span>, où la qualité et la satisfaction du client sont notre priorité. Explorez notre gamme variée de produits et découvrez des offres exceptionnelles chaque jour. N&#39;hésitez pas à nous contacter pour toute question ou besoin d&#39;assistance. Merci de nous faire confiance !</p>
         </div>
         <div className='left-box'>

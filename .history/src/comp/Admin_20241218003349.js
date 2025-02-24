@@ -15,7 +15,7 @@ const Admin = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/products');
+            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
             const data = await response.json();
             setProducts(data);
         } catch (error) {
@@ -25,7 +25,7 @@ const Admin = () => {
 
     const fetchOrders = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/orders');
+            const response = await fetch('${process.env.REACT_APP_API_URL}/api/orders');
             const data = await response.json();
             setOrders(data);
         } catch (error) {
@@ -35,7 +35,7 @@ const Admin = () => {
 
     const fetchUsers = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/users');
+            const response = await fetch('${process.env.REACT_APP_API_URL}/api/users');
             const data = await response.json();
             setUsers(data);
         } catch (error) {

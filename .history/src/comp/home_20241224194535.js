@@ -42,7 +42,7 @@ const Home = ({ shop, fetchProducts, addtocart }) => {
 
     const handleLike = async (productId) => {
         try {
-            const response = await fetch(`http://localhost:3001/api/products/${productId}/like`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${productId}/like`, {
                 method: 'PUT',
             });
             if (response.ok) {
@@ -60,7 +60,7 @@ const Home = ({ shop, fetchProducts, addtocart }) => {
 
     const placeholderImage = "/uploads/placeholder.jpg";
     const renderProductImage = (imagePath) => {
-        return imagePath && imagePath.trim() !== "" ? `http://localhost:3001${imagePath}` : placeholderImage;
+        return imagePath && imagePath.trim() !== "" ? `${process.env.REACT_APP_API_URL}${imagePath}` : placeholderImage;
     };
 
     return (
@@ -70,7 +70,7 @@ const Home = ({ shop, fetchProducts, addtocart }) => {
                     <button className='close_btn' onClick={closeDetail}><AiOutlineClose /></button>
                     <div className='container'>
                         <div className='img_box'>
-                            <img src={`http://localhost:3001${detail.image}`} alt=''></img>
+                            <img src={`${process.env.REACT_APP_API_URL}${detail.image}`} alt=''></img>
                         </div>
                         <div className='info'>
                             <h4># {detail.type}</h4>
@@ -139,7 +139,7 @@ const Home = ({ shop, fetchProducts, addtocart }) => {
                                     </div>
                                     <div className="detail">
                                         <div className="img_box">
-                                            <img src="http://localhost:3001/uploads/T1.jpg" alt="testimonial"></img>
+                                            <img src="${process.env.REACT_APP_API_URL}/uploads/T1.jpg" alt="testimonial"></img>
                                         </div>
                                         <div className="info">
                                             <h3>LAHRECH Mohamed</h3>
@@ -180,7 +180,7 @@ const Home = ({ shop, fetchProducts, addtocart }) => {
                     <div className="container">
                         <div class="box">
                             <div class="top">
-                                <img src='http://localhost:3001/uploads/Multi-Banner-4.jpg' alt=''></img>
+                                <img src='${process.env.REACT_APP_API_URL}/uploads/Multi-Banner-4.jpg' alt=''></img>
                             </div>
                         </div>
                     </div>

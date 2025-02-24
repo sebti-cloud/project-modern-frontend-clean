@@ -5,7 +5,7 @@ import { BiLogoFacebook, BiLogoTwitter, BiLogoInstagram, BiLogoYoutube } from "r
 import './home.css';
 
 // Constants
-const API_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = '${process.env.REACT_APP_API_URL}';
 const PLACEHOLDER_IMAGE = "/uploads/placeholder.jpg";
 
 // Product Types

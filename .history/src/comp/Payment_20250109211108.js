@@ -14,7 +14,7 @@ const Payment = ({ amount }) => {
   const handlePayment = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/api/payment', {
+      const response = await axios.post('${process.env.REACT_APP_API_URL}/api/payment', {
         token: cardNumber,
         amount: amount * 100, // Montant en cents
       });

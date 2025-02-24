@@ -12,7 +12,7 @@ const StockHistory = () => {
 
   const fetchStockMovements = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/stockMovements');
+      const response = await fetch('${process.env.REACT_APP_API_URL}/api/stockMovements');
       const data = await response.json();
       setStockMovements(data);
     } catch (error) {

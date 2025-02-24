@@ -124,7 +124,7 @@ const Orders = () => {
                     const productDetails = getProductDetails(product.id);
                     return productDetails ? (
                       <div key={product.id}>
-                        <img src={`http://localhost:3001${productDetails.image}`} alt={productDetails.name} width="50" />
+                        <img src={`${process.env.REACT_APP_API_URL}${productDetails.image}`} alt={productDetails.name} width="50" />
                         {productDetails.name} x {product.qty}
                       </div>
                     ) : null;

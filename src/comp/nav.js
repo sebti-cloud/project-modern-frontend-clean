@@ -16,7 +16,7 @@ const Nav = ({ search, setSearch, setSearchResults, isAuthenticated, handleLogou
       if (!token) return;
 
       try {
-        const response = await fetch('http://localhost:3001/api/user', {
+        const response = await fetch('${process.env.REACT_APP_API_URL}/api/user', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -38,7 +38,7 @@ const Nav = ({ search, setSearch, setSearchResults, isAuthenticated, handleLogou
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/search?query=${search}`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search?query=${search}`);
       const data = await response.json();
       setSearchResults(data);
     } catch (error) {
@@ -57,7 +57,7 @@ const Nav = ({ search, setSearch, setSearchResults, isAuthenticated, handleLogou
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <img src="http://localhost:3001/uploads/logo_for_RAHTY.png" alt="Logo" />
+          <img src="${process.env.REACT_APP_API_URL}/uploads/logo_for_RAHTY.png" alt="Logo" />
         </Link>
         <div className="navbar-search">
           <input 
@@ -73,7 +73,7 @@ const Nav = ({ search, setSearch, setSearchResults, isAuthenticated, handleLogou
             <>
               <div className="navbar-icon" onClick={logout}><AiOutlineLogout title="Déconnexion" /></div>
               <Link to="/profile" className="navbar-icon">
-                <img src={`http://localhost:3001${user?.photo}`} alt="Profile" className="profile-photo-nav" />
+                <img src={`${process.env.REACT_APP_API_URL}${user?.photo}`} alt="Profile" className="profile-photo-nav" />
               </Link>
             </>
           ) : (

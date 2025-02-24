@@ -32,7 +32,7 @@ const Payment = ({ amount }) => {
     }
 
     try {
-      const response = await axios.post('http://localhost:3001/api/payment', {
+      const response = await axios.post('${process.env.REACT_APP_API_URL}/api/payment', {
         token: token.id,
         amount: amount * 100, // Montant en cents
       });

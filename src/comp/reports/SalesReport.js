@@ -25,7 +25,7 @@ const SalesReport = () => {
 
   const fetchSalesData = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/reports/sales');
+      const response = await fetch('${process.env.REACT_APP_API_URL}/api/reports/sales');
       const data = await response.json();
       console.log('Sales data received:', data); // Log pour vérifier les données reçues
       setSalesData(Array.isArray(data) ? data : []);

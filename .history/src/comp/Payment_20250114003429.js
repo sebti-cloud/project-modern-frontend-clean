@@ -24,7 +24,7 @@ const Payment = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:3001/api/order-total/${orderId}`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/order-total/${orderId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -99,7 +99,7 @@ const Payment = () => {
             }
 
             try {
-              const response = await fetch('http://localhost:3001/api/send-receipt', {
+              const response = await fetch('${process.env.REACT_APP_API_URL}/api/send-receipt', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ orderId, email: userEmail }),
@@ -235,7 +235,7 @@ const Payment = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:3001/api/order-total/${orderId}`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/order-total/${orderId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -311,7 +311,7 @@ const Payment = () => {
 
             try {
               // Appel de la route pour confirmer le paiement et enregistrer le numéro de transaction
-              const confirmPaymentResponse = await fetch('http://localhost:3001/api/confirm-payment', {
+              const confirmPaymentResponse = await fetch('${process.env.REACT_APP_API_URL}/api/confirm-payment', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ orderId, transactionId: details.id }),
@@ -322,7 +322,7 @@ const Payment = () => {
               console.log('Paiement confirmé avec succès.');
 
               // Envoi de l'email de reçu
-              const sendReceiptResponse = await fetch('http://localhost:3001/api/send-receipt', {
+              const sendReceiptResponse = await fetch('${process.env.REACT_APP_API_URL}/api/send-receipt', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ orderId, email: userEmail }),

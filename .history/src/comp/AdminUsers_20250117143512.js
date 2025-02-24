@@ -17,7 +17,7 @@ const AdminUsers = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/users');
+      const response = await fetch('${process.env.REACT_APP_API_URL}/api/users');
       const data = await response.json();
       setUsers(Array.isArray(data) ? data : []);
     } catch (error) {
@@ -74,12 +74,12 @@ const AdminUsers = () => {
                 <td>{user.id}</td>
                 <td>
                   <img
-                    src={user.photo ? `http://localhost:3001${user.photo}` : 'http://localhost:3001/uploads/download.png'}
+                    src={user.photo ? `${process.env.REACT_APP_API_URL}${user.photo}` : '${process.env.REACT_APP_API_URL}/uploads/download.png'}
                     alt={user.name}
                     className="user-photo"
                     onClick={(e) => {
                       e.stopPropagation();
-                      openModal(user.photo ? `http://localhost:3001${user.photo}` : 'http://localhost:3001/uploads/download.png');
+                      openModal(user.photo ? `${process.env.REACT_APP_API_URL}${user.photo}` : '${process.env.REACT_APP_API_URL}/uploads/download.png');
                     }}
                     style={{ cursor: 'pointer' }}
                   />

@@ -36,7 +36,7 @@ const App = () => {
 
   const fetchProducts = async (category = '') => {
     try {
-      let url = 'http://localhost:3001/api/products';
+      let url = '${process.env.REACT_APP_API_URL}/api/products';
       if (category) {
         url += `?category=${category}`;
       }
@@ -50,7 +50,7 @@ const App = () => {
 
   const fetchSalesProducts = async (category = 'all') => {
     try {
-      let url = 'http://localhost:3001/api/salesProducts';
+      let url = '${process.env.REACT_APP_API_URL}/api/salesProducts';
       if (category !== 'all') {
         url += `?category=${category}`;
       }
@@ -80,7 +80,7 @@ const App = () => {
 
   const searchproduct = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/search?query=${search}`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search?query=${search}`);
       const data = await response.json();
       setSearchResults(data);
     } catch (error) {

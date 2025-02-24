@@ -14,7 +14,7 @@ const Suppliers = () => {
 
   const fetchSuppliers = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/suppliers');
+      const response = await fetch('${process.env.REACT_APP_API_URL}/api/suppliers');
       const data = await response.json();
       setSuppliers(data);
     } catch (error) {
@@ -34,7 +34,7 @@ const Suppliers = () => {
   const handleAddSupplier = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3001/api/suppliers', {
+      const response = await fetch('${process.env.REACT_APP_API_URL}/api/suppliers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -61,7 +61,7 @@ const Suppliers = () => {
   const handleUpdateSupplier = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3001/api/suppliers/${editSupplier.id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/suppliers/${editSupplier.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -85,7 +85,7 @@ const Suppliers = () => {
     if (!window.confirm('Are you sure you want to delete this supplier?')) return;
 
     try {
-      const response = await fetch(`http://localhost:3001/api/suppliers/${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/suppliers/${id}`, {
         method: 'DELETE'
       });
       if (response.ok) {

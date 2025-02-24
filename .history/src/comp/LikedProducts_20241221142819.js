@@ -10,7 +10,7 @@ const LikedProducts = () => {
 
     const fetchLikedProducts = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/liked-products');
+            const response = await fetch('${process.env.REACT_APP_API_URL}/api/liked-products');
             const data = await response.json();
             setLikedProducts(data);
         } catch (error) {
@@ -24,7 +24,7 @@ const LikedProducts = () => {
             <div className="product-grid">
                 {likedProducts.map(product => (
                     <div className="product-box" key={product.id}>
-                        <img src={`http://localhost:3001${product.image}`} alt={product.name} />
+                        <img src={`${process.env.REACT_APP_API_URL}${product.image}`} alt={product.name} />
                         <div className="product-info">
                             <div className="product-name">{product.name}</div>
                             <div className="product-price">${product.price}</div>

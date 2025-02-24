@@ -12,7 +12,7 @@ const Orders = () => {
 
     const fetchOrders = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/orders');
+            const response = await fetch('${process.env.REACT_APP_API_URL}/api/orders');
             const data = await response.json();
             setOrders(Array.isArray(data) ? data : []);
         } catch (error) {
@@ -22,7 +22,7 @@ const Orders = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/products');
+            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
             const data = await response.json();
             setProducts(Array.isArray(data) ? data : []);
         } catch (error) {
@@ -32,7 +32,7 @@ const Orders = () => {
 
     const handleValidateOrder = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3001/api/orders/${id}/validate`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/orders/${id}/validate`, {
                 method: 'PUT',
             });
             if (response.ok) {
@@ -48,7 +48,7 @@ const Orders = () => {
 
     const handleDeleteOrder = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3001/api/orders/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/orders/${id}`, {
                 method: 'DELETE',
             });
             if (response.ok) {
@@ -94,7 +94,7 @@ const Orders = () => {
                                     const productDetails = getProductDetails(product.id);
                                     return productDetails ? (
                                         <div key={product.id}>
-                                            <img src={`http://localhost:3001${productDetails.image}`} alt={productDetails.name} width="50" />
+                                            <img src={`${process.env.REACT_APP_API_URL}${productDetails.image}`} alt={productDetails.name} width="50" />
                                             {productDetails.name} x {product.qty}
                                         </div>
                                     ) : null;

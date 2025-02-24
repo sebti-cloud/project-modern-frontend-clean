@@ -28,7 +28,7 @@ const Contact = () => {
         };
 
         try {
-            const response = await fetch('http://localhost:3001/api/contact', option);
+            const response = await fetch('${process.env.REACT_APP_API_URL}/api/contact', option);
             if (response.ok) {
                 alert("Message Sent");
             } else {

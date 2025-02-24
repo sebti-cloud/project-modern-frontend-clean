@@ -16,7 +16,7 @@ const Login = ({ setIsAuthenticated }) => {
     e.preventDefault();
     setErrorMessage('');
     try {
-      const response = await fetch('http://localhost:3001/api/login', {
+      const response = await fetch('${process.env.REACT_APP_API_URL}/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -27,7 +27,7 @@ const Login = ({ setIsAuthenticated }) => {
         localStorage.setItem('token', data.token);
         setIsAuthenticated(true);
 
-        await fetch('http://localhost:3001/api/user-logins', {
+        await fetch('${process.env.REACT_APP_API_URL}/api/user-logins', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userId: data.userId })
@@ -44,7 +44,7 @@ const Login = ({ setIsAuthenticated }) => {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = 'http://localhost:3001/auth/google';
+    window.location.href = '${process.env.REACT_APP_API_URL}/auth/google';
   };
 
   return (
@@ -111,7 +111,7 @@ const Login = ({ setIsAuthenticated }) => {
     e.preventDefault();
     setErrorMessage('');
     try {
-      const response = await fetch('http://localhost:3001/api/login', {
+      const response = await fetch('${process.env.REACT_APP_API_URL}/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -132,7 +132,7 @@ const Login = ({ setIsAuthenticated }) => {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = 'http://localhost:3001/auth/google';
+    window.location.href = '${process.env.REACT_APP_API_URL}/auth/google';
   };
 
   return (

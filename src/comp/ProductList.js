@@ -24,7 +24,7 @@ const ProductForm = ({ saveProduct }) => {
 
   const fetchProduct = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/products/${id}`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${id}`);
       const data = await response.json();
       setName(data.name);
       setPrice(data.price);
@@ -40,7 +40,7 @@ const ProductForm = ({ saveProduct }) => {
 
   const fetchSuppliers = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/suppliers');
+      const response = await fetch('${process.env.REACT_APP_API_URL}/api/suppliers');
       const data = await response.json();
       setSuppliers(data);
     } catch (error) {

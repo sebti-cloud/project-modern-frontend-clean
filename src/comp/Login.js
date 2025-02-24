@@ -17,7 +17,7 @@ const Login = ({ setIsAuthenticated }) => {
     e.preventDefault();
     setErrorMessage('');
     try {
-      const response = await fetch('http://localhost:3001/api/login', {
+      const response = await fetch('${process.env.REACT_APP_API_URL}/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ const Login = ({ setIsAuthenticated }) => {
         Cookies.set('userToken', data.token); // Stocke le token utilisateur
         localStorage.setItem('userToken', data.token); // Optionnel : Stocke le token dans le localStorage
         setIsAuthenticated(true);
-        await fetch('http://localhost:3001/api/user-logins', {
+        await fetch('${process.env.REACT_APP_API_URL}/api/user-logins', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ const Login = ({ setIsAuthenticated }) => {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = 'http://localhost:3001/auth/google';
+    window.location.href = '${process.env.REACT_APP_API_URL}/auth/google';
   };
 
   return (

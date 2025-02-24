@@ -26,7 +26,7 @@ const ProductForm = ({ saveProduct, editProduct }) => {
 
   const fetchProduct = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/products/${id}`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${id}`);
       if (!response.ok) {
         throw new Error('Erreur lors de la récupération du produit');
       }
@@ -47,7 +47,7 @@ const ProductForm = ({ saveProduct, editProduct }) => {
 
   const fetchSuppliers = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/suppliers');
+      const response = await fetch('${process.env.REACT_APP_API_URL}/api/suppliers');
       const data = await response.json();
       setSuppliers(data);
     } catch (error) {

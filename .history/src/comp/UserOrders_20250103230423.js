@@ -6,7 +6,7 @@ const UserOrders = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3001/api/orders/user', {
+      const response = await fetch('${process.env.REACT_APP_API_URL}/api/orders/user', {
         headers: {
           'Authorization': `Bearer ${token}`
         }

@@ -15,7 +15,7 @@ const Admin = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/products');
+            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
             const data = await response.json();
             setProducts(Array.isArray(data) ? data : []);
         } catch (error) {
@@ -25,7 +25,7 @@ const Admin = () => {
 
     const fetchOrders = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/orders');
+            const response = await fetch('${process.env.REACT_APP_API_URL}/api/orders');
             const data = await response.json();
             setOrders(Array.isArray(data) ? data : []);
         } catch (error) {
@@ -44,7 +44,7 @@ const Admin = () => {
     const handleAddProduct = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:3001/api/products', {
+            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newProduct),
@@ -68,7 +68,7 @@ const Admin = () => {
     const handleUpdateProduct = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:3001/api/products/${editProduct.id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${editProduct.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(editProduct),
@@ -87,7 +87,7 @@ const Admin = () => {
 
     const handleDeleteProduct = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3001/api/products/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${id}`, {
                 method: 'DELETE',
             });
             if (response.ok) {

@@ -16,7 +16,7 @@ const AdminUsers = () => {
   const fetchUsers = async () => {
     try {
       console.log('Fetching users...');
-      const response = await fetch('http://localhost:3001/api/users');
+      const response = await fetch('${process.env.REACT_APP_API_URL}/api/users');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -77,10 +77,10 @@ const AdminUsers = () => {
                 <td>{new Date(user.created_at).toLocaleString()}</td>
                 <td>
                   <img
-                    src={user.photo ? `http://localhost:3001${user.photo}` : 'http://localhost:3001/uploads/download/default-user.png'}
+                    src={user.photo ? `${process.env.REACT_APP_API_URL}${user.photo}` : '${process.env.REACT_APP_API_URL}/uploads/download/default-user.png'}
                     alt={user.name}
                     className="user-photo"
-                    onClick={() => openModal(user.photo ? `http://localhost:3001${user.photo}` : 'http://localhost:3001/uploads/default-user.png')}
+                    onClick={() => openModal(user.photo ? `${process.env.REACT_APP_API_URL}${user.photo}` : '${process.env.REACT_APP_API_URL}/uploads/default-user.png')}
                     style={{ cursor: 'pointer' }}
                   />
                 </td>

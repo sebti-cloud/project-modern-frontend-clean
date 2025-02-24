@@ -6,7 +6,7 @@ const ProductSearch = ({ onSearch }) => {
     const handleSearch = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:3001/api/search?query=${query}`);
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search?query=${query}`);
             const data = await response.json();
             if (onSearch) {
                 onSearch(data);

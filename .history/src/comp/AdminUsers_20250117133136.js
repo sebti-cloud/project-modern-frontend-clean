@@ -11,7 +11,7 @@ const AdminUsers = () => {
   const fetchUsers = async () => {
     try {
       console.log('Fetching users...');
-      const response = await fetch('http://localhost:3001/api/users');
+      const response = await fetch('${process.env.REACT_APP_API_URL}/api/users');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

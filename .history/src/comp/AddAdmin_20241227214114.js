@@ -12,7 +12,7 @@ const AddAdmin = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3001/api/admin/add-admin', {
+      const response = await fetch('${process.env.REACT_APP_API_URL}/api/admin/add-admin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

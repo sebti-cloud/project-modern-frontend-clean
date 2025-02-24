@@ -30,7 +30,7 @@ const TrackOrder = () => {
   const fetchTrackingInfo = async (trackingNumber) => {
     console.log('Fetching tracking info for:', trackingNumber);
     try {
-      const response = await fetch(`http://localhost:3001/api/track-order/${trackingNumber}`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/track-order/${trackingNumber}`);
       if (!response.ok) {
         throw new Error('Tracking number not found');
       }

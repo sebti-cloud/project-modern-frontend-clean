@@ -17,7 +17,7 @@ const AdminHome = () => {
       }
 
       try {
-        const response = await fetch('http://localhost:3001/api/admin/info', {
+        const response = await fetch('${process.env.REACT_APP_API_URL}/api/admin/info', {
           headers: {
             'Authorization': `Bearer ${token}`
           }

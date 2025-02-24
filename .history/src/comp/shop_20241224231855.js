@@ -16,7 +16,7 @@ const Shop = ({ shop, addtocart, fetchProducts }) => {
 
     const fetchCategories = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/categories');
+            const response = await fetch('${process.env.REACT_APP_API_URL}/api/categories');
             const data = await response.json();
             setCategories(Array.isArray(data) ? data : []);
         } catch (error) {
@@ -43,7 +43,7 @@ const Shop = ({ shop, addtocart, fetchProducts }) => {
 
     const handleLike = async (productId) => {
         try {
-            const response = await fetch(`http://localhost:3001/api/products/${productId}/like`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${productId}/like`, {
                 method: 'PUT',
             });
             if (response.ok) {
@@ -66,7 +66,7 @@ const Shop = ({ shop, addtocart, fetchProducts }) => {
                     <button className='close_btn' onClick={closeDetail}><AiOutlineClose /></button>
                     <div className='container'>
                         <div className='img_box'>
-                            <img src={`http://localhost:3001${detail.image}`} alt='Product' />
+                            <img src={`${process.env.REACT_APP_API_URL}${detail.image}`} alt='Product' />
                         </div>
                         <div className='info'>
                             <h4># {detail.type}</h4>
@@ -100,14 +100,14 @@ const Shop = ({ shop, addtocart, fetchProducts }) => {
                         </div>
                         <div className='banner'>
                             <div className='img_box'>
-                                <img src='http://localhost:3001/uploads/shop_left.jpg' alt='Shop Left' />
+                                <img src='${process.env.REACT_APP_API_URL}/uploads/shop_left.jpg' alt='Shop Left' />
                             </div>
                         </div>
                     </div>
                     <div className='right_box'>
                         <div className='banner'>
                             <div className='img_box'>
-                                <img src='http://localhost:3001/uploads/shop_top.jpg' alt='Shop Top' />
+                                <img src='${process.env.REACT_APP_API_URL}/uploads/shop_top.jpg' alt='Shop Top' />
                             </div>
                         </div>
                         <div className='product_box'>
@@ -116,7 +116,7 @@ const Shop = ({ shop, addtocart, fetchProducts }) => {
                                 {shop.map((curElm) => (
                                     <div key={curElm.id} className='box'>
                                         <div className='img_box'>
-                                            <img src={`http://localhost:3001${curElm.image}`} alt={curElm.name} />
+                                            <img src={`${process.env.REACT_APP_API_URL}${curElm.image}`} alt={curElm.name} />
                                             <div className='icon'>
                                                 <li onClick={() => handleLike(curElm.id)}><AiFillHeart /></li>
                                                 <li onClick={() => detailpage(curElm)}><AiFillEye /></li>
