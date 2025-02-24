@@ -203,7 +203,7 @@ const ProductList = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/products');
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products`);
       const data = await response.json();
 
       // Normaliser les données pour s'assurer que `images` est un tableau
@@ -310,12 +310,7 @@ const ProductList = () => {
               <td>
                 {product.images && product.images.length > 0 ? (
                   product.images.map((img, index) => (
-                    <img
-                      key={index}
-                      src={`http://localhost:3001${img.trim()}`}
-                      alt={`${product.name} - Image ${index + 1}`}
-                      className="product-image"
-                    />
+                    <img key={index} src={`${process.env.REACT_APP_API_URL}${img.trim()}`} alt={`${product.name} - Image ${index + 1}`} className="product-image" />
                   ))
                 ) : (
                   <span>No image available</span>
