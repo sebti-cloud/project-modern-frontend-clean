@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './contact.css';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import API_URL from '../config.js'; // Importer la configuration API
+import API_URL from './config.js'; // Importer la configuration API
 
 const ContactForm = ({ cartCount }) => {
     const [formData, setFormData] = useState({

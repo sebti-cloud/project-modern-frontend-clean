@@ -1,5 +1,5 @@
 import React from 'react';
-import API_URL from '../config.js'; // Importer la configuration API
+import API_URL from './config.js'; // Importer la configuration API
 
 import Delivery from './comp/Delivery.js'; // Assurez-vous que le chemin est correct
 

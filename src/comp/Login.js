@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import API_URL from '../config.js'; // Importer la configuration API
+import API_URL from './config.js'; // Importer la configuration API
 
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';

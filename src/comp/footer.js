@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './footer.css';
 import { FaHeadphonesAlt, FaPiggyBank, FaShippingFast, FaWallet, FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
-import API_URL from '../config.js'; // Importer la configuration API
+import API_URL from './config.js'; // Importer la configuration API
 
 const Footer = ({ isAuthenticated }) => {
   const navigate = useNavigate();

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaBox, FaShoppingCart, FaUser, FaTags, FaChartBar, FaEnvelope, FaUsersCog, FaCogs, FaWarehouse, FaBullhorn } from 'react-icons/fa';
 import Cookies from 'js-cookie';
 import './AdminHome.css';
-import API_URL from '../config.js'; // Importer la configuration API
+import API_URL from './config.js'; // Importer la configuration API
 
 const AdminHome = () => {
   const [admin, setAdmin] = useState(null);
