@@ -190,7 +190,8 @@ export default Orders;
 */
 
 import React, { useState, useEffect } from 'react';
-import API_URL from '../config.js';
+import API_URL from '../config.js'; // Importer la configuration API
+
 import { Link } from 'react-router-dom';
 import { FaBox, FaHeart, FaTags, FaEnvelope, FaUserShield, FaCog, FaUser, FaWarehouse } from 'react-icons/fa';
 import './admin.css';

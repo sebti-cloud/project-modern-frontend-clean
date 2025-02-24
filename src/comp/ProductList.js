@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from '../config.js';
+import API_URL from '../config.js'; // Importer la configuration API
+
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import './ProductForm.css';

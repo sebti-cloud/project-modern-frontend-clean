@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from '../config.js';
+import API_URL from '../config.js'; // Importer la configuration API
+
 const Promotions = () => {
   const [promotions, setPromotions] = useState([]);
   const [form, setForm] = useState({

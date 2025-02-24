@@ -188,7 +188,8 @@ const Products = () => {
 
 export default Products;
 */import React, { useState, useEffect } from 'react';
-import API_URL from '../config.js';
+import API_URL from '../config.js'; // Importer la configuration API
+
 import { Link, useNavigate } from 'react-router-dom'; // Importer useNavigate
 import { FaClipboardList, FaHeart, FaTags, FaEnvelope, FaUserShield, FaCog, FaUser, FaWarehouse } from 'react-icons/fa'; // Importer des icônes depuis react-icons
 import './admin.css';

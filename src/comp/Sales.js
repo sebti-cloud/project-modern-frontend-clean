@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from '../config.js';
+import API_URL from '../config.js'; // Importer la configuration API
+
 import './sales.css';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';

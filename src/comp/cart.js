@@ -6,7 +6,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import Modal from 'react-modal';
 import { FaCopy } from 'react-icons/fa';
 import Cookies from 'js-cookie';
-import API_URL from './config.js'; // Importer la configuration API
+import API_URL from '../config.js'; // Importer la configuration API
 
 Modal.setAppElement('#root');
 

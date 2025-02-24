@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBox, FaClipboardList, FaHeart, FaEnvelope, FaUserShield, FaCog, FaUser, FaWarehouse } from 'react-icons/fa'; // Importer des icônes depuis react-icons
 import './admin.css';
-import API_URL from './config.js'; // Importer la configuration API
+import API_URL from '../config.js'; // Importer la configuration API
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);

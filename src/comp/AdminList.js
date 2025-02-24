@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaBox, FaClipboardList, FaHeart, FaTags, FaEnvelope, FaCog, FaUser, FaWarehouse } from 'react-icons/fa';
 import Cookies from 'js-cookie';
 import './AdminList.css';
-import API_URL from './config.js'; // Importer la configuration API
+import API_URL from '../config.js'; // Importer la configuration API
 
 const AdminList = () => {
   const [admins, setAdmins] = useState([]);

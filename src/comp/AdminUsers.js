@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import { FaBox, FaClipboardList, FaHeart, FaTags, FaEnvelope, FaUserShield, FaCog, FaWarehouse } from 'react-icons/fa'; // Importer des icônes depuis react-icons
 import './admin.css';
-import API_URL from './config.js'; // Importer la configuration API
+import API_URL from '../config.js'; // Importer la configuration API
 
 Modal.setAppElement('#root'); // Assurez-vous que l'élément root est défini pour l'accessibilité
 

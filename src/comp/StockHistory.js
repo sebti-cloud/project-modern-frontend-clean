@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from '../config.js';
+import API_URL from '../config.js'; // Importer la configuration API
+
 import { Link } from 'react-router-dom';
 import { FaBox,FaHeart, FaCog, FaClipboardList, FaUser, FaTags, FaEnvelope, FaWarehouse } from 'react-icons/fa'; // Ajout de FaWarehouse
 import './admin.css';

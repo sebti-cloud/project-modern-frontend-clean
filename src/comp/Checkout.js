@@ -36,7 +36,7 @@ const Checkout = ({ cartItems, userInformation }) => {
 
 export default Checkout;
 */import React, { useState } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
+import API_URL from '../config.js'; // Importer la configuration API
 
 const OrderConfirmation = ({ trackingNumber }) => (
   <div>
