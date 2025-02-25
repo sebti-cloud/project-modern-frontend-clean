@@ -126,6 +126,8 @@ const Footer = ({ isAuthenticated }) => {
   );
 };
 
+
+
 Footer.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
 };
