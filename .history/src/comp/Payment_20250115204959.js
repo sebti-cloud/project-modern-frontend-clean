@@ -24,7 +24,7 @@ const Payment = () => {
       }
 
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/pending-order-total/${orderId}`);
+        const response = await fetch(`http://localhost:3001/api/pending-order-total/${orderId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -99,7 +99,7 @@ const Payment = () => {
             }
 
             try {
-              const response = await fetch('${process.env.REACT_APP_API_URL}/api/send-receipt', {
+              const response = await fetch('http://localhost:3001/api/send-receipt', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ orderId, email: userEmail }),

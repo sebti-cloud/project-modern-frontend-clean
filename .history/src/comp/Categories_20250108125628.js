@@ -12,7 +12,7 @@ const Categories = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/categories');
+      const response = await fetch('http://localhost:3001/api/categories');
       if (!response.ok) {
         throw new Error('Failed to fetch categories');
       }
@@ -26,7 +26,7 @@ const Categories = () => {
   const handleAddCategory = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/categories', {
+      const response = await fetch('http://localhost:3001/api/categories', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: newCategory }),
@@ -45,7 +45,7 @@ const Categories = () => {
 
   const handleDeleteCategory = async (id) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/categories/${id}`, {
+      const response = await fetch(`http://localhost:3001/api/categories/${id}`, {
         method: 'DELETE',
       });
       if (response.ok) {

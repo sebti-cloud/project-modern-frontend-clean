@@ -13,7 +13,7 @@ const Products = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
+            const response = await fetch('http://localhost:3001/api/products');
             const data = await response.json();
             setProducts(Array.isArray(data) ? data : []);
         } catch (error) {
@@ -43,7 +43,7 @@ const Products = () => {
         formData.append('image', selectedFile);
 
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products', {
+            const response = await fetch('http://localhost:3001/api/products', {
                 method: 'POST',
                 body: formData,
             });
@@ -75,7 +75,7 @@ const Products = () => {
         }
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${editProduct.id}`, {
+            const response = await fetch(`http://localhost:3001/api/products/${editProduct.id}`, {
                 method: 'PUT',
                 body: formData,
             });
@@ -94,7 +94,7 @@ const Products = () => {
 
     const handleDeleteProduct = async (id) => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${id}`, {
+            const response = await fetch(`http://localhost:3001/api/products/${id}`, {
                 method: 'DELETE',
             });
             if (response.ok) {
@@ -137,7 +137,7 @@ const Products = () => {
                 <tbody>
                     {products.map(product => (
                         <tr key={product.id}>
-                            <td><img src={`${process.env.REACT_APP_API_URL}${product.image}`} alt={product.name} className="product-image" /></td>
+                            <td><img src={`http://localhost:3001${product.image}`} alt={product.name} className="product-image" /></td>
                             <td>{product.name}</td>
                             <td>{product.category}</td>
                             <td>{product.type}</td>

@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
-
-import PropTypes from 'prop-types';
 import { AiOutlineMenu, AiOutlineSearch, AiOutlineUser, AiOutlineLogout, AiOutlineHome, AiOutlineShop, AiOutlineInfoCircle, AiOutlineMail } from "react-icons/ai";
 import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import './nav.css';
 
-const Nav = ({ search, setSearch, setSearchResults, isAuthenticated, handleLogout }) => {
+const Nav = ({ search, setSearch, searchproduct, setSearchResults, isAuthenticated, handleLogout }) => {
   const [user, setUser] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false); // État pour gérer l'ouverture du menu
   const navigate = useNavigate();
@@ -18,7 +15,7 @@ const Nav = ({ search, setSearch, setSearchResults, isAuthenticated, handleLogou
       if (!token) return;
 
       try {
-        const response = await fetch('${process.env.REACT_APP_API_URL}/api/user', {
+        const response = await fetch('http://localhost:3001/api/user', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -40,7 +37,7 @@ const Nav = ({ search, setSearch, setSearchResults, isAuthenticated, handleLogou
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search?query=${search}`);
+      const response = await fetch(`http://localhost:3001/api/search?query=${search}`);
       const data = await response.json();
       setSearchResults(data);
     } catch (error) {
@@ -59,7 +56,7 @@ const Nav = ({ search, setSearch, setSearchResults, isAuthenticated, handleLogou
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <img src="${process.env.REACT_APP_API_URL}/uploads/logo_for_RAHTY.png" alt="Logo" />
+          <img src="http://localhost:3001/uploads/logo_for_RAHTY.png" alt="Logo" />
         </Link>
         <div className="navbar-search">
           <input 
@@ -75,7 +72,7 @@ const Nav = ({ search, setSearch, setSearchResults, isAuthenticated, handleLogou
             <>
               <div className="navbar-icon" onClick={logout}><AiOutlineLogout title="Déconnexion" /></div>
               <Link to="/profile" className="navbar-icon">
-                <img src={`${process.env.REACT_APP_API_URL}${user?.photo}`} alt="Profile" className="profile-photo-nav" />
+                <img src={`http://localhost:3001${user?.photo}`} alt="Profile" className="profile-photo-nav" />
               </Link>
             </>
           ) : (
@@ -109,14 +106,6 @@ const Nav = ({ search, setSearch, setSearchResults, isAuthenticated, handleLogou
       </ul>
     </nav>
   );
-};
-
-Nav.propTypes = {
-  search: PropTypes.string.isRequired,
-  setSearch: PropTypes.func.isRequired,
-  setSearchResults: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
-  handleLogout: PropTypes.func.isRequired,
 };
 
 export default Nav;

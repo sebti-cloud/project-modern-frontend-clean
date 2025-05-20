@@ -13,7 +13,7 @@ const AdminList = () => {
 
   const fetchAdmins = async () => {
     try {
-      const response = await axios.get('${process.env.REACT_APP_API_URL}/api/admins');
+      const response = await axios.get('http://localhost:3001/api/admins');
       setAdmins(response.data);
     } catch (error) {
       console.error('Error fetching admins:', error);
@@ -23,7 +23,7 @@ const AdminList = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('${process.env.REACT_APP_API_URL}/api/admins', { name, email, role });
+      const response = await axios.post('http://localhost:3001/api/admins', { name, email, role });
       fetchAdmins();
       setName('');
       setEmail('');
@@ -36,7 +36,7 @@ const AdminList = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/admins/${id}`);
+      const response = await axios.delete(`http://localhost:3001/api/admins/${id}`);
       fetchAdmins();
       alert('Admin deleted successfully');
     } catch (error) {

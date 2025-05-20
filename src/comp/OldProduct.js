@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
-
 import './oldProduct.css'; // Assurez-vous que le CSS est lié correctement
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 const OldProduct = ({ addtocart }) => {
     const [oldProducts, setOldProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [filter, setFilter] = useState('all');
     const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0); // Initialiser à partir de localStorage
 
     useEffect(() => {
@@ -19,7 +19,7 @@ const OldProduct = ({ addtocart }) => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
+            const response = await fetch('http://localhost:3001/api/products');
             const data = await response.json();
             const oldProducts = data.filter((x) => x.type === 'old');
             setOldProducts(oldProducts);
@@ -34,7 +34,7 @@ const OldProduct = ({ addtocart }) => {
         setFilter(category);
         setLoading(true);
         try {
-            let url = `${process.env.REACT_APP_API_URL}/api/products?type=old`;
+            let url = `http://localhost:3001/api/products?type=old`;
             if (category !== 'all') {
                 url += `&category=${category}`;
             }
@@ -72,7 +72,7 @@ const OldProduct = ({ addtocart }) => {
                 <div className="products_grid">
                     {oldProducts.map(product => (
                         <div key={product.id} className="product_card">
-                            <img src={`${process.env.REACT_APP_API_URL}${product.image}`} alt={product.name} />
+                            <img src={`http://localhost:3001${product.image}`} alt={product.name} />
                             <h3>{product.name}</h3>
                             <p>{product.price} MAD</p>
                             <button onClick={() => addToCart(product)}>

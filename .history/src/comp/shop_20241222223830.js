@@ -14,7 +14,7 @@ const Shop = ({ addtocart }) => {
     const fetchProducts = async (category = '') => {
         console.log('Fetching products for category:', category); // Debug log
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products?category=${category}`);
+            const response = await fetch(`http://localhost:3001/api/products?category=${category}`);
             const data = await response.json();
             console.log('Fetched products:', data); // Debug log
             setShop(data);
@@ -49,7 +49,7 @@ const Shop = ({ addtocart }) => {
                     <button className='close_btn' onClick={closeDetail}><AiOutlineClose /></button>
                     <div className='container'>
                         <div className='img_box'>
-                            <img src={`${process.env.REACT_APP_API_URL}${detail.image}`} alt=''></img>
+                            <img src={`http://localhost:3001${detail.image}`} alt=''></img>
                         </div>
                         <div className='info'>
                             <h4># {detail.type}</h4>
@@ -102,7 +102,7 @@ const Shop = ({ addtocart }) => {
                                 {shop.map((curElm) => (
                                     <div key={curElm.id} className='box'>
                                         <div className='img_box'>
-                                            <img src={`${process.env.REACT_APP_API_URL}${curElm.image}`} alt='' ></img>
+                                            <img src={`http://localhost:3001${curElm.image}`} alt='' ></img>
                                             <div className='icon'>
                                                 <li><AiFillHeart /></li>
                                                 <li onClick={() => detailpage(curElm)}><AiFillEye /></li>

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import PropTypes from 'prop-types';
 import './AdminLogin.css';
-import API_URL from './config.js'; // Importer la configuration API
 
 const AdminLogin = ({ setIsAdminAuthenticated }) => {
   const [username, setUsername] = useState('');
@@ -14,7 +12,7 @@ const AdminLogin = ({ setIsAdminAuthenticated }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${API_URL}/api/admin/login`, {
+      const response = await fetch('http://localhost:3001/api/admin/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,10 +41,6 @@ const AdminLogin = ({ setIsAdminAuthenticated }) => {
       <button type="submit">Login</button>
     </form>
   );
-};
-
-AdminLogin.propTypes = {
-  setIsAdminAuthenticated: PropTypes.func.isRequired,
 };
 
 export default AdminLogin;

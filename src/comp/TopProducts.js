@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
-
-import PropTypes from 'prop-types';
 import './topProducts.css'; // Assurez-vous que le CSS est lié correctement
 import { AiFillStar, AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
@@ -9,8 +6,8 @@ import { Link } from 'react-router-dom';
 const TopProducts = ({ addtocart }) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [filter, setFilter] = useState('all');
     const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0); // Initialiser à partir de localStorage
-    const [setFilter] = useState('all'); // Définir setFilter
 
     useEffect(() => {
         fetchProducts();
@@ -22,7 +19,7 @@ const TopProducts = ({ addtocart }) => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
+            const response = await fetch('http://localhost:3001/api/products');
             const data = await response.json();
             const topProducts = data.filter((x) => x.types && x.types.includes('top'));
             const likedProducts = data.filter((x) => x.types && x.types.includes('liked'));
@@ -39,7 +36,7 @@ const TopProducts = ({ addtocart }) => {
         setFilter(category);
         setLoading(true);
         try {
-            let url = `${process.env.REACT_APP_API_URL}/api/products`;
+            let url = `http://localhost:3001/api/products`;
             if (category !== 'all') {
                 url += `?category=${category}`;
             }
@@ -77,7 +74,7 @@ const TopProducts = ({ addtocart }) => {
                 <div className="products_grid">
                     {products.map(product => (
                         <div key={product.id} className="product_card">
-                            <img src={`${process.env.REACT_APP_API_URL}${product.image}`} alt={product.name} />
+                            <img src={`http://localhost:3001${product.image}`} alt={product.name} />
                             <h3>{product.name}</h3>
                             <p>{product.price} MAD</p>
                             <div className="rating">
@@ -105,10 +102,6 @@ const TopProducts = ({ addtocart }) => {
             )}
         </div>
     );
-};
-
-TopProducts.propTypes = {
-  addtocart: PropTypes.func.isRequired,
 };
 
 export default TopProducts;

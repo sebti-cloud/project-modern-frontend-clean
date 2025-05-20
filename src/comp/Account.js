@@ -1,5 +1,4 @@
 import React from 'react';
-import API_URL from './config.js'; // Importer la configuration API
 
 const Account = () => {
   return (

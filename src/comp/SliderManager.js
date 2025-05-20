@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
-
-import UploadForm from './UploadForm.js';
+import UploadForm from './UploadForm';
 import axios from 'axios';
 
 const SliderManager = () => {

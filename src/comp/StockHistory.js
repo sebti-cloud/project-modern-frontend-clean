@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
-
 import { Link } from 'react-router-dom';
-import { FaBox,FaHeart, FaCog, FaClipboardList, FaUser, FaTags, FaEnvelope, FaWarehouse } from 'react-icons/fa'; // Ajout de FaWarehouse
+import { FaBox, FaShoppingCart,FaHeart, FaCog, FaClipboardList, FaUser, FaTags, FaChartBar, FaEnvelope, FaUsersCog, FaCogs, FaWarehouse } from 'react-icons/fa'; // Ajout de FaWarehouse
 import './admin.css';
 
 const StockHistory = () => {
@@ -14,7 +12,7 @@ const StockHistory = () => {
 
   const fetchStockMovements = async () => {
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/stockMovements');
+      const response = await fetch('http://localhost:3001/api/stockMovements');
       const data = await response.json();
       setStockMovements(data);
     } catch (error) {

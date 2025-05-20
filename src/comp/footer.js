@@ -1,9 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './footer.css';
 import { FaHeadphonesAlt, FaPiggyBank, FaShippingFast, FaWallet, FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
-import API_URL from './config.js'; // Importer la configuration API
 
 const Footer = ({ isAuthenticated }) => {
   const navigate = useNavigate();
@@ -21,7 +19,7 @@ const Footer = ({ isAuthenticated }) => {
     <div className='footer'>
       <div className='container'>
         <div className='header'>
-          <img src={`${API_URL}/uploads/logo_for_RAHTY.png`} alt="Logo" />
+          <img src="http://localhost:3001/uploads/logo_for_RAHTY.png" alt="Logo" />
           <p>Bienvenue chez <span>RAHTY</span>, où la qualité et la satisfaction du client sont notre priorité. Explorez notre gamme variée de produits et découvrez des offres exceptionnelles chaque jour. N'hésitez pas à nous contacter pour toute question ou besoin d'assistance. Merci de nous faire confiance !</p>
         </div>
         <div className='left-box'>
@@ -67,6 +65,7 @@ const Footer = ({ isAuthenticated }) => {
         </div>
 
         <div className='right_box'>
+
           <div className='bottom'>
             <div className='box'>
               <h3>Votre Compte</h3>
@@ -79,7 +78,7 @@ const Footer = ({ isAuthenticated }) => {
             </div>
 
             <div className='box'>
-              <h3>Produits</h3>
+              <h3>Products</h3>
               <ul>
                 <li><Link to="/delivery">Livraison</Link></li>
                 <li><Link to="/track-order">Suivi de Commande</Link></li>
@@ -124,12 +123,6 @@ const Footer = ({ isAuthenticated }) => {
       </div>
     </div>
   );
-};
-
-
-
-Footer.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 export default Footer;

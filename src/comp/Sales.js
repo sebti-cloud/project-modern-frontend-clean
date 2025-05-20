@@ -1,24 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
-
 import './sales.css';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
-const Sales = () => {
+const Sales = ({ addtocart }) => {
+    const [products, setProducts] = useState([]);
     const [promotions, setPromotions] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [cartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0);
+    const [filter, setFilter] = useState('all');
+    const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0);
 
     useEffect(() => {
         fetchProducts();
         fetchPromotions();
     }, []);
 
+    useEffect(() => {
+        localStorage.setItem('cartCount', cartCount);
+    }, [cartCount]);
+
     const fetchProducts = async () => {
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
-            await response.json(); // Lecture des données sans affectation de variable
+            const response = await fetch('http://localhost:3001/api/products');
+            const data = await response.json();
+            const salesProducts = data.filter((x) => x.types && x.types.includes('sale'));
+            setProducts(salesProducts);
             setLoading(false);
         } catch (error) {
             console.error('Error fetching products:', error);
@@ -28,7 +34,7 @@ const Sales = () => {
 
     const fetchPromotions = async () => {
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/promotions');
+            const response = await fetch('http://localhost:3001/api/promotions');
             const data = await response.json();
             setPromotions(data);
             setLoading(false);
@@ -39,19 +45,27 @@ const Sales = () => {
     };
 
     const filterProducts = async (category) => {
+        setFilter(category);
         setLoading(true);
         try {
-            let url = `${process.env.REACT_APP_API_URL}/api/products`;
+            let url = `http://localhost:3001/api/products`;
             if (category !== 'all') {
                 url += `?category=${category}`;
             }
             const response = await fetch(url);
-            await response.json(); // Lecture des données sans affectation de variable
+            const data = await response.json();
+            const filteredProducts = data.filter((x) => x.types && x.types.includes('sale'));
+            setProducts(filteredProducts);
             setLoading(false);
         } catch (error) {
             console.error('Error fetching filtered products:', error);
             setLoading(false);
         }
+    };
+
+    const addToCart = (product) => {
+        addtocart(product);
+        setCartCount(cartCount + 1);
     };
 
     return (
@@ -95,7 +109,7 @@ const Sales = () => {
                             margin: '20px auto'
                         }}>
                             <strong>Aucune promotion pour le moment.</strong>
-                            <p>Restez attentifs pour chasser les opportunit&eacute;s &agrave; tout moment.</p>
+                            <p>Restez attentifs pour chasser les opportunités à tout moment.</p>
                             <div style={{ fontSize: '50px', color: '#c82333', marginTop: '10px' }}>📢</div>
                         </div>
                     )}

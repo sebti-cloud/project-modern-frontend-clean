@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import API_URL from './config.js'; // Importer la configuration API
 
 const AddAdmin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleAddAdmin = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${API_URL}/api/admin/add-admin`, {
+      const response = await fetch('http://localhost:3001/api/admin/add-admin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

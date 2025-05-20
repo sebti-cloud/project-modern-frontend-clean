@@ -17,7 +17,7 @@ const App = () => {
   
   const fetchProducts = async (category = '') => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products?category=${category}`);
+      const response = await fetch(`http://localhost:3001/api/products?category=${category}`);
       const data = await response.json();
       setShop(data);
     } catch (error) {
@@ -41,7 +41,7 @@ const App = () => {
       setShop(Homeproduct);
     } else {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search?query=${encodeURIComponent(search)}`);
+        const response = await fetch(`http://localhost:3001/api/search?query=${encodeURIComponent(search)}`);
         if (response.ok) {
           const searchResults = await response.json();
           setShop(searchResults);

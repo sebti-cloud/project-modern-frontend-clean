@@ -23,7 +23,7 @@ const Shop = ({ addtocart, searchResults }) => {
 
   const fetchProducts = async (category = '') => {
     try {
-      let url = '${process.env.REACT_APP_API_URL}/api/products';
+      let url = 'http://localhost:3001/api/products';
       if (category) {
         url += `?category=${category}`;
       }
@@ -37,7 +37,7 @@ const Shop = ({ addtocart, searchResults }) => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/categories');
+      const response = await fetch('http://localhost:3001/api/categories');
       const data = await response.json();
       setCategories(Array.isArray(data) ? data : []);
     } catch (error) {
@@ -72,7 +72,7 @@ const Shop = ({ addtocart, searchResults }) => {
         return;
       }
 
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${productId}/like`, {
+      const response = await fetch(`http://localhost:3001/api/products/${productId}/like`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -100,7 +100,7 @@ const Shop = ({ addtocart, searchResults }) => {
           <button className='close_btn' onClick={closeDetail}><AiOutlineClose /></button>
           <div className='container'>
             <div className='img_box'>
-              <img src={`${process.env.REACT_APP_API_URL}${detail.image}`} alt=''></img>
+              <img src={`http://localhost:3001${detail.image}`} alt=''></img>
             </div>
             <div className='info'>
               <h4># {detail.category}</h4> {/* Utilisez detail.category au lieu de detail.type */}
@@ -149,7 +149,7 @@ const Shop = ({ addtocart, searchResults }) => {
                 {shop.map((curElm) => (
                   <div key={curElm.id} className='box'>
                     <div className='img_box'>
-                      <img src={`${process.env.REACT_APP_API_URL}${curElm.image}`} alt='' ></img>
+                      <img src={`http://localhost:3001${curElm.image}`} alt='' ></img>
                       <div className='icon'>
                         <li onClick={() => handleLike(curElm.id)}><AiFillHeart /></li>
                         <li onClick={() => detailpage(curElm)}><AiFillEye /></li>

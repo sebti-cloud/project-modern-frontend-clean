@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
-
-import PropTypes from 'prop-types';
 import './shop.css';
 import { AiFillEye, AiFillHeart, AiOutlineShoppingCart, AiOutlineClose } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
@@ -11,10 +8,10 @@ import Slider from 'react-slick';
 const Shop = ({ addtocart, searchResults }) => {
   const [showDetail, setShowDetail] = useState(false);
   const [detail, setDetail] = useState({});
-  const [showLikedMessage] = useState(false);
-  const [likedMessage] = useState('');
   const [shop, setShop] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [likedMessage, setLikedMessage] = useState('');
+  const [showLikedMessage, setShowLikedMessage] = useState(false);
   const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0);
   const [userId, setUserId] = useState(null);
   const [autoplayIndex, setAutoplayIndex] = useState(null);
@@ -48,7 +45,7 @@ const Shop = ({ addtocart, searchResults }) => {
 
   const applyPromotions = async (products) => {
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/promotions');
+      const response = await fetch('http://localhost:3001/api/promotions');
       const promotions = await response.json();
 
       return products.map(product => {
@@ -69,9 +66,9 @@ const Shop = ({ addtocart, searchResults }) => {
     }
   };
 
-  const fetchProducts = async () => {
+  const fetchProducts = async (category = '') => {
     try {
-      let url = '${process.env.REACT_APP_API_URL}/api/products';
+      let url = 'http://localhost:3001/api/products';
       const response = await fetch(url);
       const data = await response.json();
 
@@ -95,7 +92,7 @@ const Shop = ({ addtocart, searchResults }) => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/categories');
+      const response = await fetch('http://localhost:3001/api/categories');
       const data = await response.json();
       setCategories(Array.isArray(data) ? data : []);
       console.log('Fetched categories:', data); // Log des catégories récupérées
@@ -108,7 +105,7 @@ const Shop = ({ addtocart, searchResults }) => {
     const token = Cookies.get('token');
     if (token) {
       try {
-        const response = await fetch('${process.env.REACT_APP_API_URL}/api/user', {
+        const response = await fetch('http://localhost:3001/api/user', {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
@@ -149,7 +146,7 @@ const Shop = ({ addtocart, searchResults }) => {
     }
 
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/liked-products', {
+      const response = await fetch('http://localhost:3001/api/liked-products', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId, product: productId }),
@@ -157,7 +154,9 @@ const Shop = ({ addtocart, searchResults }) => {
 
       if (response.ok) {
         fetchProducts(currentCategory);
-        alert('Produit aim&eacute;!');
+        setLikedMessage('Produit aimé!');
+        setShowLikedMessage(true);
+        setTimeout(() => setShowLikedMessage(false), 3000);
       } else {
         console.error('Failed to like product.');
       }
@@ -194,7 +193,7 @@ const Shop = ({ addtocart, searchResults }) => {
     if (Array.isArray(images) && images.length > 0) {
       return images.map((image, index) => (
         <div key={index} className='img_box'>
-          <img src={`${process.env.REACT_APP_API_URL}${image.trim()}`} alt='Product' />
+          <img src={`http://localhost:3001${image.trim()}`} alt='Product' />
         </div>
       ));
     } else {
@@ -307,11 +306,6 @@ const Shop = ({ addtocart, searchResults }) => {
   );
 };
 
-Shop.propTypes = {
-  addtocart: PropTypes.func.isRequired,
-  searchResults: PropTypes.array.isRequired,
-};
-
 export default Shop;
 
 /*import React, { useState, useEffect } from 'react';
@@ -360,7 +354,7 @@ const Shop = ({ addtocart, searchResults }) => {
 
   const applyPromotions = async (products) => {
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/promotions');
+      const response = await fetch('http://localhost:3001/api/promotions');
       const promotions = await response.json();
 
       return products.map(product => {
@@ -384,7 +378,7 @@ const Shop = ({ addtocart, searchResults }) => {
 
   const fetchProducts = async (category = '') => {
     try {
-      let url = '${process.env.REACT_APP_API_URL}/api/products';
+      let url = 'http://localhost:3001/api/products';
       const response = await fetch(url);
       const data = await response.json();
 
@@ -409,7 +403,7 @@ const Shop = ({ addtocart, searchResults }) => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/categories');
+      const response = await fetch('http://localhost:3001/api/categories');
       const data = await response.json();
       setCategories(Array.isArray(data) ? data : []);
       console.log('Fetched categories:', data); // Log des catégories récupérées
@@ -422,7 +416,7 @@ const Shop = ({ addtocart, searchResults }) => {
     const token = Cookies.get('token');
     if (token) {
       try {
-        const response = await fetch('${process.env.REACT_APP_API_URL}/api/user', {
+        const response = await fetch('http://localhost:3001/api/user', {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
@@ -458,7 +452,7 @@ const Shop = ({ addtocart, searchResults }) => {
     }
 
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/liked-products', {
+      const response = await fetch('http://localhost:3001/api/liked-products', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId, product: productId }),
@@ -505,7 +499,7 @@ const Shop = ({ addtocart, searchResults }) => {
     if (Array.isArray(images) && images.length > 0) {
       return images.map((image, index) => (
         <div key={index} className='img_box'>
-          <img src={`${process.env.REACT_APP_API_URL}${image.trim()}`} alt='Product' />
+          <img src={`http://localhost:3001${image.trim()}`} alt='Product' />
         </div>
       ));
     } else {

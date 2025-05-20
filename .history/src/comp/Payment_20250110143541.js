@@ -11,7 +11,7 @@ const Payment = () => {
   useEffect(() => {
     const fetchTotal = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/order-total/${orderId}`);
+        const response = await fetch(`http://localhost:3001/api/order-total/${orderId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

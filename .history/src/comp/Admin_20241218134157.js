@@ -15,7 +15,7 @@ const Admin = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
+            const response = await fetch('http://localhost:3001/api/products');
             const data = await response.json();
             setProducts(Array.isArray(data) ? data : []);
         } catch (error) {
@@ -25,7 +25,7 @@ const Admin = () => {
 
     const fetchOrders = async () => {
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/orders');
+            const response = await fetch('http://localhost:3001/api/orders');
             const data = await response.json();
             setOrders(Array.isArray(data) ? data : []);
         } catch (error) {
@@ -54,7 +54,7 @@ const Admin = () => {
         formData.append('image', selectedFile);
 
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products', {
+            const response = await fetch('http://localhost:3001/api/products', {
                 method: 'POST',
                 body: formData,
             });
@@ -86,7 +86,7 @@ const Admin = () => {
         }
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${editProduct.id}`, {
+            const response = await fetch(`http://localhost:3001/api/products/${editProduct.id}`, {
                 method: 'PUT',
                 body: formData,
             });
@@ -105,7 +105,7 @@ const Admin = () => {
 
     const handleDeleteProduct = async (id) => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${id}`, {
+            const response = await fetch(`http://localhost:3001/api/products/${id}`, {
                 method: 'DELETE',
             });
             if (response.ok) {
@@ -149,7 +149,7 @@ const Admin = () => {
                                 <td>{product.name}</td>
                                 <td>{product.type}</td>
                                 <td>${product.price}</td>
-                                <td><img src={`${process.env.REACT_APP_API_URL}${product.image}`} alt={product.name} width="50" /></td>
+                                <td><img src={`http://localhost:3001${product.image}`} alt={product.name} width="50" /></td>
                                 <td>
                                     <button onClick={() => handleEditProduct(product)}>Edit</button>
                                     <button onClick={() => handleDeleteProduct(product.id)}>Delete</button>
@@ -180,7 +180,7 @@ const Admin = () => {
                                 <td>{order.user_name} {order.user_surname}</td>
                                 <td>{order.user_phone}</td>
                                 <td>{order.product_name}</td>
-                                <td><img src={`${process.env.REACT_APP_API_URL}${order.product_image}`} alt={order.product_name} width="50" /></td>
+                                <td><img src={`http://localhost:3001${order.product_image}`} alt={order.product_name} width="50" /></td>
                                 <td>{order.qty}</td>
                                 <td>${order.total_price}</td>
                             </tr>

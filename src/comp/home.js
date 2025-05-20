@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
-
-import PropTypes from 'prop-types';
 import './home.css';
 import { Link } from 'react-router-dom';
 import { AiFillEye, AiFillHeart, AiOutlineShoppingCart, AiOutlineClose } from 'react-icons/ai';
 import Slider from 'react-slick';
-import Banner from './Banner.js';
-import SliderComponent from './Slider.js'; // Renommé en SliderComponent pour éviter les conflits de noms
+import Banner from './Banner';
+import SliderComponent from './Slider'; // Renommé en SliderComponent pour éviter les conflits de noms
 import axios from 'axios';
 
 const Home = ({ addtocart, searchResults }) => {
@@ -18,11 +15,12 @@ const Home = ({ addtocart, searchResults }) => {
   const [showDetail, setShowDetail] = useState(false);
   const [detail, setDetail] = useState({});
   const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0);
+  const [likedMessage, setLikedMessage] = useState('');
+  const [showLikedMessage, setShowLikedMessage] = useState(false);
+  const [autoplayIndex, setAutoplayIndex] = useState(null);
 
   const [banners, setBanners] = useState([]); // Assurer que `banners` est initialisé comme un tableau
   const [slides, setSlides] = useState([]); // Assurer que `slides` est initialisé comme un tableau
-  // Ajoutez les définitions suivantes
-  const [autoplayIndex, setAutoplayIndex] = useState(null);
 
   const [visibleProducts, setVisibleProducts] = useState(10); // État pour suivre le nombre de produits affichés
 
@@ -157,7 +155,9 @@ const Home = ({ addtocart, searchResults }) => {
   };
 
   const handleLike = (product) => {
-    alert(`Vous avez aimé ${product.name}`);
+    setLikedMessage(`Vous avez aimé ${product.name}`);
+    setShowLikedMessage(true);
+    setTimeout(() => setShowLikedMessage(false), 3000);
   };
 
   const settings = (index) => ({
@@ -178,7 +178,6 @@ const Home = ({ addtocart, searchResults }) => {
   const handleMouseLeave = () => {
     setAutoplayIndex(null);
   };
-
   return (
     <>
       {showDetail && (
@@ -196,12 +195,13 @@ const Home = ({ addtocart, searchResults }) => {
           </div>
         </div>
       )}
+
       <div className='home'>
         <div id='about-us' className='top_banner'>
           <div className='contant'>
             <h3>silver aluminum</h3>
             <h2>Apple Watch</h2>
-            <p>30% de r&eacute;duction sur votre premi&egrave;re commande</p>
+            <p>30% de réduction sur votre première commande</p>
             <Link to='/shop' className='link'>
               Achetez maintenant
             </Link>
@@ -230,6 +230,7 @@ const Home = ({ addtocart, searchResults }) => {
             <SliderComponent key={index} {...slide} />
           ))}
         </div>
+
         <div id='trending-product' className='trending'>
           <div className='container'>
             <div className='left_box'>
@@ -239,7 +240,7 @@ const Home = ({ addtocart, searchResults }) => {
                 </div>
                 <div className='cate'>
                   <h3 onClick={() => setTrendingProduct(newProduct)}>Nouveaux</h3>
-                  <h3 onClick={() => setTrendingProduct(featuredProduct)}>Sp&eacute;ciaux</h3>
+                  <h3 onClick={() => setTrendingProduct(featuredProduct)}>Spéciaux</h3>
                   <h3 onClick={() => setTrendingProduct(topProduct)}>Top Selling</h3>
                 </div>
               </div>
@@ -291,7 +292,7 @@ const Home = ({ addtocart, searchResults }) => {
                   </div>
                   <div className='detail'>
                     <h3>{curElm.name}</h3>
-                    <p>{curElm.price} MAD</p>
+                    <p>{curElm.price} Mad</p>
                     <div className='icon'>
                       <button onClick={() => detailpage(curElm)}>
                         <AiFillEye />
@@ -314,12 +315,8 @@ const Home = ({ addtocart, searchResults }) => {
   );
 };
 
-Home.propTypes = {
-  addtocart: PropTypes.func.isRequired,
-  searchResults: PropTypes.array.isRequired,
-};
-
 export default Home;
+
 
 /*import React, { useState, useEffect } from 'react';
 import './home.css';

@@ -23,7 +23,7 @@ const Payment = () => {
       }
 
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/order-details/${orderId}`);
+        const response = await fetch(`http://localhost:3001/api/order-details/${orderId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -84,7 +84,7 @@ const Payment = () => {
 
             // Envoyer la facture par email
             try {
-              const response = await fetch('${process.env.REACT_APP_API_URL}/api/send-receipt', {
+              const response = await fetch('http://localhost:3001/api/send-receipt', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ orderId, email: userEmail }),
@@ -218,7 +218,7 @@ const Cart = ({ cart, setCart }) => {
         if (userInfo.paymentMethod === 'online payment') {
             navigate('/payment');
         } else {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/checkout', {
+            const response = await fetch('http://localhost:3001/api/checkout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ cart, userInfo })
@@ -239,7 +239,7 @@ const Cart = ({ cart, setCart }) => {
         const exist = cart.find((x) => x.id === product.id);
         if (exist) {
             const updatedQty = exist.qty + 1;
-            await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, {
+            await fetch(`http://localhost:3001/api/cart/${product.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ qty: updatedQty })
@@ -254,7 +254,7 @@ const Cart = ({ cart, setCart }) => {
         const exist = cart.find((x) => x.id === product.id);
         if (exist && exist.qty > 1) {
             const updatedQty = exist.qty - 1;
-            await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, {
+            await fetch(`http://localhost:3001/api/cart/${product.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ qty: updatedQty })
@@ -268,7 +268,7 @@ const Cart = ({ cart, setCart }) => {
     };
 
     const removeproduct = async (product) => {
-        await fetch(`${process.env.REACT_APP_API_URL}/api/cart/${product.id}`, {
+        await fetch(`http://localhost:3001/api/cart/${product.id}`, {
             method: 'DELETE'
         });
         setCart(cart.filter((curElm) => curElm.id !== product.id));
@@ -280,7 +280,7 @@ const Cart = ({ cart, setCart }) => {
     const placeholderImage = "/uploads/placeholder.jpg"; // Remplace par le chemin réel de ton image de remplacement
 
     const renderProductImage = (imagePath) => {
-        return imagePath && imagePath.trim() !== "" ? `${process.env.REACT_APP_API_URL}${imagePath}` : placeholderImage;
+        return imagePath && imagePath.trim() !== "" ? `http://localhost:3001${imagePath}` : placeholderImage;
     };
 
     const copyToClipboard = () => {

@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
-
-import PropTypes from 'prop-types';
-import UploadProfilePhoto from './UploadProfilePhoto.js';
+import UploadProfilePhoto from './UploadProfilePhoto';
 import Cookies from 'js-cookie';
 import './UserProfile.css';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
@@ -21,7 +18,7 @@ const UserProfile = ({ cartCount }) => {
                 return;
             }
             try {
-                const response = await fetch(`${API_URL}/api/user`, {
+                const response = await fetch('http://localhost:3001/api/user', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -51,7 +48,7 @@ const UserProfile = ({ cartCount }) => {
             return;
         }
         try {
-            const response = await fetch(`${API_URL}/api/user/upload`, {
+            const response = await fetch('http://localhost:3001/api/user/upload', {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -96,11 +93,11 @@ const UserProfile = ({ cartCount }) => {
             <h1 className="profile-title">{user ? user.name : 'Profile'}</h1>
             {user && user.photo ? (
                 <>
-                    <img className="profile-photo" src={`${API_URL}${user.photo}`} alt="Profile" onClick={openModal} />
+                    <img className="profile-photo" src={`http://localhost:3001${user.photo}`} alt="Profile" onClick={openModal} />
                     {isModalOpen && (
                         <div className="modal" onClick={closeModal}>
                             <div className="modal-content" onClick={handleModalClick}>
-                                <img src={`${API_URL}${user.photo}`} alt="Profile" className="profile-photo-modal" />
+                                <img src={`http://localhost:3001${user.photo}`} alt="Profile" className="profile-photo-modal" />
                             </div>
                         </div>
                     )}
@@ -125,10 +122,6 @@ const UserProfile = ({ cartCount }) => {
             )}
         </div>
     );
-};
-
-UserProfile.propTypes = {
-  cartCount: PropTypes.number.isRequired,
 };
 
 export default UserProfile;

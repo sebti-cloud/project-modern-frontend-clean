@@ -11,7 +11,7 @@ const AdminUsers = () => {
   const fetchUsers = async () => {
     try {
       console.log('Fetching users...');
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/users');
+      const response = await fetch('http://localhost:3001/api/users');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -63,7 +63,7 @@ const AdminUsers = () => {
                 <td>{new Date(user.created_at).toLocaleString()}</td>
                 <td>
                   <img
-                    src={user.photo ? `${process.env.REACT_APP_API_URL}${user.photo}` : '/path/to/default-user.png'}
+                    src={user.photo ? `http://localhost:3001${user.photo}` : '/path/to/default-user.png'}
                     alt={user.name}
                     className="user-photo"
                   />

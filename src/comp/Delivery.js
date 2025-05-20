@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './delivery.css';
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import API_URL from './config.js'; // Importer la configuration API
 
 const Delivery = () => {
-  const cartCount = 0; // Assurez-vous de définir cartCount
+  const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0); // Initialiser à partir de localStorage
 
   useEffect(() => {
     localStorage.setItem('cartCount', cartCount); // Sauvegarder l'état du panier dans localStorage

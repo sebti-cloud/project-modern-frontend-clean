@@ -267,7 +267,7 @@ body {
     color: #0056a3;
 }
 .top_banner {
-    background: url('${process.env.REACT_APP_API_URL}/uploads/slide-1.jpg') no-repeat center center;
+    background: url('http://localhost:3001/uploads/slide-1.jpg') no-repeat center center;
     background-size: cover;
     height: 400px;
     position: relative;

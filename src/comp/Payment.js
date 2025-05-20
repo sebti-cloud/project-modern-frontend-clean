@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
-
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import { FaCopy } from 'react-icons/fa';
@@ -27,7 +25,7 @@ const Payment = () => {
       }
 
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/pending-order-total/${orderId}`);
+        const response = await fetch(`http://localhost:3001/api/pending-order-total/${orderId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -52,7 +50,6 @@ const Payment = () => {
 
     fetchOrderDetails();
   }, [orderId]);
-
   useEffect(() => {
     if (total !== null) {
       const script = document.createElement('script');
@@ -79,7 +76,7 @@ const Payment = () => {
   const updatePaymentStatus = async (pendingOrderId, transactionId) => {
     console.log('Appel de updatePaymentStatus avec Pending Order ID:', pendingOrderId, 'et Transaction ID:', transactionId);
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/update-payment-status/${pendingOrderId}`, {
+      const response = await fetch(`http://localhost:3001/api/update-payment-status/${pendingOrderId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ payment_status: 'payé', transaction_id: transactionId }),
@@ -97,11 +94,10 @@ const Payment = () => {
       console.error('Erreur lors de la mise à jour du Transaction ID et du statut de paiement :', error);
     }
   };
-
   const handleOnlineCheckout = async (pendingOrderId, transactionId) => {
     console.log('Appel de handleOnlineCheckout avec Pending Order ID:', pendingOrderId, 'et Transaction ID:', transactionId);
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/confirm-payment', {
+      const response = await fetch('http://localhost:3001/api/confirm-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -121,6 +117,7 @@ const Payment = () => {
       console.error('Erreur lors de la confirmation de la commande :', error);
     }
   };
+
   useEffect(() => {
     if (paypalLoaded && total !== null) {
       const usdTotal = (total / 10).toFixed(2); // Convertir le total de MAD à USD
@@ -145,8 +142,8 @@ const Payment = () => {
             setTransactionId(details.id);
             setTransactionModalIsOpen(true);
           }).catch((err) => {
-            console.error('Erreur lors de l&apos;approbation de la commande :', err);
-            alert('Erreur lors de l&apos;approbation de la commande');
+            console.error('Erreur lors de l\'approbation de la commande :', err);
+            alert('Erreur lors de l\'approbation de la commande');
           });
         },
         onError: function(err) {
@@ -194,10 +191,9 @@ const Payment = () => {
   }
 
   const usdTotal = (total / 10).toFixed(2); // Définir usdTotal ici
-
   return (
     <>
-      <section className="payment-section">
+          <section className="payment-section">
         <div className="container">
           <div className="payment-wrapper">
             <div className="payment-left">
@@ -223,9 +219,6 @@ const Payment = () => {
                     </div>
                     <div className="payment-summary-item">
                       <div className="payment-summary-name">Réduction 20%</div>
-                      <div className="payment-summary-price">1$</div>
-                      <div className="payment-summary-item">
-                      <div className="payment-summary-name">Réduction 20%</div>
                       <div className="payment-summary-price">-$2</div>
                     </div>
                     <div className="payment-summary-divider"></div>
@@ -245,7 +238,6 @@ const Payment = () => {
             </div>
           </div>
         </div>
-        </div>
       </section>
 
       <Modal isOpen={transactionModalIsOpen} onRequestClose={() => setTransactionModalIsOpen(false)} contentLabel="Transaction ID Modal" className="modal" overlayClassName="overlay">
@@ -263,7 +255,7 @@ const Payment = () => {
             type="text"
             value={transactionId}
             onChange={(e) => setTransactionId(e.target.value)}
-            placeholder="Entrez l&apos;ID de transaction"
+            placeholder="Entrez l'ID de transaction"
             required
           />
           <button type="submit">Soumettre</button>
@@ -280,7 +272,7 @@ const Payment = () => {
             <FaCopy /> Copier
           </button>
         </div>
-        <p>Veuillez noter ce numéro pour suivre l&apos;état de votre commande.</p>
+        <p>Veuillez noter ce numéro pour suivre l'état de votre commande.</p>
         <Link to="/track-order">
           <button onClick={() => setConfirmationModalIsOpen(false)}>Suivre ma commande</button>
         </Link>
@@ -290,3 +282,4 @@ const Payment = () => {
 };
 
 export default Payment;
+

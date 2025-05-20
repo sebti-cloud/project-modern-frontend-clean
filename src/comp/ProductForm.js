@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
-
-import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import './ProductForm.css';
 
 const ProductForm = ({ saveProduct, editProduct }) => {
   const { productId } = useParams();
+  const [product, setProduct] = useState(null);
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [quantity, setQuantity] = useState(0);
@@ -28,12 +26,13 @@ const ProductForm = ({ saveProduct, editProduct }) => {
 
   const fetchProduct = async (id) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${id}`);
+      const response = await fetch(`http://localhost:3001/api/products/${id}`);
       if (!response.ok) {
         throw new Error('Erreur lors de la récupération du produit');
       }
       const data = await response.json();
       console.log('Fetched product data:', data); // Log les données récupérées
+      setProduct(data);
       setName(data.name);
       setPrice(data.price);
       setQuantity(data.quantity);
@@ -49,7 +48,7 @@ const ProductForm = ({ saveProduct, editProduct }) => {
 
   const fetchSuppliers = async () => {
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/suppliers');
+      const response = await fetch('http://localhost:3001/api/suppliers');
       const data = await response.json();
       setSuppliers(data);
     } catch (error) {
@@ -70,7 +69,6 @@ const ProductForm = ({ saveProduct, editProduct }) => {
     const value = e.target.value;
     setTypes(value.split(',').map(type => type.trim()));
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -94,6 +92,8 @@ const ProductForm = ({ saveProduct, editProduct }) => {
       saveProduct(formData);
     }
   };
+  
+
 
   return (
     <div>
@@ -146,11 +146,6 @@ const ProductForm = ({ saveProduct, editProduct }) => {
       </form>
     </div>
   );
-};
-
-ProductForm.propTypes = {
-  saveProduct: PropTypes.func.isRequired,
-  editProduct: PropTypes.func,
 };
 
 export default ProductForm;

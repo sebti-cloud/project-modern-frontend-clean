@@ -14,7 +14,7 @@ const Products = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
+      const response = await fetch('http://localhost:3001/api/products');
       const data = await response.json();
       setProducts(Array.isArray(data) ? data : []);
     } catch (error) {
@@ -55,7 +55,7 @@ const Products = () => {
     formData.append('details', newProduct.details);
     formData.append('image', selectedFile);
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/products', {
+      const response = await fetch('http://localhost:3001/api/products', {
         method: 'POST',
         body: formData,
       });
@@ -88,7 +88,7 @@ const Products = () => {
       formData.append('image', selectedFile);
     }
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${editProduct.id}`, {
+      const response = await fetch(`http://localhost:3001/api/products/${editProduct.id}`, {
         method: 'PUT',
         body: formData,
       });
@@ -108,7 +108,7 @@ const Products = () => {
 
   const handleDeleteProduct = async (id) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${id}`, {
+      const response = await fetch(`http://localhost:3001/api/products/${id}`, {
         method: 'DELETE',
       });
       if (response.ok) {
@@ -124,7 +124,7 @@ const Products = () => {
 
   const handleUpdateType = async (productId, newType) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${productId}`);
+      const response = await fetch(`http://localhost:3001/api/products/${productId}`);
       if (!response.ok) {
         throw new Error('Product not found');
       }
@@ -135,7 +135,7 @@ const Products = () => {
         types = [newType];
       }
 
-      const responseUpdate = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${productId}/type`, {
+      const responseUpdate = await fetch(`http://localhost:3001/api/products/${productId}/type`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ types }),
@@ -197,7 +197,7 @@ const Products = () => {
           <tbody>
             {products.map(product => (
               <tr key={product.id}>
-                <td><img src={`${process.env.REACT_APP_API_URL}${product.image}`} alt={product.name} className="product-image" /></td>
+                <td><img src={`http://localhost:3001${product.image}`} alt={product.name} className="product-image" /></td>
                 <td>{product.name}</td>
                 <td>{product.category}</td>
                 <td>{product.types ? product.types.join(', ') : 'No types'}</td>
@@ -242,7 +242,7 @@ const Products = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
+      const response = await fetch('http://localhost:3001/api/products');
       const data = await response.json();
       setProducts(Array.isArray(data) ? data : []);
     } catch (error) {
@@ -284,7 +284,7 @@ const Products = () => {
     formData.append('image', selectedFile);
 
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/products', {
+      const response = await fetch('http://localhost:3001/api/products', {
         method: 'POST',
         body: formData,
       });
@@ -321,7 +321,7 @@ const Products = () => {
     console.log('Updating product with data:', { ...editProduct, types: editProduct.types, image: selectedFile });
   
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${editProduct.id}`, {
+      const response = await fetch(`http://localhost:3001/api/products/${editProduct.id}`, {
         method: 'PUT',
         body: formData,
       });
@@ -343,7 +343,7 @@ const Products = () => {
   
   const handleDeleteProduct = async (id) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${id}`, {
+      const response = await fetch(`http://localhost:3001/api/products/${id}`, {
         method: 'DELETE',
       });
       if (response.ok) {
@@ -359,7 +359,7 @@ const Products = () => {
 
   const handleUpdateType = async (productId, newType) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${productId}/type`, {
+      const response = await fetch(`http://localhost:3001/api/products/${productId}/type`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ type: newType }),
@@ -377,7 +377,7 @@ const Products = () => {
 
   const handleProductUpdate = async (product) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${product.id}`, {
+      const response = await fetch(`http://localhost:3001/api/products/${product.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -472,7 +472,7 @@ const Products = () => {
           <tbody>
             {products.map(product => (
               <tr key={product.id}>
-                <td><img src={`${process.env.REACT_APP_API_URL}${product.image}`} alt={product.name} className="product-image" /></td>
+                <td><img src={`http://localhost:3001${product.image}`} alt={product.name} className="product-image" /></td>
                 <td>{product.name}</td>
                 <td>{product.category}</td>
                 <td>{product.types ? product.types.join(', ') : 'No types'}</td>

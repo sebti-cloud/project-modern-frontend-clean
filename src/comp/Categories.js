@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBox, FaClipboardList, FaHeart, FaEnvelope, FaUserShield, FaCog, FaUser, FaWarehouse } from 'react-icons/fa'; // Importer des icônes depuis react-icons
 import './admin.css';
-import API_URL from './config.js'; // Importer la configuration API
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -14,7 +13,7 @@ const Categories = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/categories`);
+      const response = await fetch('http://localhost:3001/api/categories');
       if (!response.ok) {
         throw new Error('Failed to fetch categories');
       }
@@ -28,7 +27,7 @@ const Categories = () => {
   const handleAddCategory = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${API_URL}/api/categories`, {
+      const response = await fetch('http://localhost:3001/api/categories', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: newCategory }),
@@ -47,7 +46,7 @@ const Categories = () => {
 
   const handleDeleteCategory = async (id) => {
     try {
-      const response = await fetch(`${API_URL}/api/categories/${id}`, {
+      const response = await fetch(`http://localhost:3001/api/categories/${id}`, {
         method: 'DELETE',
       });
       if (response.ok) {

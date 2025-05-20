@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
-
 import { Link } from 'react-router-dom';
 import { FaBox, FaClipboardList, FaTags, FaEnvelope, FaUserShield, FaCog, FaUser, FaWarehouse } from 'react-icons/fa'; // Importer des icônes depuis react-icons
 import './admin.css';
@@ -14,7 +12,7 @@ const LikedProducts = () => {
 
   const fetchLikedProducts = async () => {
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/liked-products');
+      const response = await fetch('http://localhost:3001/api/liked-products');
       const data = await response.json();
       setLikedProducts(data);
     } catch (error) {
@@ -24,7 +22,7 @@ const LikedProducts = () => {
 
   const handleDelete = async (productId) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/liked-products/${productId}`, {
+      const response = await fetch(`http://localhost:3001/api/liked-products/${productId}`, {
         method: 'DELETE',
       });
       if (response.ok) {
@@ -67,7 +65,7 @@ const LikedProducts = () => {
           <tbody>
             {likedProducts.map(product => (
               <tr key={product.id}>
-                <td><img src={`${process.env.REACT_APP_API_URL}${product.image}`} alt={product.name} className="product-image" /></td>
+                <td><img src={`http://localhost:3001${product.image}`} alt={product.name} className="product-image" /></td>
                 <td>{product.name}</td>
                 <td>{product.price} Mad</td>
                 <td>

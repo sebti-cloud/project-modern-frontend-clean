@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import './contact.css';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import API_URL from './config.js'; // Importer la configuration API
 
-const ContactForm = ({ cartCount }) => {
+const ContactForm = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -13,6 +11,7 @@ const ContactForm = ({ cartCount }) => {
         message: '',
         phone: '' // Ajouter le champ téléphone
     });
+    const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0); // Initialiser à partir de localStorage
 
     useEffect(() => {
         localStorage.setItem('cartCount', cartCount); // Sauvegarder l'état du panier dans localStorage
@@ -29,7 +28,7 @@ const ContactForm = ({ cartCount }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`${API_URL}/api/contact`, {
+            const response = await fetch('http://localhost:3001/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
@@ -95,11 +94,6 @@ const ContactForm = ({ cartCount }) => {
             )}
         </div>
     );
-};
-
-ContactForm.propTypes = {
-  cartCount: PropTypes.number.isRequired,
-  setCartCount: PropTypes.func.isRequired,
 };
 
 export default ContactForm;

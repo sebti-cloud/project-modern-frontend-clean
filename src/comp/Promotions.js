@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
 
 const Promotions = () => {
   const [promotions, setPromotions] = useState([]);
@@ -19,7 +18,7 @@ const Promotions = () => {
 
   const fetchPromotions = async () => {
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/promotions');
+      const response = await fetch('http://localhost:3001/api/promotions');
       const data = await response.json();
       setPromotions(data);
     } catch (error) {
@@ -35,7 +34,7 @@ const Promotions = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/promotions', {
+      const response = await fetch('http://localhost:3001/api/promotions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -61,7 +60,7 @@ const Promotions = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/promotions/${id}`, {
+      const response = await fetch(`http://localhost:3001/api/promotions/${id}`, {
         method: 'DELETE',
       });
       if (response.ok) {

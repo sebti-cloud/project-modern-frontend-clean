@@ -22,7 +22,7 @@ const UserActivity = () => {
 
   const fetchLogins = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/logins/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/logins/${userId}`);
       const data = await response.json();
       console.log('Logins:', data);
       setLogins(data);
@@ -33,7 +33,7 @@ const UserActivity = () => {
 
   const fetchPurchases = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/purchases/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/purchases/${userId}`);
       const data = await response.json();
       console.log('Purchases:', data);
       setPurchases(data);
@@ -44,7 +44,7 @@ const UserActivity = () => {
 
   const fetchLikedProducts = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/liked-products/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/liked-products/${userId}`);
       const data = await response.json();
       console.log('Liked Products:', data);
       setLikedProducts(data);
@@ -192,7 +192,7 @@ const UserActivity = () => {
 
   const fetchUsername = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/users/${userId}`);
       if (!response.ok) {
         throw new Error('Erreur lors de la récupération du nom d\'utilisateur');
       }
@@ -205,7 +205,7 @@ const UserActivity = () => {
 
   const fetchLogins = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/logins/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/logins/${userId}`);
       const data = await response.json();
       console.log('Logins:', data);
       setLogins(data);
@@ -216,7 +216,7 @@ const UserActivity = () => {
 
   const fetchPurchases = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/purchases/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/purchases/${userId}`);
       const data = await response.json();
       console.log('Purchases:', data);
       setPurchases(data);
@@ -227,7 +227,7 @@ const UserActivity = () => {
 
   const fetchLikedProducts = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/liked-products/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/liked-products/${userId}`);
       const data = await response.json();
       console.log('Liked Products:', data);
       setLikedProducts(data);

@@ -21,7 +21,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/register', {
+      const response = await fetch('http://localhost:3001/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -73,9 +73,8 @@ const Register = () => {
   );
 };
 
-export default Register;*/import React, { useState } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
-
+export default Register;*/
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Importez useNavigate pour la redirection
 import Cookies from 'js-cookie'; // Importez js-cookie pour gérer les cookies
 import './register.css'; // Importer le fichier CSS
@@ -101,7 +100,7 @@ const Register = () => {
     setErrorMessage(''); // Réinitialiser le message d'erreur
     setSuccessMessage(''); // Réinitialiser le message de succès
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/register', {
+      const response = await fetch('http://localhost:3001/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -125,7 +124,7 @@ const Register = () => {
     <div className="register-page">
       <div className="register-container">
         <div className="register-form-container">
-          <h2>S&#39;inscrire</h2>
+          <h2>S'inscrire</h2>
           {errorMessage && (
             <div style={{ backgroundColor: 'red', color: 'white', padding: '10px', borderRadius: '5px', marginBottom: '10px' }}>
               {errorMessage}
@@ -150,14 +149,14 @@ const Register = () => {
               <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
             </div>
             <div className="input-group phone">
-              <label>T&#233;l&#233;phone</label>
+              <label>Téléphone</label>
               <input type="text" name="phone" placeholder="Phone" onChange={handleChange} />
             </div>
             <div className="input-group address">
               <label>Adresse</label>
               <textarea name="address" placeholder="Address" onChange={handleChange} ></textarea>
             </div>
-            <button type="submit" className="register-button">S&#39;inscrire</button>
+            <button type="submit" className="register-button">S'inscrire</button>
           </form>
         </div>
       </div>

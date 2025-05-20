@@ -1,12 +1,9 @@
 import React from "react";
-import API_URL from './config.js'; // Importer la configuration API
-
-import PropTypes from 'prop-types';
 import { Routes, Route } from "react-router-dom"; // Vérifiez cette importation
-import Home from './home.js';
-import Shop from './shop.js'; 
-import Cart from "./cart.js";
-import Contact from "./contact.js"; 
+import Home from './home';
+import Shop from './shop'; 
+import Cart from "./cart";
+import Contact from "./contact"; 
 
 const Rout = ({ shop, Filter, allcatfilter, addtocart, cart, setCart, fetchProducts, searchproduct }) => {
   return (
@@ -19,17 +16,6 @@ const Rout = ({ shop, Filter, allcatfilter, addtocart, cart, setCart, fetchProdu
       </Routes>
     </>
   );
-};
-
-Rout.propTypes = {
-  shop: PropTypes.func.isRequired,
-  Filter: PropTypes.func.isRequired,
-  allcatfilter: PropTypes.func.isRequired,
-  addtocart: PropTypes.func.isRequired,
-  cart: PropTypes.array.isRequired,
-  setCart: PropTypes.func.isRequired,
-  fetchProducts: PropTypes.func.isRequired,
-  searchproduct: PropTypes.func.isRequired,
 };
 
 export default Rout;

@@ -16,7 +16,7 @@ const Login = ({ setIsAuthenticated }) => {
     e.preventDefault();
     setErrorMessage('');
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/login', {
+      const response = await fetch('http://localhost:3001/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -35,7 +35,7 @@ const Login = ({ setIsAuthenticated }) => {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = '${process.env.REACT_APP_API_URL}/auth/google';
+    window.location.href = 'http://localhost:3001/auth/google';
   };
 
   return (

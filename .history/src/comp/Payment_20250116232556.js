@@ -23,7 +23,7 @@ const Payment = () => {
       }
 
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/pending-order-total/${orderId}`);
+        const response = await fetch(`http://localhost:3001/api/pending-order-total/${orderId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -75,7 +75,7 @@ const Payment = () => {
   const updatePaymentStatus = async (pendingOrderId, transactionId) => {
     console.log('Appel de updatePaymentStatus avec Pending Order ID:', pendingOrderId, 'et Transaction ID:', transactionId);
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/update-payment-status/${pendingOrderId}`, {
+      const response = await fetch(`http://localhost:3001/api/update-payment-status/${pendingOrderId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ payment_status: 'completed', transaction_id: transactionId }),
@@ -97,7 +97,7 @@ const Payment = () => {
   const handleOnlineCheckout = async (pendingOrderId, transactionId) => {
     console.log('Appel de handleOnlineCheckout avec Pending Order ID:', pendingOrderId, 'et Transaction ID:', transactionId);
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/confirm-payment', {
+      const response = await fetch('http://localhost:3001/api/confirm-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -148,7 +148,7 @@ const Payment = () => {
 
             try {
               // Envoi du reçu de paiement
-              const response = await fetch('${process.env.REACT_APP_API_URL}/api/send-receipt', {
+              const response = await fetch('http://localhost:3001/api/send-receipt', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ orderId, email: userEmail }),

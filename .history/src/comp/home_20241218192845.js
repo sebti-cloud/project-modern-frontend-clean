@@ -18,7 +18,7 @@ const Home = ({ addtocart }) => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
+            const response = await fetch('http://localhost:3001/api/products');
             const data = await response.json();
             setTrendingProduct(data);
             setProductCategories(data);
@@ -78,7 +78,7 @@ const Home = ({ addtocart }) => {
                                             return (
                                                 <div key={curElm.id} className='box'>
                                                     <div className='img_box'>
-                                                        <img src={`${process.env.REACT_APP_API_URL}${curElm.image}`} alt='' />
+                                                        <img src={`http://localhost:3001${curElm.image}`} alt='' />
                                                         <div className="icon">
                                                             <div className="icon_box">
                                                                 <AiFillEye />

@@ -45,7 +45,7 @@ const App = () => {
 
   const fetchProducts = async (category = '') => {
     try {
-      let url = '${process.env.REACT_APP_API_URL}/api/products';
+      let url = 'http://localhost:3001/api/products';
       if (category) {
         url += `?category=${category}`;
       }
@@ -62,7 +62,7 @@ const App = () => {
 
   const fetchSalesProducts = async (category = 'all') => {
     try {
-      let url = '${process.env.REACT_APP_API_URL}/api/salesProducts';
+      let url = 'http://localhost:3001/api/salesProducts';
       if (category !== 'all') {
         url += `?category=${category}`;
       }
@@ -92,7 +92,7 @@ const App = () => {
 
   const searchproduct = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search?query=${search}`);
+      const response = await fetch(`http://localhost:3001/api/search?query=${search}`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -204,7 +204,7 @@ const App = () => {
 
   const fetchProducts = async (category = '') => {
     try {
-      let url = '${process.env.REACT_APP_API_URL}/api/products';
+      let url = 'http://localhost:3001/api/products';
       if (category) {
         url += `?category=${category}`;
       }
@@ -221,7 +221,7 @@ const App = () => {
 
   const fetchSalesProducts = async (category = 'all') => {
     try {
-      let url = '${process.env.REACT_APP_API_URL}/api/salesProducts';
+      let url = 'http://localhost:3001/api/salesProducts';
       if (category !== 'all') {
         url += `?category=${category}`;
       }
@@ -251,7 +251,7 @@ const App = () => {
 
   const searchproduct = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search?query=${search}`);
+      const response = await fetch(`http://localhost:3001/api/search?query=${search}`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

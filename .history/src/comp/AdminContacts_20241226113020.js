@@ -11,7 +11,7 @@ const AdminContacts = () => {
 
     const fetchContacts = async () => {
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/contacts');
+            const response = await fetch('http://localhost:3001/api/contacts');
             if (!response.ok) {
                 throw new Error('Failed to fetch contacts');
             }
@@ -24,7 +24,7 @@ const AdminContacts = () => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/contacts/${id}`, {
+            const response = await fetch(`http://localhost:3001/api/contacts/${id}`, {
                 method: 'DELETE',
             });
             if (response.ok) {
@@ -41,7 +41,7 @@ const AdminContacts = () => {
 
     const handleValidate = async (id) => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/contacts/${id}/validate`, {
+            const response = await fetch(`http://localhost:3001/api/contacts/${id}/validate`, {
                 method: 'PUT',
             });
             if (response.ok) {

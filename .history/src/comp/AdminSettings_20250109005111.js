@@ -81,7 +81,7 @@ const AdminSettings = () => {
         // Fetch the current email from the server when the component mounts
         const fetchCurrentEmail = async () => {
             try {
-                const response = await fetch('${process.env.REACT_APP_API_URL}/api/admin-settings/email');
+                const response = await fetch('http://localhost:3001/api/admin-settings/email');
                 if (response.ok) {
                     const data = await response.json();
                     setCurrentEmail(data.email);
@@ -99,7 +99,7 @@ const AdminSettings = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/admin-settings', {
+            const response = await fetch('http://localhost:3001/api/admin-settings', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),

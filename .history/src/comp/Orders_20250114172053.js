@@ -16,7 +16,7 @@ const Orders = () => {
   const fetchOrders = async () => {
     try {
       console.log('Fetching orders...');
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/orders');
+      const response = await fetch('http://localhost:3001/api/orders');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -30,7 +30,7 @@ const Orders = () => {
   const fetchProducts = async () => {
     try {
       console.log('Fetching products...');
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
+      const response = await fetch('http://localhost:3001/api/products');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -46,7 +46,7 @@ const Orders = () => {
     const paymentMethod = paymentMethods[orderId] || orders.find(order => order.id === orderId)?.payment_method;
     if (status && paymentMethod) {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/update-tracking/${orderId}`, {
+        const response = await fetch(`http://localhost:3001/api/update-tracking/${orderId}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ status, paymentMethod }),
@@ -72,7 +72,7 @@ const Orders = () => {
 
   const handleDeleteOrder = async (id) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/orders/${id}`, { method: 'DELETE' });
+      const response = await fetch(`http://localhost:3001/api/orders/${id}`, { method: 'DELETE' });
       if (response.ok) {
         fetchOrders();
         alert('Commande supprimée avec succès!', 'alert-danger');
@@ -139,7 +139,7 @@ const Orders = () => {
                     const productDetails = getProductDetails(product.id);
                     return productDetails ? (
                       <div key={`${order.id}-${product.id}`}>
-                        <img src={`${process.env.REACT_APP_API_URL}${productDetails.image}`} alt={productDetails.name} width="50" />
+                        <img src={`http://localhost:3001${productDetails.image}`} alt={productDetails.name} width="50" />
                         {productDetails.name} x {product.qty}
                       </div>
                     ) : null;
@@ -202,7 +202,7 @@ const Orders = () => {
   const fetchOrders = async () => {
     try {
       console.log('Fetching orders...');
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/orders');
+      const response = await fetch('http://localhost:3001/api/orders');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -216,7 +216,7 @@ const Orders = () => {
   const fetchProducts = async () => {
     try {
       console.log('Fetching products...');
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
+      const response = await fetch('http://localhost:3001/api/products');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -232,7 +232,7 @@ const Orders = () => {
     const paymentMethod = paymentMethods[orderId] || orders.find(order => order.id === orderId)?.payment_method;
     if (status && paymentMethod) {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/update-tracking/${orderId}`, {
+        const response = await fetch(`http://localhost:3001/api/update-tracking/${orderId}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ status, paymentMethod }),
@@ -261,7 +261,7 @@ const Orders = () => {
 
   const handleDeleteOrder = async (id) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/orders/${id}`, { method: 'DELETE' });
+      const response = await fetch(`http://localhost:3001/api/orders/${id}`, { method: 'DELETE' });
       if (response.ok) {
         fetchOrders();
         alert('Commande supprimée avec succès!', 'alert-danger');
@@ -328,7 +328,7 @@ const Orders = () => {
                     const productDetails = getProductDetails(product.id);
                     return productDetails ? (
                       <div key={`${order.id}-${product.id}`}>
-                        <img src={`${process.env.REACT_APP_API_URL}${productDetails.image}`} alt={productDetails.name} width="50" />
+                        <img src={`http://localhost:3001${productDetails.image}`} alt={productDetails.name} width="50" />
                         {productDetails.name} x {product.qty}
                       </div>
                     ) : null;

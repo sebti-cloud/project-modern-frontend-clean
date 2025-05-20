@@ -41,7 +41,7 @@ const OldProduct = ({ fetchOldProducts, addtocart }) => {
                 <div className="products_grid">
                     {oldProducts.map(product => (
                         <div key={product.id} className="product_card">
-                            <img src={`${process.env.REACT_APP_API_URL}${product.image}`} alt={product.name} />
+                            <img src={`http://localhost:3001${product.image}`} alt={product.name} />
                             <h3>{product.name}</h3>
                             <p>{product.price} MAD</p>
                             <p>{product.description}</p>

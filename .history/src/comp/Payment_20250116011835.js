@@ -25,7 +25,7 @@ const Payment = () => {
       }
 
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/pending-order-total/${orderId}`);
+        const response = await fetch(`http://localhost:3001/api/pending-order-total/${orderId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -78,7 +78,7 @@ const Payment = () => {
   const updateTransactionId = async (pendingOrderId, transactionId) => {
     console.log('Mise à jour du Transaction ID:', transactionId, 'pour Pending Order ID:', pendingOrderId);
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/update-transaction-id/${pendingOrderId}`, {
+      const response = await fetch(`http://localhost:3001/api/update-transaction-id/${pendingOrderId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ transaction_id: transactionId }),
@@ -99,7 +99,7 @@ const Payment = () => {
   const handleOnlineCheckout = async (pendingOrderId, transactionId) => {
     console.log('Envoi de la commande pour confirmation avec Pending Order ID:', pendingOrderId, 'et Transaction ID:', transactionId);
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/confirm-payment', {
+      const response = await fetch('http://localhost:3001/api/confirm-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -146,7 +146,7 @@ const Payment = () => {
             }
 
             try {
-              const response = await fetch('${process.env.REACT_APP_API_URL}/api/send-receipt', {
+              const response = await fetch('http://localhost:3001/api/send-receipt', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ orderId, email: userEmail }),

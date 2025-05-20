@@ -1,6 +1,5 @@
 import React from 'react';
-import AdminDashboard from './AdminDashboard.js';
-import API_URL from './config.js'; // Importer la configuration API
+import AdminDashboard from './AdminDashboard';
 
 function App() {
   return (

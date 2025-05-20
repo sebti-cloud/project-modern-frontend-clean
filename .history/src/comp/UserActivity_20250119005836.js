@@ -24,7 +24,7 @@ const UserActivity = () => {
 
   const fetchUsername = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/users/${userId}`);
       if (!response.ok) {
         throw new Error('Erreur lors de la récupération du nom d\'utilisateur');
       }
@@ -37,7 +37,7 @@ const UserActivity = () => {
 
   const fetchLogins = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/logins/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/logins/${userId}`);
       const data = await response.json();
       console.log('Logins:', data);
       setLogins(data);
@@ -48,7 +48,7 @@ const UserActivity = () => {
 
   const fetchPurchases = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/purchases/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/purchases/${userId}`);
       const data = await response.json();
       console.log('Purchases:', data);
       setPurchases(Array.isArray(data) ? data : []); // S'assurer que purchases est un tableau
@@ -62,7 +62,7 @@ const UserActivity = () => {
 
   const fetchLikedProducts = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/liked-products/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/liked-products/${userId}`);
       const data = await response.json();
       if (!Array.isArray(data)) {
         throw new Error('Invalid data format');
@@ -77,7 +77,7 @@ const UserActivity = () => {
   const fetchProductCategories = async (purchases) => {
     try {
       const productIds = purchases.map(purchase => purchase.product);
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/categories`, {
+      const response = await fetch(`http://localhost:3001/api/products/categories`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ productIds })
@@ -270,7 +270,7 @@ const UserActivity = () => {
 
   const fetchUsername = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/users/${userId}`);
       if (!response.ok) {
         throw new Error('Erreur lors de la récupération du nom d\'utilisateur');
       }
@@ -283,7 +283,7 @@ const UserActivity = () => {
 
   const fetchLogins = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/logins/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/logins/${userId}`);
       const data = await response.json();
       console.log('Logins:', data);
       setLogins(data);
@@ -294,7 +294,7 @@ const UserActivity = () => {
 
   const fetchPurchases = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/purchases/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/purchases/${userId}`);
       const data = await response.json();
       console.log('Purchases:', data);
       setPurchases(Array.isArray(data) ? data : []); // S'assurer que purchases est un tableau
@@ -308,7 +308,7 @@ const UserActivity = () => {
 
   const fetchLikedProducts = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/liked-products/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/liked-products/${userId}`);
       const data = await response.json();
       console.log('Received liked products data:', data); // Ajouter ce log
       if (!Array.isArray(data)) {
@@ -326,7 +326,7 @@ const UserActivity = () => {
       console.log('Purchases:', purchases);
       const productIds = purchases.map(purchase => purchase.product); // Utiliser product au lieu de product_id
       console.log('Product IDs:', productIds);
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/categories`, {
+      const response = await fetch(`http://localhost:3001/api/products/categories`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ productIds })

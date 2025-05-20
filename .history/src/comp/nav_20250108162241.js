@@ -20,7 +20,7 @@ const Nav = ({ search, setSearch, searchproduct, setSearchResults, isAuthenticat
       if (!token) return;
 
       try {
-        const response = await fetch('${process.env.REACT_APP_API_URL}/api/user', {
+        const response = await fetch('http://localhost:3001/api/user', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -42,7 +42,7 @@ const Nav = ({ search, setSearch, searchproduct, setSearchResults, isAuthenticat
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search?query=${search}`);
+      const response = await fetch(`http://localhost:3001/api/search?query=${search}`);
       const data = await response.json();
       setResults(data);
       setSearchResults(data);
@@ -114,7 +114,7 @@ const Nav = ({ search, setSearch, searchproduct, setSearchResults, isAuthenticat
             {user && user.photo ? (
               <>
                 <img
-                  src={`${process.env.REACT_APP_API_URL}${user.photo}`}
+                  src={`http://localhost:3001${user.photo}`}
                   alt="Profile"
                   className='profile-photo-nav'
                   onClick={openModal}
@@ -123,7 +123,7 @@ const Nav = ({ search, setSearch, searchproduct, setSearchResults, isAuthenticat
                 {isModalOpen && (
                   <div className="modal" onClick={closeModal}>
                     <div className="modal-content">
-                      <img src={`${process.env.REACT_APP_API_URL}${user.photo}`} alt="Profile" className='profile-photo-modal' />
+                      <img src={`http://localhost:3001${user.photo}`} alt="Profile" className='profile-photo-modal' />
                     </div>
                   </div>
                 )}
@@ -185,7 +185,7 @@ const Nav = ({ search, setSearch, searchproduct, setSearchResults, isAuthenticat
       if (!token) return;
 
       try {
-        const response = await fetch('${process.env.REACT_APP_API_URL}/api/user', {
+        const response = await fetch('http://localhost:3001/api/user', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -207,7 +207,7 @@ const Nav = ({ search, setSearch, searchproduct, setSearchResults, isAuthenticat
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search?query=${search}`);
+      const response = await fetch(`http://localhost:3001/api/search?query=${search}`);
       const data = await response.json();
       setResults(data);
       setSearchResults(data);
@@ -278,7 +278,7 @@ const Nav = ({ search, setSearch, searchproduct, setSearchResults, isAuthenticat
             {user && user.photo ? (
               <>
                 <img
-                  src={`${process.env.REACT_APP_API_URL}${user.photo}`}
+                  src={`http://localhost:3001${user.photo}`}
                   alt="Profile"
                   className='profile-photo-nav'
                   onClick={openModal}
@@ -287,7 +287,7 @@ const Nav = ({ search, setSearch, searchproduct, setSearchResults, isAuthenticat
                 {isModalOpen && (
                   <div className="modal" onClick={closeModal}>
                     <div className="modal-content">
-                      <img src={`${process.env.REACT_APP_API_URL}${user.photo}`} alt="Profile" className='profile-photo-modal' />
+                      <img src={`http://localhost:3001${user.photo}`} alt="Profile" className='profile-photo-modal' />
                     </div>
                   </div>
                 )}

@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
-
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import PropTypes from 'prop-types';
 import './login.css';
 
 const Login = ({ setIsAuthenticated }) => {
@@ -19,7 +16,7 @@ const Login = ({ setIsAuthenticated }) => {
     e.preventDefault();
     setErrorMessage('');
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/login', {
+      const response = await fetch('http://localhost:3001/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -31,7 +28,7 @@ const Login = ({ setIsAuthenticated }) => {
         Cookies.set('userToken', data.token); // Stocke le token utilisateur
         localStorage.setItem('userToken', data.token); // Optionnel : Stocke le token dans le localStorage
         setIsAuthenticated(true);
-        await fetch('${process.env.REACT_APP_API_URL}/api/user-logins', {
+        await fetch('http://localhost:3001/api/user-logins', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -49,7 +46,7 @@ const Login = ({ setIsAuthenticated }) => {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = '${process.env.REACT_APP_API_URL}/auth/google';
+    window.location.href = 'http://localhost:3001/auth/google';
   };
 
   return (
@@ -75,16 +72,12 @@ const Login = ({ setIsAuthenticated }) => {
             <button type="button" className="google-login-button" onClick={handleGoogleLogin}>Se connecter avec Google</button>
           </form>
           <p className="signup-link">
-            Pas de compte ? <a href="/register">S&apos;inscrire</a>
+            Pas de compte ? <a href="/register">S'inscrire</a>
           </p>
         </div>
       </div>
     </div>
   );
-};
-
-Login.propTypes = {
-  setIsAuthenticated: PropTypes.func.isRequired,
 };
 
 export default Login;

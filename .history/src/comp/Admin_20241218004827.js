@@ -13,7 +13,7 @@ const Admin = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
+            const response = await fetch('http://localhost:3001/api/products');
             const data = await response.json();
             setProducts(Array.isArray(data) ? data : []);
         } catch (error) {
@@ -23,7 +23,7 @@ const Admin = () => {
 
     const fetchOrders = async () => {
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/orders');
+            const response = await fetch('http://localhost:3001/api/orders');
             const data = await response.json();
             setOrders(Array.isArray(data) ? data : []);
         } catch (error) {

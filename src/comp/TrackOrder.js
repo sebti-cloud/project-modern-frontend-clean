@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
-
-import PropTypes from 'prop-types';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaCartPlus, FaClipboardList, FaTruckLoading, FaMapMarkerAlt } from 'react-icons/fa';
 import './TrackOrder.css';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
-const TrackOrder = ({ cartCount }) => {
+const TrackOrder = () => {
   const [activeStep, setActiveStep] = useState(1);
   const [trackingInfo, setTrackingInfo] = useState(null);
   const [trackingNumber, setTrackingNumber] = useState('');
   const [error, setError] = useState(null);
   const { trackingNumber: trackingNumberParam } = useParams();
   const navigate = useNavigate();
+  const [cartCount, setCartCount] = useState(parseInt(localStorage.getItem('cartCount')) || 0); // Initialiser à partir de localStorage
 
   useEffect(() => {
     if (trackingNumberParam) {
@@ -32,7 +30,7 @@ const TrackOrder = ({ cartCount }) => {
   const fetchTrackingInfo = async (trackingNumber) => {
     console.log('Fetching tracking info for:', trackingNumber);
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/track-order/${trackingNumber}`);
+      const response = await fetch(`http://localhost:3001/api/track-order/${trackingNumber}`);
       if (!response.ok) {
         throw new Error('Tracking number not found');
       }
@@ -169,10 +167,6 @@ const TrackOrder = ({ cartCount }) => {
       )}
     </div>
   );
-};
-
-TrackOrder.propTypes = {
-  cartCount: PropTypes.number.isRequired,
 };
 
 export default TrackOrder;

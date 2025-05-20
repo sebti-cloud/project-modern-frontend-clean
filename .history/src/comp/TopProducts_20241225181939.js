@@ -13,7 +13,7 @@ const TopProducts = ({ addtocart }) => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
+            const response = await fetch('http://localhost:3001/api/products');
             const data = await response.json();
             const topProducts = data.filter((x) => x.types && x.types.includes('top'));
             setTopProducts(topProducts);
@@ -28,7 +28,7 @@ const TopProducts = ({ addtocart }) => {
         setFilter(category);
         setLoading(true);
         try {
-            let url = `${process.env.REACT_APP_API_URL}/api/products?type=top`;
+            let url = `http://localhost:3001/api/products?type=top`;
             if (category !== 'all') {
                 url += `&category=${category}`;
             }
@@ -61,7 +61,7 @@ const TopProducts = ({ addtocart }) => {
                 <div className="products_grid">
                     {topProducts.map(product => (
                         <div key={product.id} className="product_card">
-                            <img src={`${process.env.REACT_APP_API_URL}${product.image}`} alt={product.name} />
+                            <img src={`http://localhost:3001${product.image}`} alt={product.name} />
                             <h3>{product.name}</h3>
                             <p>{product.price} MAD</p>
                             <div className="rating">

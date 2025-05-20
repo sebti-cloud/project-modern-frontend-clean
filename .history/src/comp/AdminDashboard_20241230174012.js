@@ -60,7 +60,7 @@ const AdminDashboard = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('${process.env.REACT_APP_API_URL}/api/admins', newAdmin); // URL avec le bon port
+      const response = await axios.post('http://localhost:3001/api/admins', newAdmin); // URL avec le bon port
       setAdmins((prevAdmins) => [...prevAdmins, response.data]);
       setNewAdmin({ username: '', password: '', role: '' });
     } catch (err) {

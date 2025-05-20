@@ -32,7 +32,7 @@ const Home = ({ addtocart, searchResults }) => { // Ajout de searchResults en ta
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
+            const response = await fetch('http://localhost:3001/api/products');
             const data = await response.json();
             setTrendingProduct(data);
             setProductCategories(data);
@@ -64,12 +64,12 @@ const Home = ({ addtocart, searchResults }) => { // Ajout de searchResults en ta
     const placeholderImage = "/uploads/placeholder.jpg";
 
     const renderProductImage = (imagePath) => {
-        return imagePath && imagePath.trim() !== "" ? `${process.env.REACT_APP_API_URL}${imagePath}` : placeholderImage;
+        return imagePath && imagePath.trim() !== "" ? `http://localhost:3001${imagePath}` : placeholderImage;
     };
 
     const handleLike = async (productId) => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${productId}/like`, {
+            const response = await fetch(`http://localhost:3001/api/products/${productId}/like`, {
                 method: 'PUT',
             });
             if (response.ok) {
@@ -107,7 +107,7 @@ const Home = ({ addtocart, searchResults }) => { // Ajout de searchResults en ta
                     <button className='close_btn' onClick={closeDetail}><AiOutlineClose /></button>
                     <div className='container'>
                         <div className='img_box'>
-                            <img src={`${process.env.REACT_APP_API_URL}${detail.image}`} alt='' />
+                            <img src={`http://localhost:3001${detail.image}`} alt='' />
                         </div>
                         <div className='info'>
                             <h4># {detail.types.join(', ')}</h4>
@@ -189,7 +189,7 @@ const Home = ({ addtocart, searchResults }) => { // Ajout de searchResults en ta
                                     </div>
                                     <div className="detail">
                                         <div className="img_box">
-                                            <img src="${process.env.REACT_APP_API_URL}/uploads/T1.png" alt="testimonial" />
+                                            <img src="http://localhost:3001/uploads/T1.png" alt="testimonial" />
                                         </div>
                                         <div className="info">
                                             <h3>Amine Boudali</h3>
@@ -230,7 +230,7 @@ const Home = ({ addtocart, searchResults }) => { // Ajout de searchResults en ta
                     <div className="container">
                         <div className="box">
                             <div className="top">
-                                <img src='${process.env.REACT_APP_API_URL}/uploads/Multi-Banner-4.jpg' alt='' />
+                                <img src='http://localhost:3001/uploads/Multi-Banner-4.jpg' alt='' />
                             </div>
                         </div>
                     </div>
@@ -339,7 +339,7 @@ const Home = ({ addtocart, searchResults }) => { // Ajout de searchResults en ta
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
+            const response = await fetch('http://localhost:3001/api/products');
             const data = await response.json();
             setTrendingProduct(data);
             setProductCategories(data);
@@ -371,12 +371,12 @@ const Home = ({ addtocart, searchResults }) => { // Ajout de searchResults en ta
     const placeholderImage = "/uploads/placeholder.jpg";
 
     const renderProductImage = (imagePath) => {
-        return imagePath && imagePath.trim() !== "" ? `${process.env.REACT_APP_API_URL}${imagePath}` : placeholderImage;
+        return imagePath && imagePath.trim() !== "" ? `http://localhost:3001${imagePath}` : placeholderImage;
     };
 
     const handleLike = async (productId) => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${productId}/like`, {
+            const response = await fetch(`http://localhost:3001/api/products/${productId}/like`, {
                 method: 'PUT',
             });
             if (response.ok) {
@@ -409,7 +409,7 @@ const Home = ({ addtocart, searchResults }) => { // Ajout de searchResults en ta
             <button className='close_btn' onClick={closeDetail}><AiOutlineClose /></button>
             <div className='container'>
                 <div className='img_box'>
-                    <img src={`${process.env.REACT_APP_API_URL}${detail.image}`} alt='' />
+                    <img src={`http://localhost:3001${detail.image}`} alt='' />
                 </div>
                 <div className='info'>
                     <h4># {detail.types.join(', ')}</h4>
@@ -480,7 +480,7 @@ const Home = ({ addtocart, searchResults }) => { // Ajout de searchResults en ta
                         </div>
                         <div className="detail">
                             <div className="img_box">
-                                <img src="${process.env.REACT_APP_API_URL}/uploads/T1.png" alt="testimonial" />
+                                <img src="http://localhost:3001/uploads/T1.png" alt="testimonial" />
                             </div>
                             <div className="info">
                                 <h3>Amine Boudali</h3>
@@ -521,7 +521,7 @@ const Home = ({ addtocart, searchResults }) => { // Ajout de searchResults en ta
         <div className="container">
             <div className="box">
                 <div className="top">
-                    <img src='${process.env.REACT_APP_API_URL}/uploads/Multi-Banner-4.jpg' alt='' />
+                    <img src='http://localhost:3001/uploads/Multi-Banner-4.jpg' alt='' />
                 </div>
             </div>
         </div>

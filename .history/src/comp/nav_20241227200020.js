@@ -15,7 +15,7 @@ const Nav = ({ search, setSearch, searchproduct, setSearchResults }) => {
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search?query=${search}`);
+      const response = await fetch(`http://localhost:3001/api/search?query=${search}`);
       const data = await response.json();
       setResults(data);
       setSearchResults(data);  // Propagation des résultats vers les composants enfants

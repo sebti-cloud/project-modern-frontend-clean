@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import API_URL from './config.js'; // Importer la configuration API
 
 const Banner = ({ image, link }) => {
   return (
@@ -10,11 +8,6 @@ const Banner = ({ image, link }) => {
       </a>
     </div>
   );
-};
-
-Banner.propTypes = {
-  image: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
 };
 
 export default Banner;

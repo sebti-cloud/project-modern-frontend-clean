@@ -1,42 +1,43 @@
 import React, { useState, useEffect } from 'react';
-import API_URL from './config.js'; // Importer la configuration API
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Nav from './comp/nav.js';
-import Rout from './comp/rout.js';
-import Footer from './comp/footer.js';
-import Homeproduct from './comp/home_product.js';
-import AdminDashboard from './comp/AdminDashboard.js';
-import About from './comp/About.js';
-import Account from './comp/Account.js';
-import Payment from './comp/Payment.js';
-import Sales from './comp/Sales.js';
-import Delivery from './comp/Delivery.js';
-import TrackOrder from './comp/TrackOrder.js';
-import TopProducts from './comp/TopProducts.js';
-import AddAdmin from './comp/AddAdmin.js';
-import Products from './comp/Products.js';
-import Orders from './comp/Orders.js';
-import LikedProducts from './comp/LikedProducts.js';
-import Categories from './comp/Categories.js';
-import AdminContacts from './comp/AdminContacts.js';
-import AdminList from './comp/AdminList.js';
-import AdminSettings from './comp/AdminSettings.js';
-import AdminUsers from './comp/AdminUsers.js';
-import Cart from './comp/cart.js';
-import Register from './comp/Register.js';
-import Login from './comp/Login.js';
-import UserProfile from './comp/UserProfile.js';
-import UserOrders from './comp/UserOrders.js';
-import UserLikedProducts from './comp/UserLikedProducts.js';
-import UserActivity from './comp/UserActivity.js';
-import ProductForm from './comp/ProductForm.js';
-import ProductList from './comp/ProductList.js';
-import Suppliers from './comp/Suppliers.js';
-import SalesReport from './comp/reports/SalesReport.js';
-import StockHistory from './comp/StockHistory.js';  // Ajout de l'importation de StockHistory
-import Promotions from './comp/Promotions.js';
-import AdminLogin from './comp/AdminLogin.js';
-import SliderManager from './comp/SliderManager.js'; // Nouvelle importation
+import Nav from './comp/nav';
+import Rout from './comp/rout';
+import Footer from './comp/footer';
+import Homeproduct from './comp/home_product';
+import AdminDashboard from './comp/AdminDashboard';
+import About from './comp/About';
+import Account from './comp/Account';
+import Payment from './comp/Payment';
+import Sales from './comp/Sales';
+import Delivery from './comp/Delivery';
+import TrackOrder from './comp/TrackOrder';
+import TopProducts from './comp/TopProducts';
+import OldProduct from './comp/OldProduct';
+import AddAdmin from './comp/AddAdmin';
+import Products from './comp/Products';
+import Orders from './comp/Orders';
+import LikedProducts from './comp/LikedProducts';
+import Categories from './comp/Categories';
+import AdminContacts from './comp/AdminContacts';
+import AdminList from './comp/AdminList';
+import AdminSettings from './comp/AdminSettings';
+import AdminUsers from './comp/AdminUsers';
+import Cart from './comp/cart';
+import Register from './comp/Register';
+import Login from './comp/Login';
+import UserProfile from './comp/UserProfile';
+import UserOrders from './comp/UserOrders';
+import UserLikedProducts from './comp/UserLikedProducts';
+import UploadProfilePhoto from './comp/UploadProfilePhoto';
+import UserActivity from './comp/UserActivity';
+import ProductForm from './comp/ProductForm';
+import ProductList from './comp/ProductList';
+import Suppliers from './comp/Suppliers';
+import SalesReport from './comp/reports/SalesReport';
+import StockHistory from './comp/StockHistory';  // Ajout de l'importation de StockHistory
+import Promotions from './comp/Promotions';
+import AdminLogin from './comp/AdminLogin';
+import SliderManager from './comp/SliderManager'; // Nouvelle importation
 import Cookies from 'js-cookie';
 
 const App = () => {
@@ -46,9 +47,10 @@ const App = () => {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [salesProducts, setSalesProducts] = useState([]);
+  const [topProducts, setTopProducts] = useState([]);
+  const [oldProducts, setOldProducts] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(!!Cookies.get('token'));
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(!!Cookies.get('adminToken'));
-  const [topProducts] = useState([]);
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -57,7 +59,7 @@ const App = () => {
 
   const fetchProducts = async (category = '') => {
     try {
-      let url = `${API_URL}/api/products`;
+      let url = 'http://localhost:3001/api/products';
       if (category) {
         url += `?category=${category}`;
       }
@@ -74,7 +76,7 @@ const App = () => {
 
   const fetchSalesProducts = async (category = 'all') => {
     try {
-      let url = `${API_URL}/api/salesProducts`;
+      let url = 'http://localhost:3001/api/salesProducts';
       if (category !== 'all') {
         url += `?category=${category}`;
       }
@@ -104,7 +106,7 @@ const App = () => {
 
   const searchproduct = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/search?query=${search}`);
+      const response = await fetch(`http://localhost:3001/api/search?query=${search}`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -139,10 +141,9 @@ const App = () => {
     setIsAuthenticated(false);
     setIsAdminAuthenticated(false);
   };
-
   const saveProduct = async (formData) => {
     try {
-      const response = await fetch(`${API_URL}/api/products`, {
+      const response = await fetch('http://localhost:3001/api/products', {
         method: 'POST',
         body: formData,
       });
@@ -157,7 +158,7 @@ const App = () => {
 
   const editProduct = async (product) => {
     try {
-      const response = await fetch(`${API_URL}/api/products/${product.id}/type`, {
+      const response = await fetch(`http://localhost:3001/api/products/${product.id}/type`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -175,7 +176,7 @@ const App = () => {
 
   const deleteProduct = async (productId) => {
     try {
-      const response = await fetch(`${API_URL}/api/products/${productId}`, {
+      const response = await fetch(`http://localhost:3001/api/products/${productId}`, {
         method: 'DELETE'
       });
       if (!response.ok) {
@@ -322,7 +323,7 @@ const App = () => {
 
   const fetchProducts = async (category = '') => {
     try {
-      let url = '${process.env.REACT_APP_API_URL}/api/products';
+      let url = 'http://localhost:3001/api/products';
       if (category) {
         url += `?category=${category}`;
       }
@@ -339,7 +340,7 @@ const App = () => {
 
   const fetchSalesProducts = async (category = 'all') => {
     try {
-      let url = '${process.env.REACT_APP_API_URL}/api/salesProducts';
+      let url = 'http://localhost:3001/api/salesProducts';
       if (category !== 'all') {
         url += `?category=${category}`;
       }
@@ -369,7 +370,7 @@ const App = () => {
 
   const searchproduct = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search?query=${search}`);
+      const response = await fetch(`http://localhost:3001/api/search?query=${search}`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -407,7 +408,7 @@ const App = () => {
 
   const saveProduct = async (formData) => {
     try {
-      const response = await fetch('${process.env.REACT_APP_API_URL}/api/products', {
+      const response = await fetch('http://localhost:3001/api/products', {
         method: 'POST',
         body: formData,
       });
@@ -422,7 +423,7 @@ const App = () => {
 
   const editProduct = async (product) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${product.id}/type`, {
+      const response = await fetch(`http://localhost:3001/api/products/${product.id}/type`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -440,7 +441,7 @@ const App = () => {
 
   const deleteProduct = async (productId) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/products/${productId}`, {
+      const response = await fetch(`http://localhost:3001/api/products/${productId}`, {
         method: 'DELETE'
       });
       if (!response.ok) {

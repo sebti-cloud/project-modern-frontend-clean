@@ -18,7 +18,7 @@ const Home = ({ addtocart }) => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('${process.env.REACT_APP_API_URL}/api/products');
+            const response = await fetch('http://localhost:3001/api/products');
             const data = await response.json();
             setTrendingProduct(data);
             setProductCategories(data);

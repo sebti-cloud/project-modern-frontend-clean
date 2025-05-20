@@ -21,7 +21,7 @@ const UserActivity = ({ match }) => {
 
   const fetchLogins = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/logins/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/logins/${userId}`);
       const data = await response.json();
       console.log('Logins:', data);
       setLogins(data);
@@ -32,7 +32,7 @@ const UserActivity = ({ match }) => {
 
   const fetchPurchases = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/purchases/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/purchases/${userId}`);
       const data = await response.json();
       console.log('Purchases:', data);
       setPurchases(data);
@@ -43,7 +43,7 @@ const UserActivity = ({ match }) => {
 
   const fetchLikedProducts = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/liked-products/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/liked-products/${userId}`);
       const data = await response.json();
       console.log('Liked Products:', data);
       setLikedProducts(data);
@@ -177,7 +177,7 @@ const UserActivity = ({ match }) => {
 
   const fetchLogins = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/logins/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/logins/${userId}`);
       const data = await response.json();
       console.log('Logins:', data);
       setLogins(data);
@@ -188,7 +188,7 @@ const UserActivity = ({ match }) => {
 
   const fetchPurchases = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/purchases/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/purchases/${userId}`);
       const data = await response.json();
       console.log('Purchases:', data);
       setPurchases(data);
@@ -199,7 +199,7 @@ const UserActivity = ({ match }) => {
 
   const fetchLikedProducts = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user-activities/liked-products/${userId}`);
+      const response = await fetch(`http://localhost:3001/api/user-activities/liked-products/${userId}`);
       const data = await response.json();
       console.log('Liked Products:', data);
       setLikedProducts(data);

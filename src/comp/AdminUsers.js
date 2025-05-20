@@ -3,7 +3,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import { FaBox, FaClipboardList, FaHeart, FaTags, FaEnvelope, FaUserShield, FaCog, FaWarehouse } from 'react-icons/fa'; // Importer des icônes depuis react-icons
 import './admin.css';
-import API_URL from './config.js'; // Importer la configuration API
 
 Modal.setAppElement('#root'); // Assurez-vous que l'élément root est défini pour l'accessibilité
 
@@ -19,7 +18,7 @@ const AdminUsers = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/users`);
+      const response = await fetch('http://localhost:3001/api/users');
       const data = await response.json();
       setUsers(Array.isArray(data) ? data : []);
     } catch (error) {
@@ -75,12 +74,12 @@ const AdminUsers = () => {
                 <td>{user.id}</td>
                 <td>
                   <img
-                    src={user.photo ? `${API_URL}${user.photo}` : `${API_URL}/uploads/download.png`}
+                    src={user.photo ? `http://localhost:3001${user.photo}` : 'http://localhost:3001/uploads/download.png'}
                     alt={user.name}
                     className="user-photo"
                     onClick={(e) => {
                       e.stopPropagation();
-                      openModal(user.photo ? `${API_URL}${user.photo}` : `${API_URL}/uploads/download.png`);
+                      openModal(user.photo ? `http://localhost:3001${user.photo}` : 'http://localhost:3001/uploads/download.png');
                     }}
                     style={{ cursor: 'pointer' }}
                   />

@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaBox, FaShoppingCart, FaUser, FaTags, FaChartBar, FaEnvelope, FaUsersCog, FaCogs, FaWarehouse, FaBullhorn } from 'react-icons/fa';
 import Cookies from 'js-cookie';
 import './AdminHome.css';
-import API_URL from './config.js'; // Importer la configuration API
 
 const AdminHome = () => {
   const [admin, setAdmin] = useState(null);
@@ -18,7 +17,7 @@ const AdminHome = () => {
       }
 
       try {
-        const response = await fetch(`${API_URL}/api/admin/info`, {
+        const response = await fetch('http://localhost:3001/api/admin/info', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
